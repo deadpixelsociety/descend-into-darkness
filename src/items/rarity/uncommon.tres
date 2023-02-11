@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Rarity" load_steps=2 format=3 uid="uid://dfrnd67vmp5dk"]
+
+[ext_resource type="Script" path="res://src/items/rarity/rarity.gd" id="1_8nghs"]
+
+[resource]
+script = ExtResource("1_8nghs")
+rarity_name = "Uncommon"
+color = Color(0, 0.662745, 0, 1)
+rate = 20.0
+prefixes_min = 1
+prefixes_max = 1
+suffixes_min = 2
+suffixes_max = 2
+particles_enabled = true
+particle_scale = 0.3

@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://pp148rqqvud4"]
+
+[sub_resource type="Shader" id="Shader_snmq7"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float amount: hint_range(0.0, 1.0) = 1.0;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	COLOR = mix(col, vec4(color.rgb, col.a), amount);
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource("Shader_snmq7")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/amount = 0.0

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://brahjkhexhwle"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_8ufr5"]
+
+[resource]
+script = ExtResource("1_8ufr5")
+stat_type = 13
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+modifier_name = "Area of Effect"
+description_template = "{plus}{value}% area of effect"
+base_modifier = false
+submodifiers = null

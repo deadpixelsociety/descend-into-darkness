@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cdhspid1ej2oh"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_a0onv"]
+
+[resource]
+script = ExtResource("1_a0onv")
+stat_type = 0
+value_type = 1
+modifier_type = 2
+stat_category = 0
+min_value = 0.0
+max_value = 0.0
+description_template = "{value} {more} maximum health"
+modifier_name = "More Maximum Health"
+submodifiers = null

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dwu2r2eypgy86"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_1wnjn"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="2_gusxm"]
+
+[sub_resource type="Resource" id="Resource_hwqha"]
+script = ExtResource("1_1wnjn")
+stat_type = 3
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 31.0
+max_value = 40.0
+modifier_name = "Increased Attack Speed"
+description_template = "{value} {increased} attacks per second"
+submodifiers = []
+
+[resource]
+script = ExtResource("2_gusxm")
+tier_name = "of Quickness"
+tier_group = "AttackSpeedIncreased"
+affix_type = 1
+display_priority = 4
+item_type = 457
+item_level_min = 15
+modifier = SubResource("Resource_hwqha")

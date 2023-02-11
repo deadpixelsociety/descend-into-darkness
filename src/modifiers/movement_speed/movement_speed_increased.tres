@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bcypxy5wtiy2l"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_nrn3s"]
+
+[resource]
+script = ExtResource("1_nrn3s")
+stat_type = 12
+value_type = 1
+modifier_type = 1
+stat_category = 3
+min_value = 0.0
+max_value = 0.0
+description_template = "{value} {increased} movement speed"
+modifier_name = "Increased Movement Speed"
+submodifiers = null

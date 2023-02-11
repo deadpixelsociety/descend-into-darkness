@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Rarity" load_steps=2 format=3 uid="uid://dseogux375owv"]
+
+[ext_resource type="Script" path="res://src/items/rarity/rarity.gd" id="1_cvmwu"]
+
+[resource]
+script = ExtResource("1_cvmwu")
+rarity_name = "Rare"
+color = Color(1, 0.941176, 0.317647, 1)
+rate = 16.0
+prefixes_min = 2
+prefixes_max = 2
+suffixes_min = 2
+suffixes_max = 2
+particles_enabled = true
+particle_scale = 0.4

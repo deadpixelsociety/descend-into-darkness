@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="HeroClass" load_steps=6 format=3 uid="uid://m6xftj747mwk"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_012y5"]
+[ext_resource type="Script" path="res://src/heroes/classes/hero_class.gd" id="1_ff6k8"]
+[ext_resource type="SpriteFrames" uid="uid://cflouqhrfkx3o" path="res://assets/animations/cleric.tres" id="2_j700n"]
+
+[sub_resource type="Resource" id="Resource_idv7u"]
+script = ExtResource("1_012y5")
+stat_type = 2
+value_type = 0
+modifier_type = 0
+stat_category = 0
+min_value = 6.0
+max_value = 6.0
+modifier_name = "Maximum Health Per Level"
+description_template = "{plus}{value} to maximum health per level"
+base_modifier = false
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_txc68"]
+script = ExtResource("1_012y5")
+stat_type = 12
+value_type = 0
+modifier_type = 0
+stat_category = 3
+min_value = 90.0
+max_value = 90.0
+modifier_name = "Movement Speed"
+description_template = "{plus}{value} to movement speed"
+base_modifier = false
+submodifiers = null
+
+[resource]
+script = ExtResource("1_ff6k8")
+hero_name = "Cleric"
+description = "Wielding their faith like a hammer the cleric brings holy justice to their enemies."
+sprite_frames = ExtResource("2_j700n")
+weapon_type = 1
+modifiers = [SubResource("Resource_idv7u"), SubResource("Resource_txc68")]

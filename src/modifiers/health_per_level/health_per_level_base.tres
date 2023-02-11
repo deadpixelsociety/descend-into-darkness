@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://trcdvav1ebhn"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_24pel"]
+
+[resource]
+script = ExtResource("1_24pel")
+stat_type = 2
+value_type = 0
+modifier_type = 0
+stat_category = 0
+min_value = 0.0
+max_value = 0.0
+description_template = "{plus}{value} to maximum health per level"
+modifier_name = "Maximum Health Per Level"
+submodifiers = null

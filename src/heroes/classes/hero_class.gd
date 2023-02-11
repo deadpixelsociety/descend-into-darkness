@@ -1,0 +1,17 @@
+extends Resource
+class_name HeroClass
+
+@export_category("Hero Class")
+@export var hero_name: String
+@export_multiline var description: String
+@export_category("Abilities")
+@export var attack: Attack
+@export var passive: Passive
+@export_category("Animation")
+@export var sprite_frames: SpriteFrames
+@export_category("Items")
+@export var weapon_type: WeaponConstants.WeaponType
+@export_category("Modifiers")
+@export var modifiers: Array[Modifier] = []
+
+var id: String = Guid.generate()

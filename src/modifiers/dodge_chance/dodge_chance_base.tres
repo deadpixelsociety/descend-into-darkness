@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bkgg1ybwagjem"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_nhdfj"]
+
+[resource]
+script = ExtResource("1_nhdfj")
+stat_type = 11
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 0.0
+max_value = 0.0
+description_template = "{plus}{value}%% chance to dodge"
+modifier_name = "Dodge Chance"
+submodifiers = null

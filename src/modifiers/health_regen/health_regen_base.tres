@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cntnowf5f5sxi"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_47fw0"]
+
+[resource]
+script = ExtResource("1_47fw0")
+stat_type = 1
+value_type = 0
+modifier_type = 0
+stat_category = 0
+min_value = 0.0
+max_value = 0.0
+description_template = "Regenerate {plus}{value} health per second."
+modifier_name = "Health Regen"
+submodifiers = null

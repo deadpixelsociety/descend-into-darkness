@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://c5p0cy3shuf54"]
+
+[ext_resource type="Texture2D" uid="uid://vit1yggahlq1" path="res://assets/textures/characters/halfling_thief_1.png" id="1_quv0u"]
+[ext_resource type="Texture2D" uid="uid://d14g5kgxvj3kh" path="res://assets/textures/characters/halfling_thief_2.png" id="2_no2mi"]
+[ext_resource type="Texture2D" uid="uid://dicrldhm1xpll" path="res://assets/textures/characters/halfling_thief_3.png" id="3_p0alp"]
+[ext_resource type="Texture2D" uid="uid://dmwk4pv05d2vq" path="res://assets/textures/characters/halfling_thief_4.png" id="4_nlho3"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_quv0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_no2mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p0alp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nlho3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]

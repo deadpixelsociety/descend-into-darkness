@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2i1n28ok4t3p"]
+
+[ext_resource type="Texture2D" uid="uid://r256ob7okc20" path="res://assets/textures/fx/spawn.png" id="1_44xr2"]
+[ext_resource type="Script" path="res://src/fx/spawn_effect.gd" id="1_urs6w"]
+[ext_resource type="Texture2D" uid="uid://dy3ek2aiu4n7n" path="res://assets/textures/fx/pentagram.png" id="2_384ce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbl33"]
+atlas = ExtResource("1_44xr2")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxckp"]
+atlas = ExtResource("1_44xr2")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jaym"]
+atlas = ExtResource("1_44xr2")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrq8i"]
+atlas = ExtResource("1_44xr2")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k67sm"]
+atlas = ExtResource("1_44xr2")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6u2si"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbl33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxckp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jaym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrq8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k67sm")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 10.0
+}]
+
+[node name="SpawnEffect" type="Node2D"]
+z_index = 1
+script = ExtResource("1_urs6w")
+
+[node name="Pentagram" type="Sprite2D" parent="."]
+modulate = Color(1, 0.333262, 0.288958, 1)
+texture = ExtResource("2_384ce")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.533333, 0.482353, 1)
+sprite_frames = SubResource("SpriteFrames_6u2si")
+animation = &"spawn"
+frame = 4
+frame_progress = 1.0

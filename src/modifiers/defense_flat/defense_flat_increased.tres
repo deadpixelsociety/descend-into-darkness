@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://8qvg7il4x7xt"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_6r4ek"]
+
+[resource]
+script = ExtResource("1_6r4ek")
+stat_type = 9
+value_type = 1
+modifier_type = 1
+stat_category = 2
+min_value = 0.0
+max_value = 0.0
+description_template = "{value} {increased} damage reduction"
+modifier_name = "Increased Damage Reduction"
+submodifiers = null

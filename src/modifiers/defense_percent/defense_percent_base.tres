@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c182aylbaeynw"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_ueofa"]
+
+[resource]
+script = ExtResource("1_ueofa")
+stat_type = 10
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 0.0
+max_value = 0.0
+description_template = "{plus}{value}%% reduced damage taken"
+modifier_name = "Reduced Damage Taken"
+submodifiers = null

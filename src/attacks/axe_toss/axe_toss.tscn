@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cve6wyy5jhf6k"]
+
+[ext_resource type="Script" path="res://src/attacks/axe_toss/axe_toss.gd" id="1_m7rne"]
+[ext_resource type="Texture2D" uid="uid://cixakwh6erj1i" path="res://assets/textures/abilities/axe_toss.png" id="2_gb7vl"]
+[ext_resource type="Texture2D" uid="uid://cofc81iabck76" path="res://assets/textures/misc/shadow.png" id="3_3jgkg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yrgv3"]
+radius = 8.0
+
+[node name="AxeToss" type="Node2D"]
+top_level = true
+script = ExtResource("1_m7rne")
+
+[node name="Axe" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+texture = ExtResource("2_gb7vl")
+
+[node name="Hitbox" type="Area2D" parent="Axe"]
+position = Vector2(6.99382e-07, -4)
+collision_layer = 32
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Axe/Hitbox"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_yrgv3")
+debug_color = Color(0, 0.643137, 0.27451, 0.419608)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 21)
+texture = ExtResource("3_3jgkg")
+
+[connection signal="body_entered" from="Axe/Hitbox" to="." method="_on_hitbox_body_entered"]

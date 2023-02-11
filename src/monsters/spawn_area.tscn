@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://sve4sca2p3qb"]
+
+[ext_resource type="Script" path="res://src/monsters/spawn_area.gd" id="1_hpxbr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfkt5"]
+size = Vector2(624, 408)
+
+[node name="SpawnArea" type="Area2D"]
+script = ExtResource("1_hpxbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_sfkt5")

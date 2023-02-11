@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MonsterType" load_steps=3 format=3 uid="uid://bptegl1tmoakd"]
+
+[ext_resource type="PackedScene" uid="uid://dt680lbhp4fnb" path="res://src/monsters/bat/bat.tscn" id="1_skfjb"]
+[ext_resource type="Script" path="res://src/monsters/monster_type.gd" id="1_y3srk"]
+
+[resource]
+script = ExtResource("1_y3srk")
+monster_name = "Bat"
+monster = ExtResource("1_skfjb")
+monster_level = 1
+monster_health = 20.0
+monster_experience = 5.0

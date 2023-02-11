@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bxtkn2ffe5frl"]
+
+[ext_resource type="Texture2D" uid="uid://d4h4jduco7711" path="res://assets/textures/characters/barbarian_m_1.png" id="1_co75w"]
+[ext_resource type="Texture2D" uid="uid://cqr3wpdamwcix" path="res://assets/textures/characters/barbarian_m_2.png" id="2_dojyr"]
+[ext_resource type="Texture2D" uid="uid://d35sxijw42f2w" path="res://assets/textures/characters/barbarian_m_3.png" id="3_bewlg"]
+[ext_resource type="Texture2D" uid="uid://h2h3vkv2ifh2" path="res://assets/textures/characters/barbarian_m_4.png" id="4_ncyev"]
+
+[resource]
+animations = [{
+"frames": [ExtResource("1_co75w"), ExtResource("2_dojyr"), ExtResource("3_bewlg"), ExtResource("4_ncyev")],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]

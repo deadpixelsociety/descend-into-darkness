@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://chesxoiud1nro"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_8gnk3"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="2_gukcc"]
+
+[sub_resource type="Resource" id="Resource_7n7bw"]
+script = ExtResource("1_8gnk3")
+stat_type = 13
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 25.0
+max_value = 29.0
+modifier_name = "Increased Area of Effect"
+description_template = "{value} {increased} area of effect"
+base_modifier = false
+submodifiers = []
+
+[resource]
+script = ExtResource("2_gukcc")
+tier_name = "Pulping"
+tier_group = "AreaOfEffectIncreased"
+affix_type = 0
+display_priority = 5
+item_type = 257
+item_level_min = 1
+modifier = SubResource("Resource_7n7bw")

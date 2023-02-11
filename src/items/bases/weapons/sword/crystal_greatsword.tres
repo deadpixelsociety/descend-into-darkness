@@ -1,0 +1,80 @@
+[gd_resource type="Resource" load_steps=10 format=3 uid="uid://cxhv61prgeli3"]
+
+[ext_resource type="Texture2D" uid="uid://dlor4t5wrpbt1" path="res://assets/textures/items/weapon_mystic_sword_exotic1.png" id="1_l4nxt"]
+[ext_resource type="Script" path="res://src/modifiers/damage/added_damage_modifier.gd" id="2_uoauw"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="3_m5h3x"]
+[ext_resource type="Script" path="res://src/items/bases/weapons/weapon_base.gd" id="4_x3m4h"]
+
+[sub_resource type="Resource" id="Resource_2rhat"]
+script = ExtResource("3_m5h3x")
+stat_type = 5
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 19.0
+max_value = 19.0
+modifier_name = "Minimum Damage"
+description_template = "{plus}{value} minimum damage"
+base_modifier = false
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_03eb0"]
+script = ExtResource("3_m5h3x")
+stat_type = 6
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 48.0
+max_value = 48.0
+modifier_name = "Maximum Damage"
+description_template = "{plus}{value} maximum damage"
+base_modifier = false
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_2d1ka"]
+script = ExtResource("2_uoauw")
+stat_type = 4
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+modifier_name = "Added Damage"
+description_template = "{plus1}{value1} to {plus2}{value2} added damage"
+base_modifier = false
+submodifiers = [SubResource("Resource_2rhat"), SubResource("Resource_03eb0")]
+
+[sub_resource type="Resource" id="Resource_naurf"]
+script = ExtResource("3_m5h3x")
+stat_type = 3
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 1.4
+max_value = 1.4
+modifier_name = "Attack Speed"
+description_template = "{plus}{value} attacks per second"
+base_modifier = false
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_lq1mb"]
+script = ExtResource("3_m5h3x")
+stat_type = 7
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 6.0
+max_value = 6.0
+modifier_name = "Critical Chance"
+description_template = "{plus}{value}%% to critical strike chance"
+base_modifier = false
+submodifiers = null
+
+[resource]
+script = ExtResource("4_x3m4h")
+weapon_type = 2
+two_handed = true
+base_name = "Crystal Greatsword"
+base_type = 1
+icon = ExtResource("1_l4nxt")
+modifiers = [SubResource("Resource_2d1ka"), SubResource("Resource_naurf"), SubResource("Resource_lq1mb")]

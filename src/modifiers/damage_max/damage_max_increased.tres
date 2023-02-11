@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bd6eqkns570bi"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_qkbgu"]
+
+[resource]
+script = ExtResource("1_qkbgu")
+stat_type = 6
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+description_template = "{value} {increased} maximum damage"
+modifier_name = "Increased Maximum Damage"
+submodifiers = null

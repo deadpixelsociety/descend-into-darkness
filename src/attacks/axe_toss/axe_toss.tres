@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bi2b3v2cbjpf"]
+
+[ext_resource type="PackedScene" uid="uid://cve6wyy5jhf6k" path="res://src/attacks/axe_toss/axe_toss.tscn" id="1_0l23d"]
+[ext_resource type="Script" path="res://src/attacks/attack.gd" id="1_av7pm"]
+
+[resource]
+script = ExtResource("1_av7pm")
+attack_name = "Axe Toss"
+description = "Hurls the wielder's axe at the nearest target."
+applied_attack = ExtResource("1_0l23d")
+modifiers = null

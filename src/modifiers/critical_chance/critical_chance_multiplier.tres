@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c61j631w7fj02"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_8o7wv"]
+
+[resource]
+script = ExtResource("1_8o7wv")
+stat_type = 7
+value_type = 1
+modifier_type = 2
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+modifier_name = "More Critical Chance"
+modifier_group = "CriticalChance"
+description_template = "{value} {more} critical strike chance"
+submodifiers = null

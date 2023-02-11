@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Rarity" load_steps=2 format=3 uid="uid://v2vbncc2ch2i"]
+
+[ext_resource type="Script" path="res://src/items/rarity/rarity.gd" id="1_hfreu"]
+
+[resource]
+script = ExtResource("1_hfreu")
+rarity_name = "Epic"
+color = Color(0.647059, 0.352941, 0.776471, 1)
+rate = 3.0
+prefixes_min = 3
+prefixes_max = 3
+suffixes_min = 3
+suffixes_max = 3
+particles_enabled = true
+particle_scale = 0.6

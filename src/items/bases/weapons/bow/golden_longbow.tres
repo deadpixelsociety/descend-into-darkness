@@ -1,0 +1,80 @@
+[gd_resource type="Resource" load_steps=10 format=3 uid="uid://c4asnffhwp0st"]
+
+[ext_resource type="Texture2D" uid="uid://d3iebqv8e6xwy" path="res://assets/textures/items/weapon_gold_longbow.png" id="1_s8myt"]
+[ext_resource type="Script" path="res://src/modifiers/damage/added_damage_modifier.gd" id="2_g004s"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="3_v585j"]
+[ext_resource type="Script" path="res://src/items/bases/weapons/weapon_base.gd" id="4_1s7e3"]
+
+[sub_resource type="Resource" id="Resource_2rhat"]
+script = ExtResource("3_v585j")
+stat_type = 5
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 5.0
+max_value = 5.0
+modifier_name = "Minimum Damage"
+description_template = "{plus}{value} minimum damage"
+base_modifier = false
+submodifiers = []
+
+[sub_resource type="Resource" id="Resource_03eb0"]
+script = ExtResource("3_v585j")
+stat_type = 6
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 13.0
+max_value = 13.0
+modifier_name = "Maximum Damage"
+description_template = "{plus}{value} maximum damage"
+base_modifier = false
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_2d1ka"]
+script = ExtResource("2_g004s")
+stat_type = 4
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+modifier_name = "Added Damage"
+description_template = "{plus1}{value1} to {plus2}{value2} added damage"
+base_modifier = false
+submodifiers = [SubResource("Resource_2rhat"), SubResource("Resource_03eb0")]
+
+[sub_resource type="Resource" id="Resource_naurf"]
+script = ExtResource("3_v585j")
+stat_type = 3
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 1.6
+max_value = 1.6
+modifier_name = "Attack Speed"
+description_template = "{plus}{value} attacks per second"
+base_modifier = false
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_lq1mb"]
+script = ExtResource("3_v585j")
+stat_type = 7
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 10.0
+max_value = 10.0
+modifier_name = "Critical Chance"
+description_template = "{plus}{value}%% to critical strike chance"
+base_modifier = false
+submodifiers = null
+
+[resource]
+script = ExtResource("4_1s7e3")
+weapon_type = 4
+two_handed = true
+base_name = "Golden Longbow"
+base_type = 1
+icon = ExtResource("1_s8myt")
+modifiers = [SubResource("Resource_2d1ka"), SubResource("Resource_naurf"), SubResource("Resource_lq1mb")]

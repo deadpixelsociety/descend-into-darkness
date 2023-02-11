@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://ec2vxcj7eb0f"]
+
+[ext_resource type="Script" path="res://src/items/item_info_control.gd" id="1_lb2gu"]
+[ext_resource type="Texture2D" uid="uid://elwgco4xqd7v" path="res://assets/textures/ui/panel.png" id="2_cmpdh"]
+[ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="3_6nxrq"]
+[ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="4_fbnfj"]
+[ext_resource type="Texture2D" uid="uid://dc17ctnkdlf4p" path="res://assets/textures/ui/separator.png" id="4_l1ccc"]
+
+[node name="ItemInfoControl" type="Container"]
+top_level = true
+z_index = 900
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lb2gu")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_cmpdh")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6nxrq")
+theme_override_font_sizes/font_size = 16
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemType" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fbnfj")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WeaponInfo" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DamageRange" type="Label" parent="MarginContainer/VBoxContainer/WeaponInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fbnfj")
+theme_override_font_sizes/font_size = 10
+text = "Damage: %s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeed" type="Label" parent="MarginContainer/VBoxContainer/WeaponInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fbnfj")
+theme_override_font_sizes/font_size = 10
+text = "Attack Speed: %s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CritChance" type="Label" parent="MarginContainer/VBoxContainer/WeaponInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fbnfj")
+theme_override_font_sizes/font_size = 10
+text = "Critical Chance: %s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_l1ccc")
+
+[node name="ItemDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fbnfj")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://jp3vuudniunc"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_ipneg"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="2_rw80b"]
+
+[sub_resource type="Resource" id="Resource_61ny5"]
+script = ExtResource("1_ipneg")
+stat_type = 4
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 155.0
+max_value = 169.0
+modifier_name = "Increased Damage"
+description_template = "{value} increased damage"
+submodifiers = null
+
+[resource]
+script = ExtResource("2_rw80b")
+tier_name = "Tyrannical"
+tier_group = "DamageIncreased"
+affix_type = 0
+display_priority = 2
+item_type = 1
+item_level_min = 1
+modifier = SubResource("Resource_61ny5")

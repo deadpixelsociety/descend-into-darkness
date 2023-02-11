@@ -1,0 +1,51 @@
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://cmyyju8n174dd"]
+
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="1_b45mg"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_okg4i"]
+[ext_resource type="Script" path="res://src/modifiers/damage/added_damage_modifier.gd" id="1_q6iw7"]
+
+[sub_resource type="Resource" id="Resource_yme6l"]
+script = ExtResource("1_okg4i")
+stat_type = 5
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 1.0
+max_value = 1.0
+modifier_name = "Minimum Damage"
+description_template = "{plus}{value} minimum damage"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_xvach"]
+script = ExtResource("1_okg4i")
+stat_type = 6
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 2.0
+max_value = 2.0
+modifier_name = "Maximum Damage"
+description_template = "{plus}{value} maximum damage"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_0dlug"]
+script = ExtResource("1_q6iw7")
+stat_type = 4
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+modifier_name = "Added Damage"
+description_template = "{plus1}{value1} to {plus2}{value2} added damage"
+submodifiers = [SubResource("Resource_yme6l"), SubResource("Resource_xvach")]
+
+[resource]
+script = ExtResource("1_b45mg")
+tier_name = "Glinting"
+tier_group = "DamageFlat"
+affix_type = 0
+display_priority = 1
+item_type = 457
+item_level_min = 1
+modifier = SubResource("Resource_0dlug")

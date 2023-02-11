@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Rarity" load_steps=2 format=3 uid="uid://cwkostxhrygdx"]
+
+[ext_resource type="Script" path="res://src/items/rarity/rarity.gd" id="1_b4tf5"]
+
+[resource]
+script = ExtResource("1_b4tf5")
+rarity_name = "Ancient"
+color = Color(0.745098, 0, 0, 1)
+rate = 1.0
+prefixes_min = 4
+prefixes_max = 4
+suffixes_min = 4
+suffixes_max = 4
+particles_enabled = true
+particle_scale = 0.8

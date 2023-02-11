@@ -1,0 +1,125 @@
+[gd_scene load_steps=19 format=3 uid="uid://dj2o1bm0a8loj"]
+
+[ext_resource type="Script" path="res://src/items/item_pickup.gd" id="1_hsdjw"]
+[ext_resource type="Material" uid="uid://c1ws63y2k64ev" path="res://assets/shaders/outline_material.tres" id="2_euy77"]
+[ext_resource type="Texture2D" uid="uid://dpwn7c21cip8l" path="res://assets/textures/fx/sparkle.png" id="2_mmmfh"]
+[ext_resource type="Texture2D" uid="uid://c0w4i3gyodl2w" path="res://assets/textures/fx/large_dot.png" id="3_3ud5o"]
+[ext_resource type="PackedScene" uid="uid://ec2vxcj7eb0f" path="res://src/items/item_info_control.tscn" id="3_27auc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ar6vj"]
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ik010"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vrik7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5oiko"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_25we8"]
+colors = PackedColorArray(1, 1, 1, 0.8, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gpai0"]
+gradient = SubResource("Gradient_25we8")
+
+[sub_resource type="Curve" id="Curve_i41f4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.255255, 0.490909), 0.0, 0.0, 0, 0, Vector2(0.948949, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_iq7tp"]
+curve = SubResource("Curve_i41f4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fcdmv"]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.2
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_iq7tp")
+color_ramp = SubResource("GradientTexture1D_gpai0")
+attractor_interaction_enabled = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xxeau"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_8ysev"]
+colors = PackedColorArray(1, 1, 1, 0.8, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qvwa1"]
+gradient = SubResource("Gradient_8ysev")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n2nia"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+angular_velocity_min = 5.0
+angular_velocity_max = 90.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.2
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_qvwa1")
+
+[node name="ItemPickup" type="RigidBody2D"]
+collision_layer = 512
+collision_mask = 516
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_ar6vj")
+gravity_scale = 0.0
+continuous_cd = 1
+can_sleep = false
+script = ExtResource("1_hsdjw")
+
+[node name="Area2D" type="Area2D" parent="." groups=["pickup"]]
+y_sort_enabled = true
+collision_layer = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ik010")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vrik7")
+debug_color = Color(0.745098, 0.458824, 0.129412, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+material = ExtResource("2_euy77")
+
+[node name="RarityBeam" type="GPUParticles2D" parent="Sprite2D"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_5oiko")
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_fcdmv")
+texture = ExtResource("3_3ud5o")
+lifetime = 8.0
+
+[node name="RaritySparkle" type="GPUParticles2D" parent="Sprite2D"]
+show_behind_parent = true
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_xxeau")
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_n2nia")
+texture = ExtResource("2_mmmfh")
+lifetime = 5.0
+randomness = 0.5
+
+[node name="ItemInfoControl" parent="." instance=ExtResource("3_27auc")]
+visible = false
+offset_right = 0.0
+offset_bottom = 0.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://uxg1gix7cyw3"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_akgpa"]
+
+[resource]
+script = ExtResource("1_akgpa")
+stat_type = 8
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+modifier_name = "Increased Critical Bonus"
+modifier_group = "CriticalBonus"
+description_template = "{value} {increased} critical strike bonus"
+submodifiers = null

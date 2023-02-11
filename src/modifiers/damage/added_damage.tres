@@ -1,0 +1,43 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://6cjcck86o5ja"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_3r344"]
+[ext_resource type="Script" path="res://src/modifiers/damage/added_damage_modifier.gd" id="1_wco62"]
+
+[sub_resource type="Resource" id="Resource_6tlps"]
+script = ExtResource("1_3r344")
+stat_type = 5
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+modifier_name = "Minimum Damage"
+description_template = "{plus}{value} minimum damage"
+base_modifier = false
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_ubtj2"]
+script = ExtResource("1_3r344")
+stat_type = 6
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+modifier_name = "Maximum Damage"
+description_template = "{plus}{value} maximum damage"
+base_modifier = false
+submodifiers = null
+
+[resource]
+script = ExtResource("1_wco62")
+stat_type = 4
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+modifier_name = "Added Damage"
+description_template = "{plus1}{value1} to {plus2}{value2} added damage"
+base_modifier = false
+submodifiers = [SubResource("Resource_6tlps"), SubResource("Resource_ubtj2")]

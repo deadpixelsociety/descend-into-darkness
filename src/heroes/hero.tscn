@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://bu7vd1nqncije"]
+
+[ext_resource type="Script" path="res://src/heroes/hero.gd" id="1_yygb3"]
+[ext_resource type="Script" path="res://src/stats/stats.gd" id="2_sl370"]
+[ext_resource type="PackedScene" uid="uid://bem7wkdspps8q" path="res://src/fx/blood_splatter.tscn" id="3_edm3y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62rw2"]
+radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqec8"]
+radius = 8.0
+height = 32.0
+
+[sub_resource type="Shader" id="Shader_ff0dd"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float amount: hint_range(0.0, 1.0) = 1.0;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	COLOR = mix(col, vec4(color.rgb, col.a), amount);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7tair"]
+resource_local_to_scene = true
+shader = SubResource("Shader_ff0dd")
+shader_parameter/color = Color(1, 0.101961, 0.137255, 1)
+shader_parameter/amount = 0.0
+
+[node name="Hero" type="CharacterBody2D" groups=["hero"]]
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_yygb3")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("2_sl370")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_62rw2")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 320
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_hqec8")
+debug_color = Color(0.952941, 0.12549, 0.368627, 0.419608)
+
+[node name="AttackContainer" type="Node2D" parent="."]
+
+[node name="PassiveContainer" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_7tair")
+
+[node name="EffectContainer" type="Node2D" parent="."]
+
+[node name="BloodSplatter" parent="." instance=ExtResource("3_edm3y")]
+
+[node name="AttackTimer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

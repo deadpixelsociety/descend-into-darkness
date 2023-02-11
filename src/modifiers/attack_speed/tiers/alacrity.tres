@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dlljbikh608h5"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_87732"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="2_w1g00"]
+
+[sub_resource type="Resource" id="Resource_hwqha"]
+script = ExtResource("1_87732")
+stat_type = 3
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 11.0
+max_value = 20.0
+modifier_name = "Increased Attack Speed"
+description_template = "{value} {increased} attacks per second"
+base_modifier = false
+submodifiers = []
+
+[resource]
+script = ExtResource("2_w1g00")
+tier_name = "of Alacrity"
+tier_group = "AttackSpeedIncreased"
+affix_type = 1
+display_priority = 4
+item_type = 457
+item_level_min = 5
+modifier = SubResource("Resource_hwqha")

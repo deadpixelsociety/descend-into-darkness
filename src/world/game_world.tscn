@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://dm0p683qjjsek"]
+
+[ext_resource type="Script" path="res://src/world/game_world.gd" id="1_o4d0d"]
+[ext_resource type="PackedScene" uid="uid://dnn1mnho2f20u" path="res://src/world/rooms/room.tscn" id="2_6p0iw"]
+[ext_resource type="PackedScene" path="res://src/monsters/spawn_area.tscn" id="3_2d08g"]
+[ext_resource type="Script" path="res://src/monsters/monster_spawner.gd" id="4_xnk1j"]
+[ext_resource type="Texture2D" uid="uid://bvlt73g25ygic" path="res://assets/textures/fx/darkness.png" id="5_54ti1"]
+[ext_resource type="Shader" path="res://assets/shaders/darkness.gdshader" id="5_rrjan"]
+[ext_resource type="Script" path="res://src/world/darkness.gd" id="6_p71k4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apqr4"]
+shader = ExtResource("5_rrjan")
+shader_parameter/light_color = Color(1, 1, 1, 1)
+shader_parameter/darkness_color = Color(0.0392157, 0.0196078, 0.0392157, 1)
+shader_parameter/darkness_level = 0.3
+shader_parameter/darkness_size = Vector2(768, 600)
+shader_parameter/darkness_position = Vector2(0, -12)
+shader_parameter/party_positions = PackedVector2Array()
+shader_parameter/layer1_radius = 96.0
+shader_parameter/layer1_alpha = null
+shader_parameter/layer2_radius = 128.0
+shader_parameter/layer2_alpha = 0.5
+shader_parameter/layer3_radius = 160.0
+shader_parameter/layer3_alpha = 0.8
+shader_parameter/pulse_distance = 6.0
+shader_parameter/pulse_speed = 1.5
+
+[node name="GameWorld" type="Node2D"]
+script = ExtResource("1_o4d0d")
+
+[node name="PartyCamera" type="Camera2D" parent="."]
+process_callback = 0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Room" parent="." instance=ExtResource("2_6p0iw")]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnArea" parent="." instance=ExtResource("3_2d08g")]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="MonsterSpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawn_area", "entities")]
+script = ExtResource("4_xnk1j")
+spawn_area = NodePath("../SpawnArea")
+entities = NodePath("../Entities")
+
+[node name="Darkness" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+z_index = 99
+material = SubResource("ShaderMaterial_apqr4")
+position = Vector2(0, -12)
+texture = ExtResource("5_54ti1")
+script = ExtResource("6_p71k4")

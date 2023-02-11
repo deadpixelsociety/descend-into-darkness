@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://yib6e20ffecs"]
+
+[ext_resource type="Texture2D" uid="uid://korw60y822jc" path="res://assets/textures/characters/wizard_1.png" id="1_68xwm"]
+[ext_resource type="Texture2D" uid="uid://d348f2mw16mox" path="res://assets/textures/characters/wizard_2.png" id="2_jm6x1"]
+[ext_resource type="Texture2D" uid="uid://d3j4u06sq6q5j" path="res://assets/textures/characters/wizard_3.png" id="3_j812w"]
+[ext_resource type="Texture2D" uid="uid://n1v2lavfjj0p" path="res://assets/textures/characters/wizard_4.png" id="4_db1hx"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_68xwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jm6x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j812w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_db1hx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]

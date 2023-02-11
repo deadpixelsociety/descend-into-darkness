@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bdahutab1c5ga"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_gj7oa"]
+
+[resource]
+script = ExtResource("1_gj7oa")
+stat_type = 5
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+description_template = "{value} {increased} minimum damage"
+modifier_name = "Increased Minimum Damage"
+submodifiers = null

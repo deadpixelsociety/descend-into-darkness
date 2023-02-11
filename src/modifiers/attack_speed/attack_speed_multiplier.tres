@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bdd7vtedbkmfq"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_teirg"]
+
+[resource]
+script = ExtResource("1_teirg")
+stat_type = 3
+value_type = 1
+modifier_type = 2
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+modifier_name = "More Attack Speed"
+description_template = "{value} {more} attacks per second"
+base_modifier = false
+submodifiers = null
