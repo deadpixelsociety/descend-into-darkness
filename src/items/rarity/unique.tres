@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c7texdlo51asi"]
+[gd_resource type="Resource" script_class="Rarity" load_steps=2 format=3 uid="uid://c7texdlo51asi"]
 
 [ext_resource type="Script" path="res://src/items/rarity/rarity.gd" id="1_4gawd"]
 
@@ -7,5 +7,9 @@ script = ExtResource("1_4gawd")
 rarity_name = "Unique"
 color = Color(0.780392, 0.380392, 0, 1)
 rate = 0.1
-modifiers_min = null
-modifiers_max = null
+prefixes_min = 0
+prefixes_max = 0
+suffixes_min = 0
+suffixes_max = 0
+particles_enabled = true
+particle_scale = 1.2

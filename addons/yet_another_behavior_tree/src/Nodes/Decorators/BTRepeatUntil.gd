@@ -47,7 +47,7 @@ func tick(actor:Node, blackboard:BTBlackboard) -> int:
 	var not_stopped:bool = true
 	var iteration_count:int = 0
 	while not_stopped:
-		result = _children[0]._execute(actor, blackboard)
+		result = await _children[0]._execute(actor, blackboard)
 		if stop_condition == BTTickResult.SUCCESS and result == BTTickResult.SUCCESS:
 			not_stopped = false
 		if stop_condition == BTTickResult.RUNNING and result == BTTickResult.RUNNING:

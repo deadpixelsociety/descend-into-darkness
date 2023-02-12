@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/world/game_world.gd" id="1_o4d0d"]
 [ext_resource type="PackedScene" uid="uid://dnn1mnho2f20u" path="res://src/world/rooms/room.tscn" id="2_6p0iw"]
-[ext_resource type="PackedScene" path="res://src/monsters/spawn_area.tscn" id="3_2d08g"]
+[ext_resource type="PackedScene" uid="uid://sve4sca2p3qb" path="res://src/monsters/spawn_area.tscn" id="3_2d08g"]
 [ext_resource type="Script" path="res://src/monsters/monster_spawner.gd" id="4_xnk1j"]
 [ext_resource type="Texture2D" uid="uid://bvlt73g25ygic" path="res://assets/textures/fx/darkness.png" id="5_54ti1"]
 [ext_resource type="Shader" path="res://assets/shaders/darkness.gdshader" id="5_rrjan"]

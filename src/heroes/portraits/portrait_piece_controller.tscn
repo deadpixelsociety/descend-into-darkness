@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3r3ik3ssdvdb"]
+
+[ext_resource type="Script" path="res://src/heroes/portraits/portrait_piece_controller.gd" id="1_f73ix"]
+[ext_resource type="Texture2D" uid="uid://dey1swcfgsqd4" path="res://assets/textures/ui/arrow_left_dark.png" id="1_hotsn"]
+[ext_resource type="Texture2D" uid="uid://can7c6xjb0h0" path="res://assets/textures/ui/arrow_left_light_down.png" id="2_ug5u5"]
+[ext_resource type="Texture2D" uid="uid://2xmms1b306gi" path="res://assets/textures/ui/arrow_left_light.png" id="3_xfc60"]
+[ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="4_x8ajm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1u46d"]
+font = ExtResource("4_x8ajm")
+font_size = 24
+
+[node name="PortraitPieceController" type="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+theme_override_constants/separation = 8
+alignment = 1
+script = ExtResource("1_f73ix")
+
+[node name="PieceLeft" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("1_hotsn")
+texture_pressed = ExtResource("2_ug5u5")
+texture_hover = ExtResource("3_xfc60")
+stretch_mode = 5
+
+[node name="PieceLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HEAD 01"
+label_settings = SubResource("LabelSettings_1u46d")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PieceRight" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("1_hotsn")
+texture_pressed = ExtResource("2_ug5u5")
+texture_hover = ExtResource("3_xfc60")
+stretch_mode = 5
+flip_h = true
+
+[connection signal="pressed" from="PieceLeft" to="." method="_on_piece_left_pressed"]
+[connection signal="pressed" from="PieceRight" to="." method="_on_piece_right_pressed"]

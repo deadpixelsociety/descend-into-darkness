@@ -35,7 +35,7 @@ extends BTDecorator
 #------------------------------------------
 
 func tick(actor:Node, blackboard:BTBlackboard) -> int:
-	var child_result:int = _children[0]._execute(actor, blackboard)
+	var child_result:int = await _children[0]._execute(actor, blackboard)
 	if child_result == BTTickResult.SUCCESS:
 		return BTTickResult.FAILURE
 	if child_result == BTTickResult.FAILURE:

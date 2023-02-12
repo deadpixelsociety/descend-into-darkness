@@ -24,7 +24,7 @@ func _ready() -> void:
 	_entities.add_child(hero2)
 	_entities.add_child(hero3)
 	_entities.add_child(hero4)
-	_spawn_items()
+	#_spawn_items()
 
 
 func _process(delta: float) -> void:

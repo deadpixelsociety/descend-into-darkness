@@ -34,7 +34,7 @@ func tick(actor:Node, blackboard:BTBlackboard) -> int:
 	var at_least_one_child_success:bool = false
 
 	for child in _children:
-		var result:int = child._execute(actor, blackboard)
+		var result:int = await child._execute(actor, blackboard)
 		if result == BTTickResult.SUCCESS:
 			at_least_one_child_success = true
 		if result == BTTickResult.RUNNING:

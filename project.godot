@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Descend into Darkness"
-run/main_scene="res://src/world/game_world.tscn"
+run/main_scene="res://src/heroes/portraits/portrait_builder.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Party="*res://src/heroes/party.gd"
 GameUtil="*res://src/util/game_util.gd"
 TextSpawner="*res://src/fx/text_spawner.gd"
+EventBus="*res://src/util/event_bus.gd"
 
 [display]
 
@@ -74,6 +75,7 @@ move_down={
 
 [rendering]
 
+environment/defaults/default_clear_color=Color(0.0392157, 0.0196078, 0.0392157, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
 textures/canvas_textures/default_texture_filter=0

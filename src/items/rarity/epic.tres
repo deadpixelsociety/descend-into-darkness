@@ -12,4 +12,4 @@ prefixes_max = 3
 suffixes_min = 3
 suffixes_max = 3
 particles_enabled = true
-particle_scale = 0.6
+particle_scale = 0.7

@@ -40,7 +40,7 @@ func tick(actor:Node, blackboard:BTBlackboard) -> int:
 	var random_float:float = randf()
 	if random_float > probability:
 		return BTTickResult.FAILURE
-	return _children[0]._execute(actor, blackboard)
+	return await _children[0]._execute(actor, blackboard)
 
 #------------------------------------------
 # Fonctions privées

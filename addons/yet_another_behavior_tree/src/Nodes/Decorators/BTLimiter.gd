@@ -50,7 +50,7 @@ func tick(actor:Node, blackboard:BTBlackboard) -> int:
 	if limit_reached:
 		return BTTickResult.FAILURE
 
-	var result:int = _children[0]._execute(actor, blackboard)
+	var result:int = await _children[0]._execute(actor, blackboard)
 	if result != BTTickResult.RUNNING:
 		_invocation_count += 1
 	return result

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_8nghs")
 rarity_name = "Uncommon"
-color = Color(0, 0.662745, 0, 1)
+color = Color(0.133333, 0.470588, 0.133333, 1)
 rate = 20.0
 prefixes_min = 1
 prefixes_max = 1

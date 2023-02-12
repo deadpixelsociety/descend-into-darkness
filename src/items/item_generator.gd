@@ -41,7 +41,7 @@ func generate_item_type(item_level: int, item_type: ItemConstants.ItemType) -> I
 	def.modifiers.append_array(_generate_modifiers(def.tiers))
 	
 	def.item_name = _generate_item_name(item_type, def.item_base, def.tiers)
-	def.description = _generate_description(def.tiers)
+	def.description_lines = _generate_description(def.tiers)
 
 	return def
 
@@ -109,13 +109,6 @@ func _generate_rarity() -> Rarity:
 	for rarity in _rarities:
 		weights[rarity] = rarity.rate
 	return RandUtil.rand_weighted(weights)
-	#var roll = randf_range(0.0, 100.0)
-	#var chance = 0.0
-	#for rarity in _rarities:
-	#	chance += rarity.rate
-	#	if roll <= chance:
-	#		return rarity
-	#return _rarities[-1]
 
 
 func _generate_modifier_tiers(
@@ -130,7 +123,6 @@ func _generate_modifier_tiers(
 	
 	# Prefixes
 	var prefix_count = randi_range(prefixes_min, prefixes_max)
-	print("prefix min/max/count: ", prefixes_min, "/", prefixes_max, "/", prefix_count)
 	if prefix_count != 0:
 		_append_affixes(
 			list, 
@@ -141,7 +133,6 @@ func _generate_modifier_tiers(
 		)
 	
 	var suffix_count = randi_range(suffixes_min, suffixes_max)
-	print("suffix min/max/count: ", suffixes_min, "/", suffixes_max, "/", suffix_count)
 	if suffix_count != 0:
 		_append_affixes(
 			list, 
@@ -197,7 +188,8 @@ func _append_modifier(modifier: Modifier, list: Array[Modifier]):
 		list.append(modifier)
 
 
-func _generate_description(tiers: Array[ModifierTier]) -> String:
+func _generate_description(tiers: Array[ModifierTier]) -> PackedStringArray:
+	var lines = PackedStringArray()
 	var prefixes = tiers.filter(func(tier): return tier.affix_type == ModifierTier.AffixType.PREFIX)
 	var suffixes = tiers.filter(func(tier): return tier.affix_type == ModifierTier.AffixType.SUFFIX)
 	prefixes.sort_custom(func(a, b): return a.display_priority < b.display_priority)
@@ -205,13 +197,12 @@ func _generate_description(tiers: Array[ModifierTier]) -> String:
 	var sorted_tiers: Array[ModifierTier] = []
 	sorted_tiers.append_array(prefixes)
 	sorted_tiers.append_array(suffixes)
-	var descr_list: Array[String] = []	
 	for tier in sorted_tiers:
 		var description = tier.modifier.get_description()
 		if description == null || description == "":
 			continue
-		descr_list.append(description)
-	return "\r\n".join(descr_list)
+		lines.append(description)
+	return lines
 
 
 func _sort_tiers_display(a: ModifierTier, b: ModifierTier) -> bool:

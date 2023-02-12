@@ -3,7 +3,7 @@ class_name ItemDefinition
 
 @export_category("Item")
 @export var item_name: String
-@export var description: String
+@export var description_lines: PackedStringArray
 @export var item_level: int
 @export var item_type: ItemConstants.ItemType
 @export var item_base: ItemBase
