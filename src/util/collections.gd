@@ -24,4 +24,4 @@ static func get_dict_dict(dict: Dictionary, key) -> Dictionary:
 static func get_random_enum_value(dict: Dictionary) -> int:
 	var size = dict.size()
 	var keys = dict.keys()
-	return keys[randi() % size]
+	return dict[keys[randi() % size]]

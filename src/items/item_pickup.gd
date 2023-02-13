@@ -9,6 +9,7 @@ const INFO_MARGIN = 16.0
 		item_def = value
 		_setup_pickup()
 
+var _can_pick_up: bool = true
 var _picked_up: bool = false
 var _spawning: bool = false
 
@@ -41,6 +42,19 @@ func is_spawning() -> bool:
 	return _spawning
 
 
+func can_pick_up() -> bool:
+	return _can_pick_up
+
+
+func drop():
+	_picked_up = false
+	linear_velocity = RandUtil.rand_dir() * 50.0
+	_can_pick_up = false
+	var tween = create_tween().bind_node(self).tween_interval(1.0)
+	await tween.finished
+	_can_pick_up = true
+
+
 func _setup_pickup():
 	if not item_def:
 		return
@@ -60,12 +74,13 @@ func _setup_rarity_emitter(emitter: GPUParticles2D):
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if _picked_up: 
+	if _picked_up or not can_pick_up(): 
 		return
 	if body.has_method("pickup"):
 		_picked_up = true
-		body.pickup(item_def)
-		queue_free()
+		var success = body.pickup(item_def)
+		if success:
+			queue_free()
 
 
 func _on_mouse_entered() -> void:

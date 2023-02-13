@@ -12,6 +12,10 @@ static func rand_vector2() -> Vector2:
 	)
 
 
+static func rand_dir() -> Vector2:
+	return Vector2.UP.rotated(deg_to_rad(360.0 * randf()))
+
+
 static func randfn_range(
 	min_value: float, 
 	max_value: float,

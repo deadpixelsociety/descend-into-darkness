@@ -10,6 +10,7 @@ var _hero: Hero = null
 @onready var _hero_name: Label = %HeroName
 @onready var _crown: TextureRect = %Crown
 @onready var _health_bar: Gauge = %HealthBar
+@onready var _health_value: Label = %HealthValue
 
 
 func _ready():
@@ -30,10 +31,13 @@ func _setup_hero():
 
 
 func _on_hero_health_changed(hero: Hero, max: float, current: float):
+	if hero != _hero:
+		return
 	var percent = 0.0
 	if max != 0.0:
 		percent = clampf(current / max, 0.0, 1.0)
 	_health_bar.tween_value(percent, 0.25)
+	_health_value.text = "%d/%d" % [ current, max ]
 
 
 func _on_hero_data_changed(hero: Hero, index: int):

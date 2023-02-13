@@ -1,6 +1,8 @@
 extends Node2D
 class_name GameWorld
 
+var ITEM_PICKUP: PackedScene = load("res://src/items/item_pickup.tscn")
+
 var _counter = 0
 
 @onready var _entities: Node2D = $Entities
@@ -9,6 +11,7 @@ var _counter = 0
 
 
 func _ready() -> void:
+	EventBus.item_dropped.connect(_on_item_dropped)
 	var hero = load("res://src/heroes/hero.tscn").instantiate() as Hero
 	hero.hero_class = load("res://src/heroes/classes/barbarian.tres")
 	var hero2 = load("res://src/heroes/hero.tscn").instantiate() as Hero
@@ -25,15 +28,15 @@ func _ready() -> void:
 	_entities.add_child(hero2)
 	_entities.add_child(hero3)
 	_entities.add_child(hero4)
-	Party.set_hero_name(hero, "deadpixelsociety")
+	Party.set_hero_name(hero, "Deadly Pixel")
 	Party.set_hero_name(hero2, "Dark Sylvan")
-	Party.set_hero_name(hero3, "Johnson")
+	Party.set_hero_name(hero3, "Jonny Walker")
 	Party.set_hero_name(hero4, "Ron Cheese")
 	Party.set_portrait(hero, _portrait_repository.get_random_portrait())
 	Party.set_portrait(hero2, _portrait_repository.get_random_portrait())
 	Party.set_portrait(hero3, _portrait_repository.get_random_portrait())
 	Party.set_portrait(hero4, _portrait_repository.get_random_portrait())
-	#_spawn_items()
+	_spawn_items()
 
 
 func _process(delta: float) -> void:
@@ -44,9 +47,20 @@ func _process(delta: float) -> void:
 func _spawn_items():
 	var generator = ItemGenerator.new()
 	var pickup = load("res://src/items/item_pickup.tscn")
-	for i in range(0, 100):
+	for i in range(0, 12):
 		var weapon = generator.generate_item_type(20, ItemConstants.ItemType.WEAPON)
 		var item_pickup = pickup.instantiate() as ItemPickup
 		item_pickup.item_def = weapon
 		item_pickup.position = RandUtil.rand_vector2() * Vector2(300, 200)
 		_entities.add_child(item_pickup)
+
+
+func _on_item_dropped(item_def: ItemDefinition):
+	var pickup = ITEM_PICKUP.instantiate() as ItemPickup
+	pickup.item_def = item_def
+	var leader = Party.get_leader()
+	if not leader:
+		return
+	pickup.global_position = leader.global_position
+	_entities.add_child(pickup)
+	pickup.drop()

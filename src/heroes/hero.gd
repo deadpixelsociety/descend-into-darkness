@@ -14,6 +14,7 @@ var _modifiers: Array[Modifier] = []
 var _passives: Dictionary = {}
 var _stat_modifiers: Dictionary = {}
 var _health_current: float = 0.0
+var _health_max: float = 0.0
 
 @onready var _attack_container: Node2D = $AttackContainer
 @onready var _attack_timer: Timer = $AttackTimer
@@ -26,6 +27,7 @@ var _health_current: float = 0.0
 
 
 func _ready():
+	EventBus.ui_ready.connect(_on_ui_ready)
 	_setup_hero_class()
 	if Party.get_leader() == self:
 		_controller = InputHeroController.new(self)
@@ -110,15 +112,32 @@ func apply_hit(damage: float, hit_type: AttackConstants.HitType):
 		0.1
 	)
 	tween.play()
+	_take_damage(1.0)
+
+
+func pickup(item_def: ItemDefinition) -> bool:
+	if not Party.is_leader(self):
+		return false
+	var callback = {}
+	EventBus.item_picked_up.emit(item_def, callback)
+	return callback.has("success") and callback["success"] == true
+
+
+func _take_damage(damage: float):
+	_health_current = clampf(_health_current - damage, 0.0, _health_max)
+	if _health_current <= 0.0:
+		# TOOD: Death
+		pass
+	_on_health_changed()
 
 
 func _whiteout(amount: float):
 	ShaderUtil.set_shader_param(_sprite, "amount", amount)
 
 
+
 func _set_hero_defaults():
-	_health_current = get_stats().health_max
-	EventBus.hero_health_changed.emit(self, get_stats().health_max, _health_current)
+	_calculate_health()
 
 
 func _store_stat_modifier(modifier: StatModifier):
@@ -154,9 +173,25 @@ func _setup_hero_class():
 		apply_passive(hero_class.passive)
 
 
+func _calculate_health():
+	var stats = get_stats()
+	if not stats:
+		return
+	var is_full = _health_current == _health_max
+	_health_max = stats.health_max + (stats.health_per_level * Party.get_level())
+	if is_full:
+		_health_current = _health_max
+	_on_health_changed()
+
+
+func _on_health_changed():
+	EventBus.hero_health_changed.emit(self, _health_max, _health_current)
+
+
 func _recalculate_stats():
 	if _stats:
 		_stats.calculate(_stat_modifiers)
+	_calculate_health()
 	_update_attack_timer()
 
 
@@ -178,3 +213,7 @@ func _on_attack_timer_timeout():
 	applied_attack.attack_owner = self
 	applied_attack.attack(self)
 	_attack_container.call_deferred("add_child", applied_attack)
+
+
+func _on_ui_ready():
+	_on_health_changed()

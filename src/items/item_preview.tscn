@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://duw6xojam6o7f"]
+
+[ext_resource type="Script" path="res://src/items/item_preview.gd" id="1_ch5op"]
+
+[node name="ItemPreview" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ch5op")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
