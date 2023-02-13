@@ -13,6 +13,7 @@ var _controller: HeroController = null
 var _modifiers: Array[Modifier] = []
 var _passives: Dictionary = {}
 var _stat_modifiers: Dictionary = {}
+var _health_current: float = 0.0
 
 @onready var _attack_container: Node2D = $AttackContainer
 @onready var _attack_timer: Timer = $AttackTimer
@@ -30,7 +31,7 @@ func _ready():
 		_controller = InputHeroController.new(self)
 	else:
 		_controller = FollowerHeroControlller.new(self)
-	get_stats().print_stats()
+	_set_hero_defaults()
 
 
 func _physics_process(delta: float):
@@ -113,6 +114,11 @@ func apply_hit(damage: float, hit_type: AttackConstants.HitType):
 
 func _whiteout(amount: float):
 	ShaderUtil.set_shader_param(_sprite, "amount", amount)
+
+
+func _set_hero_defaults():
+	_health_current = get_stats().health_max
+	EventBus.hero_health_changed.emit(self, get_stats().health_max, _health_current)
 
 
 func _store_stat_modifier(modifier: StatModifier):

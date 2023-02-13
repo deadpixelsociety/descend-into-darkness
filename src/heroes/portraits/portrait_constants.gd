@@ -24,3 +24,14 @@ const PIECE_NAMES = {
 	Piece.TATTOO: "Tattoo"
 }
 
+const DEFAULT_PORTRAIT = {
+	Piece.ACCESSORY_1: 0,
+	Piece.ACCESSORY_2: 0,
+	Piece.ARMOUR: 0,
+	Piece.EYEBROWS: 0,
+	Piece.FACIAL_HAIR: 0,
+	Piece.HAIR: 0,
+	Piece.HEAD: 0,
+	Piece.HELM: 0,
+	Piece.TATTOO: 0
+}

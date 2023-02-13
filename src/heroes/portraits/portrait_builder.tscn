@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bb2inwyqc8077"]
+[gd_scene load_steps=13 format=3 uid="uid://bb2inwyqc8077"]
 
 [ext_resource type="Script" path="res://src/heroes/portraits/portrait_builder.gd" id="1_s5im3"]
 [ext_resource type="Script" path="res://src/heroes/portraits/portrait_repository.gd" id="2_0glk7"]
 [ext_resource type="Texture2D" uid="uid://elwgco4xqd7v" path="res://assets/textures/ui/panel.png" id="2_wqjb1"]
+[ext_resource type="PackedScene" uid="uid://cjvsxk4maf0qq" path="res://src/heroes/portraits/portrait_container.tscn" id="3_7kq1i"]
 [ext_resource type="Texture2D" uid="uid://n1keunwmkwqp" path="res://assets/textures/ui/filagree.png" id="3_yppm3"]
 [ext_resource type="PackedScene" uid="uid://b3r3ik3ssdvdb" path="res://src/heroes/portraits/portrait_piece_controller.tscn" id="4_tig1k"]
-[ext_resource type="Texture2D" uid="uid://ddw4ycjhbg4cq" path="res://assets/textures/portraits/background.png" id="7_l4i70"]
-[ext_resource type="Texture2D" uid="uid://dh507j6stg78k" path="res://assets/textures/portraits/head/f_elf.png" id="8_obmde"]
-[ext_resource type="Texture2D" uid="uid://bey3xlhiiq324" path="res://assets/textures/portraits/background_border.png" id="8_wbc07"]
 [ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="9_ajewl"]
 [ext_resource type="Texture2D" uid="uid://uf6v178kbpyx" path="res://assets/textures/ui/button.png" id="10_mxprd"]
 [ext_resource type="Texture2D" uid="uid://bpb448dykkybq" path="res://assets/textures/ui/button_pressed.png" id="11_t6jct"]
@@ -52,92 +50,6 @@ script = ExtResource("1_s5im3")
 
 [node name="PortraitRepository" type="Node" parent="."]
 script = ExtResource("2_0glk7")
-
-[node name="RenderTarget" type="SubViewport" parent="."]
-unique_name_in_owner = true
-transparent_bg = true
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-size = Vector2i(48, 48)
-render_target_update_mode = 4
-
-[node name="PortraitContainer" type="CenterContainer" parent="RenderTarget"]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-metadata/_edit_use_anchors_ = true
-
-[node name="Background" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("7_l4i70")
-stretch_mode = 6
-
-[node name="Head" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("8_obmde")
-stretch_mode = 6
-
-[node name="Eyebrows" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-stretch_mode = 6
-
-[node name="FacialHair" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-stretch_mode = 6
-
-[node name="Armour" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-stretch_mode = 6
-
-[node name="Tattoo" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-stretch_mode = 6
-
-[node name="Accessory1" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-stretch_mode = 6
-
-[node name="Accessory2" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-stretch_mode = 6
-
-[node name="Hair" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-stretch_mode = 6
-
-[node name="Helm" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-stretch_mode = 6
-
-[node name="BackgroundBorder" type="TextureRect" parent="RenderTarget/PortraitContainer"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("8_wbc07")
-stretch_mode = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -188,49 +100,41 @@ repository = NodePath("../../../../../../PortraitRepository")
 layout_mode = 2
 piece_type = 5
 repository = NodePath("../../../../../../PortraitRepository")
-first_is_blank = true
 
 [node name="EyebrowsContainer" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer" node_paths=PackedStringArray("repository") instance=ExtResource("4_tig1k")]
 layout_mode = 2
 piece_type = 3
 repository = NodePath("../../../../../../PortraitRepository")
-first_is_blank = true
 
 [node name="FacialHairContainer" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer" node_paths=PackedStringArray("repository") instance=ExtResource("4_tig1k")]
 layout_mode = 2
 piece_type = 4
 repository = NodePath("../../../../../../PortraitRepository")
-first_is_blank = true
 
 [node name="TattooContainer" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer" node_paths=PackedStringArray("repository") instance=ExtResource("4_tig1k")]
 layout_mode = 2
 piece_type = 8
 repository = NodePath("../../../../../../PortraitRepository")
-first_is_blank = true
 
 [node name="ArmourContainer" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer" node_paths=PackedStringArray("repository") instance=ExtResource("4_tig1k")]
 layout_mode = 2
 piece_type = 2
 repository = NodePath("../../../../../../PortraitRepository")
-first_is_blank = true
 
 [node name="HelmContainer" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer" node_paths=PackedStringArray("repository") instance=ExtResource("4_tig1k")]
 layout_mode = 2
 piece_type = 7
 repository = NodePath("../../../../../../PortraitRepository")
-first_is_blank = true
 
 [node name="Accessory1Container" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer" node_paths=PackedStringArray("repository") instance=ExtResource("4_tig1k")]
 layout_mode = 2
 piece_type = 0
 repository = NodePath("../../../../../../PortraitRepository")
-first_is_blank = true
 
 [node name="Accessory2Container" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer" node_paths=PackedStringArray("repository") instance=ExtResource("4_tig1k")]
 layout_mode = 2
 piece_type = 1
 repository = NodePath("../../../../../../PortraitRepository")
-first_is_blank = true
 
 [node name="Filagree2" type="TextureRect" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer"]
 modulate = Color(1, 1, 1, 0.501961)
@@ -243,11 +147,11 @@ flip_v = true
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="Portrait" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="PortraitContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("3_7kq1i")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(528, 528)
+custom_minimum_size = Vector2(512, 512)
 layout_mode = 2
-stretch_mode = 5
+portrait_repository = NodePath("../../../../PortraitRepository")
 
 [node name="ButtonContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

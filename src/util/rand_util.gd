@@ -1,6 +1,10 @@
 class_name RandUtil
 
 
+static func rand_bool(weight: float = 0.5) -> bool:
+	return randf() < weight
+
+
 static func rand_vector2() -> Vector2:
 	return Vector2(
 		randf_range(-1.0, 1.0),

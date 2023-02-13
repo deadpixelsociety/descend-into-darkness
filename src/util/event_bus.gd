@@ -1,5 +1,8 @@
 extends Node
 
-signal change_portrait_piece_visibility(piece_type, hidden)
-signal randomize_portrait()
+# Portraits
+signal portrait_changed(data)
 signal reset_portrait()
+
+# Heroes
+signal hero_health_changed(hero, max, current)

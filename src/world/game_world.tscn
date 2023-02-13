@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dm0p683qjjsek"]
+[gd_scene load_steps=11 format=3 uid="uid://dm0p683qjjsek"]
 
 [ext_resource type="Script" path="res://src/world/game_world.gd" id="1_o4d0d"]
 [ext_resource type="PackedScene" uid="uid://dnn1mnho2f20u" path="res://src/world/rooms/room.tscn" id="2_6p0iw"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bvlt73g25ygic" path="res://assets/textures/fx/darkness.png" id="5_54ti1"]
 [ext_resource type="Shader" path="res://assets/shaders/darkness.gdshader" id="5_rrjan"]
 [ext_resource type="Script" path="res://src/world/darkness.gd" id="6_p71k4"]
+[ext_resource type="Script" path="res://src/heroes/portraits/portrait_repository.gd" id="8_0iqu3"]
+[ext_resource type="PackedScene" uid="uid://dmpxcxoyc21aq" path="res://src/ui/hero_container.tscn" id="9_evb0h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apqr4"]
 shader = ExtResource("5_rrjan")
@@ -25,34 +27,85 @@ shader_parameter/layer3_alpha = 0.8
 shader_parameter/pulse_distance = 6.0
 shader_parameter/pulse_speed = 1.5
 
-[node name="GameWorld" type="Node2D"]
+[node name="GameLayer" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="GameWorld" type="Node2D" parent="."]
 script = ExtResource("1_o4d0d")
 
-[node name="PartyCamera" type="Camera2D" parent="."]
+[node name="PartyCamera" type="Camera2D" parent="GameWorld"]
 process_callback = 0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="Room" parent="." instance=ExtResource("2_6p0iw")]
+[node name="Room" parent="GameWorld" instance=ExtResource("2_6p0iw")]
 
-[node name="Entities" type="Node2D" parent="."]
+[node name="Entities" type="Node2D" parent="GameWorld"]
 y_sort_enabled = true
 
-[node name="SpawnArea" parent="." instance=ExtResource("3_2d08g")]
+[node name="SpawnArea" parent="GameWorld" instance=ExtResource("3_2d08g")]
 collision_layer = 0
 collision_mask = 0
 monitoring = false
 monitorable = false
 
-[node name="MonsterSpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawn_area", "entities")]
+[node name="MonsterSpawner" type="Node2D" parent="GameWorld" node_paths=PackedStringArray("spawn_area", "entities")]
 script = ExtResource("4_xnk1j")
 spawn_area = NodePath("../SpawnArea")
 entities = NodePath("../Entities")
 
-[node name="Darkness" type="Sprite2D" parent="."]
+[node name="Darkness" type="Sprite2D" parent="GameWorld"]
 modulate = Color(1, 1, 1, 0.501961)
 z_index = 99
 material = SubResource("ShaderMaterial_apqr4")
 position = Vector2(0, -12)
 texture = ExtResource("5_54ti1")
 script = ExtResource("6_p71k4")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="UI" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PortraitRepository" type="Node" parent="UILayer/UI"]
+script = ExtResource("8_0iqu3")
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 169.0
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PartyContainer" type="VBoxContainer" parent="UILayer/UI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HeroContainer1" parent="UILayer/UI/MarginContainer/PartyContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("9_evb0h")]
+layout_mode = 2
+portrait_repository = NodePath("../../../PortraitRepository")
+
+[node name="HeroContainer2" parent="UILayer/UI/MarginContainer/PartyContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("9_evb0h")]
+layout_mode = 2
+portrait_repository = NodePath("../../../PortraitRepository")
+hero_index = 1
+
+[node name="HeroContainer3" parent="UILayer/UI/MarginContainer/PartyContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("9_evb0h")]
+layout_mode = 2
+portrait_repository = NodePath("../../../PortraitRepository")
+hero_index = 2
+
+[node name="HeroContainer4" parent="UILayer/UI/MarginContainer/PartyContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("9_evb0h")]
+layout_mode = 2
+portrait_repository = NodePath("../../../PortraitRepository")
+hero_index = 3
