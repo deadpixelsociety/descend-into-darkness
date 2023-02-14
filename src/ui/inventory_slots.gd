@@ -6,6 +6,7 @@ var _slots: Array[InventorySlot] = []
 
 func _ready():
 	EventBus.item_picked_up.connect(_on_item_picked_up)
+	EventBus.item_dropped.connect(_on_item_dropped)
 	_setup_slots()
 
 
@@ -57,3 +58,7 @@ func _on_item_picked_up(item_def: ItemDefinition, callback: Dictionary):
 		return
 	slot.item_def = item_def
 	callback["success"] = true
+
+
+func _on_item_dropped(item_def: ItemDefinition):
+	clear_item(item_def)

@@ -10,15 +10,12 @@ func _ready():
 
 
 func _can_drop_data(at_position: Vector2, data) -> bool:
-	if data is ItemDefinition:
-		return true
-	return false
+	return data is Dictionary and data.has("item_def")
 
 
 func _drop_data(at_position: Vector2, data):
-	if data is ItemDefinition:
-		EventBus.item_dropped.emit(data)
-		_inventory_slots.clear_item(data)
+	var item_def = data["item_def"] as ItemDefinition
+	EventBus.item_dropped.emit(item_def)
 
 
 func _on_inventory_button_pressed() -> void:

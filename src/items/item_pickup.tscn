@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dj2o1bm0a8loj"]
+[gd_scene load_steps=13 format=3 uid="uid://dj2o1bm0a8loj"]
 
 [ext_resource type="Script" path="res://src/items/item_pickup.gd" id="1_hsdjw"]
-[ext_resource type="Material" uid="uid://c1ws63y2k64ev" path="res://assets/shaders/outline_material.tres" id="2_euy77"]
 [ext_resource type="PackedScene" uid="uid://ec2vxcj7eb0f" path="res://src/items/item_info_control.tscn" id="3_27auc"]
 [ext_resource type="Texture2D" uid="uid://b4l11q0odxcfw" path="res://assets/textures/fx/beam.png" id="3_prw35"]
 
@@ -50,7 +49,6 @@ input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_ar6vj")
 gravity_scale = 0.0
 continuous_cd = 1
-can_sleep = false
 lock_rotation = true
 script = ExtResource("1_hsdjw")
 
@@ -66,8 +64,6 @@ shape = SubResource("CircleShape2D_vrik7")
 debug_color = Color(0.745098, 0.458824, 0.129412, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1.5, 1.5, 1.5, 1)
-material = ExtResource("2_euy77")
 
 [node name="RarityBeam" type="GPUParticles2D" parent="Sprite2D"]
 modulate = Color(1, 1, 1, 0.752941)

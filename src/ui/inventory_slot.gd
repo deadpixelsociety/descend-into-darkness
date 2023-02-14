@@ -8,6 +8,8 @@ const INFO_MARGIN = 64.0
 		item_def = value
 		_setup_slot()
 
+var ITEM_PREVIEW: PackedScene = load("res://src/items/item_preview.tscn")
+
 @onready var _background: NinePatchRect = $Background
 @onready var _icon: TextureRect = $Icon
 @onready var _item_info: ItemInfoControl = $ItemInfoControl
@@ -20,10 +22,26 @@ func _ready():
 func _get_drag_data(at_position: Vector2):
 	if not item_def:
 		return null
-	var icon = load("res://src/items/item_preview.tscn").instantiate() as ItemPreview
+	var data = {}
+	data["sender"] = self
+	data["item_def"] = item_def
+	var icon = ITEM_PREVIEW.instantiate() as ItemPreview
 	icon.item_def = item_def
 	set_drag_preview(icon)
-	return item_def
+	return data
+
+
+func _can_drop_data(at_position: Vector2, data) -> bool:
+	return data is Dictionary and data.has("item_def")
+
+
+func _drop_data(at_position: Vector2, data):
+	var sender = data["sender"] as InventorySlot
+	var b = data["item_def"] as ItemDefinition
+	var a = item_def
+	item_def = b
+	sender.item_def = a
+
 
 func _setup_slot():
 	if _icon:
@@ -61,3 +79,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	_item_info.hide()
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			if item_def:
+				EventBus.item_dropped.emit(item_def)

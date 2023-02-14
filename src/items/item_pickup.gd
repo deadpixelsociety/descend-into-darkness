@@ -60,8 +60,25 @@ func _setup_pickup():
 		return
 	if _sprite:
 		_sprite.texture = item_def.item_base.icon
-		ShaderUtil.set_shader_param(_sprite, "color", item_def.rarity.color * 1.5)
 	_setup_rarity_emitter(_rarity_beam)
+
+
+func _pickup(node: Node2D):
+	if node.has_method("pickup"):
+		var success = node.pickup(item_def)
+		if success:
+			linear_velocity = Vector2.ZERO
+			_picked_up = true
+			var tween = create_tween().bind_node(self)
+			tween.tween_property(
+				_sprite,
+				"modulate:a",
+				0.0,
+				0.2
+			)
+			tween.play()
+			await tween.finished
+			queue_free()
 
 
 func _setup_rarity_emitter(emitter: GPUParticles2D):
@@ -76,11 +93,7 @@ func _setup_rarity_emitter(emitter: GPUParticles2D):
 func _on_body_entered(body: Node2D) -> void:
 	if _picked_up or not can_pick_up(): 
 		return
-	if body.has_method("pickup"):
-		_picked_up = true
-		var success = body.pickup(item_def)
-		if success:
-			queue_free()
+	_pickup(body)
 
 
 func _on_mouse_entered() -> void:
