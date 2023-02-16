@@ -14,7 +14,7 @@ max_value = 10.0
 modifier_name = "Increased Attack Speed"
 description_template = "{value} {increased} attacks per second"
 base_modifier = false
-submodifiers = []
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
 
 [sub_resource type="Resource" id="Resource_57ush"]
 script = ExtResource("1_nev40")
@@ -33,4 +33,4 @@ submodifiers = null
 script = ExtResource("1_ivfh8")
 passive_name = "Fervor"
 description = "The barbarian's fervor in battle is infectious granting the party increased attack and movement speed."
-modifiers = [SubResource("Resource_u1l3t"), SubResource("Resource_57ush")]
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_u1l3t"), SubResource("Resource_57ush")])

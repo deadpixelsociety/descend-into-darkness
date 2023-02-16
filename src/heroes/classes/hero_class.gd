@@ -10,7 +10,8 @@ class_name HeroClass
 @export_category("Animation")
 @export var sprite_frames: SpriteFrames
 @export_category("Items")
-@export var weapon_type: WeaponConstants.WeaponType
+@export_flags("Axe", "Bow", "Dagger", "Mace", "Staff", "Sword", "Wand")
+var weapon_type: int
 @export_category("Modifiers")
 @export var modifiers: Array[Modifier] = []
 

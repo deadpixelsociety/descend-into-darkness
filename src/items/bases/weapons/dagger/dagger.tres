@@ -1,80 +1,14 @@
-[gd_resource type="Resource" load_steps=10 format=3 uid="uid://c07kp27nxdr6b"]
+[gd_resource type="Resource" script_class="WeaponBase" load_steps=4 format=3 uid="uid://c07kp27nxdr6b"]
 
 [ext_resource type="Texture2D" uid="uid://tkndpx4qmenl" path="res://assets/textures/items/weapon_dagger.png" id="1_btm0a"]
-[ext_resource type="Script" path="res://src/modifiers/damage/added_damage_modifier.gd" id="2_gieih"]
-[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="3_l6pyb"]
+[ext_resource type="Texture2D" uid="uid://qpi0cue5u0ua" path="res://assets/textures/projectiles/dagger.png" id="2_8m3ak"]
 [ext_resource type="Script" path="res://src/items/bases/weapons/weapon_base.gd" id="4_yuag6"]
-
-[sub_resource type="Resource" id="Resource_2rhat"]
-script = ExtResource("3_l6pyb")
-stat_type = 5
-value_type = 0
-modifier_type = 0
-stat_category = 1
-min_value = 4.0
-max_value = 4.0
-modifier_name = "Minimum Damage"
-description_template = "{plus}{value} minimum damage"
-base_modifier = false
-submodifiers = []
-
-[sub_resource type="Resource" id="Resource_03eb0"]
-script = ExtResource("3_l6pyb")
-stat_type = 6
-value_type = 0
-modifier_type = 0
-stat_category = 1
-min_value = 7.0
-max_value = 7.0
-modifier_name = "Maximum Damage"
-description_template = "{plus}{value} maximum damage"
-base_modifier = false
-submodifiers = null
-
-[sub_resource type="Resource" id="Resource_2d1ka"]
-script = ExtResource("2_gieih")
-stat_type = 4
-value_type = 0
-modifier_type = 0
-stat_category = 1
-min_value = 0.0
-max_value = 0.0
-modifier_name = "Added Damage"
-description_template = "{plus1}{value1} to {plus2}{value2} added damage"
-base_modifier = false
-submodifiers = [SubResource("Resource_2rhat"), SubResource("Resource_03eb0")]
-
-[sub_resource type="Resource" id="Resource_naurf"]
-script = ExtResource("3_l6pyb")
-stat_type = 3
-value_type = 0
-modifier_type = 0
-stat_category = 1
-min_value = 1.8
-max_value = 1.8
-modifier_name = "Attack Speed"
-description_template = "{plus}{value} attacks per second"
-base_modifier = false
-submodifiers = null
-
-[sub_resource type="Resource" id="Resource_lq1mb"]
-script = ExtResource("3_l6pyb")
-stat_type = 7
-value_type = 0
-modifier_type = 0
-stat_category = 1
-min_value = 10.0
-max_value = 10.0
-modifier_name = "Critical Chance"
-description_template = "{plus}{value}%% to critical strike chance"
-base_modifier = false
-submodifiers = null
 
 [resource]
 script = ExtResource("4_yuag6")
-weapon_type = 3
 two_handed = false
+projectile_texture = ExtResource("2_8m3ak")
 base_name = "Dagger"
-base_type = 1
+base_type = 4
 icon = ExtResource("1_btm0a")
-modifiers = [SubResource("Resource_2d1ka"), SubResource("Resource_naurf"), SubResource("Resource_lq1mb")]
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

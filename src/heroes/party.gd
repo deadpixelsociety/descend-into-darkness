@@ -58,6 +58,17 @@ func get_random_hero() -> Hero:
 	return _heroes[randi() % _heroes.size()]
 
 
+func get_weapon_types() -> Array[ItemConstants.ItemType]:
+	var list: Array[ItemConstants.ItemType] = []
+	for hero in _heroes:
+		for type in ItemConstants.ItemType:
+			var value = ItemConstants.ItemType[type]
+			if value & hero.hero_class.weapon_type == value:
+				if not list.has(value):
+					list.append(value)
+	return list
+
+
 func get_level() -> int:
 	return _level
 

@@ -39,5 +39,5 @@ description = "Wielding an axe and a fistful of rage the barbarian charges into 
 attack = ExtResource("1_qga1q")
 passive = ExtResource("2_miisi")
 sprite_frames = ExtResource("2_60ie4")
-weapon_type = 0
-modifiers = [SubResource("Resource_n6cs2"), SubResource("Resource_7k2ji")]
+weapon_type = 1
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_n6cs2"), SubResource("Resource_7k2ji")])

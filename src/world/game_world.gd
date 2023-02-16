@@ -47,8 +47,9 @@ func _process(delta: float) -> void:
 func _spawn_items():
 	var generator = ItemGenerator.new()
 	var pickup = load("res://src/items/item_pickup.tscn")
-	for i in range(0, 12):
-		var weapon = generator.generate_item_type(20, ItemConstants.ItemType.WEAPON)
+	for i in range(0, 20):
+		var weapon_types = Party.get_weapon_types()
+		var weapon = generator.generate_item_of_set(20, weapon_types)
 		var item_pickup = pickup.instantiate() as ItemPickup
 		item_pickup.item_def = weapon
 		item_pickup.position = RandUtil.rand_vector2() * Vector2(300, 200)

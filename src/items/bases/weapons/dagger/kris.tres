@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponBase" load_steps=4 format=3 uid="uid://bcc3gvu5l5d07"]
+
+[ext_resource type="Texture2D" uid="uid://bx0udb40bpn4t" path="res://assets/textures/items/weapon_stiletto.png" id="1_4vdtu"]
+[ext_resource type="Texture2D" uid="uid://cc6ta0up3b4p4" path="res://assets/textures/projectiles/kris.png" id="2_6fldj"]
+[ext_resource type="Script" path="res://src/items/bases/weapons/weapon_base.gd" id="4_jni02"]
+
+[resource]
+script = ExtResource("4_jni02")
+two_handed = false
+projectile_texture = ExtResource("2_6fldj")
+base_name = "Kris"
+base_type = 4
+icon = ExtResource("1_4vdtu")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

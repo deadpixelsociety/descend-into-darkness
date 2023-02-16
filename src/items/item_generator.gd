@@ -17,10 +17,15 @@ func _init():
 
 func generate_item(item_level: int) -> ItemDefinition:
 	var type = Collections.get_random_enum_value(ItemConstants.ItemType)
-	return generate_item_type(item_level, type)
+	return generate_item_of_type(item_level, type)
 
 
-func generate_item_type(item_level: int, item_type: ItemConstants.ItemType) -> ItemDefinition:
+func generate_item_of_set(item_level: int, item_set: Array[ItemConstants.ItemType]) -> ItemDefinition:
+	var item_type = item_set[randi() % item_set.size()]
+	return generate_item_of_type(item_level, item_type)
+
+
+func generate_item_of_type(item_level: int, item_type: ItemConstants.ItemType) -> ItemDefinition:
 	var def: ItemDefinition = ITEM_DEFINITION.new()
 	
 	var base_list = Collections.get_dict_array(_item_bases, item_type)
@@ -30,6 +35,7 @@ func generate_item_type(item_level: int, item_type: ItemConstants.ItemType) -> I
 	def.rarity = _generate_rarity()
 	def.tiers.append_array(_generate_modifier_tiers(
 		item_type,
+		def.rarity.total_affixes,
 		def.rarity.prefixes_min,
 		def.rarity.prefixes_max, 
 		def.rarity.suffixes_min,
@@ -60,10 +66,7 @@ func _generate_item_name(
 ) -> String:
 	if tiers.size() <= 2:
 		return _generate_small_item_name(item_type, item_base, tiers)
-	var weapon_type = null
-	if item_base is WeaponBase:
-		weapon_type = item_base.weapon_type
-	return _generate_random_item_name(item_type, weapon_type)
+	return _generate_random_item_name(item_type)
 
 
 func _generate_small_item_name(
@@ -88,17 +91,12 @@ func _generate_small_item_name(
 
 
 func _generate_random_item_name(
-	item_type: ItemConstants.ItemType,
-	weapon_type,
+	item_type: ItemConstants.ItemType
 ) -> String:
 	var prefix = ItemConstants.ITEM_NAME_PREFIXES[randi() % ItemConstants.ITEM_NAME_PREFIXES.size()]
 	var suffixes = ItemConstants.ITEM_NAME_SUFFIXES[item_type]
 	var suffix: String = ""
-	if item_type == ItemConstants.ItemType.WEAPON:
-		var weapon_list = suffixes[weapon_type]
-		if weapon_list != null and weapon_list.size() > 0:
-			suffix = weapon_list[randi() % weapon_list.size()]
-	
+
 	if suffix == "" and suffixes.size() > 0:
 		suffix = suffixes[randi() % suffixes.size()]
 	return "%s %s" % [ prefix, suffix ]
@@ -113,6 +111,7 @@ func _generate_rarity() -> Rarity:
 
 func _generate_modifier_tiers(
 	item_type: ItemConstants.ItemType,
+	total_affixes: int,
 	prefixes_min: int, 
 	prefixes_max: int, 
 	suffixes_min: int, 
@@ -120,6 +119,9 @@ func _generate_modifier_tiers(
 	item_level: int
 ) -> Array[ModifierTier]:
 	var list: Array[ModifierTier] = []
+	
+	if total_affixes == 0:
+		return list
 	
 	# Prefixes
 	var prefix_count = randi_range(prefixes_min, prefixes_max)
@@ -132,15 +134,17 @@ func _generate_modifier_tiers(
 			ModifierTier.AffixType.PREFIX
 		)
 	
-	var suffix_count = randi_range(suffixes_min, suffixes_max)
-	if suffix_count != 0:
-		_append_affixes(
-			list, 
-			item_level,
-			suffix_count,
-			item_type,
-			ModifierTier.AffixType.SUFFIX
-		)
+	total_affixes -= prefix_count
+	if total_affixes > 0:
+		var suffix_count = clampi(randi_range(suffixes_min, suffixes_max), suffixes_min, total_affixes)
+		if suffix_count != 0:
+			_append_affixes(
+				list, 
+				item_level,
+				suffix_count,
+				item_type,
+				ModifierTier.AffixType.SUFFIX
+			)
 	
 	return list
 

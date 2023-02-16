@@ -1,80 +1,12 @@
-[gd_resource type="Resource" load_steps=10 format=3 uid="uid://ct4xlb0jyfqdy"]
+[gd_resource type="Resource" script_class="WeaponBase" load_steps=3 format=3 uid="uid://ct4xlb0jyfqdy"]
 
 [ext_resource type="Texture2D" uid="uid://6r7kt0m80f6k" path="res://assets/textures/items/weapon_longbow.png" id="1_ald7j"]
-[ext_resource type="Script" path="res://src/modifiers/damage/added_damage_modifier.gd" id="2_c2qxd"]
-[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="3_adi7s"]
 [ext_resource type="Script" path="res://src/items/bases/weapons/weapon_base.gd" id="4_3pis3"]
-
-[sub_resource type="Resource" id="Resource_2rhat"]
-script = ExtResource("3_adi7s")
-stat_type = 5
-value_type = 0
-modifier_type = 0
-stat_category = 1
-min_value = 4.0
-max_value = 4.0
-modifier_name = "Minimum Damage"
-description_template = "{plus}{value} minimum damage"
-base_modifier = false
-submodifiers = []
-
-[sub_resource type="Resource" id="Resource_03eb0"]
-script = ExtResource("3_adi7s")
-stat_type = 6
-value_type = 0
-modifier_type = 0
-stat_category = 1
-min_value = 10.0
-max_value = 10.0
-modifier_name = "Maximum Damage"
-description_template = "{plus}{value} maximum damage"
-base_modifier = false
-submodifiers = null
-
-[sub_resource type="Resource" id="Resource_2d1ka"]
-script = ExtResource("2_c2qxd")
-stat_type = 4
-value_type = 0
-modifier_type = 0
-stat_category = 1
-min_value = 0.0
-max_value = 0.0
-modifier_name = "Added Damage"
-description_template = "{plus1}{value1} to {plus2}{value2} added damage"
-base_modifier = false
-submodifiers = [SubResource("Resource_2rhat"), SubResource("Resource_03eb0")]
-
-[sub_resource type="Resource" id="Resource_naurf"]
-script = ExtResource("3_adi7s")
-stat_type = 3
-value_type = 0
-modifier_type = 0
-stat_category = 1
-min_value = 1.6
-max_value = 1.6
-modifier_name = "Attack Speed"
-description_template = "{plus}{value} attacks per second"
-base_modifier = false
-submodifiers = null
-
-[sub_resource type="Resource" id="Resource_lq1mb"]
-script = ExtResource("3_adi7s")
-stat_type = 7
-value_type = 0
-modifier_type = 0
-stat_category = 1
-min_value = 8.0
-max_value = 8.0
-modifier_name = "Critical Chance"
-description_template = "{plus}{value}%% to critical strike chance"
-base_modifier = false
-submodifiers = null
 
 [resource]
 script = ExtResource("4_3pis3")
-weapon_type = 4
 two_handed = true
 base_name = "Longbow"
-base_type = 1
+base_type = 2
 icon = ExtResource("1_ald7j")
-modifiers = [SubResource("Resource_2d1ka"), SubResource("Resource_naurf"), SubResource("Resource_lq1mb")]
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

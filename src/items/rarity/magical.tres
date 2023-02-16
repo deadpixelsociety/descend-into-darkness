@@ -6,10 +6,11 @@
 script = ExtResource("1_2ciat")
 rarity_name = "Magical"
 color = Color(0.254902, 0.47451, 1, 1)
-rate = 25.0
+rate = 30.0
+total_affixes = 2
 prefixes_min = 1
 prefixes_max = 1
 suffixes_min = 1
 suffixes_max = 1
 particles_enabled = true
-particle_scale = 0.2
+particle_scale = 0.3

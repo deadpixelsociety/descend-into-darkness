@@ -6,9 +6,11 @@
 script = ExtResource("1_325b4")
 rarity_name = "Common"
 color = Color(0.756863, 0.756863, 0.756863, 1)
-rate = 35.0
+rate = 40.0
+total_affixes = 0
 prefixes_min = 0
 prefixes_max = 0
-suffixes_min = 1
-suffixes_max = 1
+suffixes_min = 0
+suffixes_max = 0
 particles_enabled = false
+particle_scale = 1.0

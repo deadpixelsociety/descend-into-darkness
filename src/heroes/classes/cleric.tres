@@ -35,5 +35,5 @@ script = ExtResource("1_ff6k8")
 hero_name = "Cleric"
 description = "Wielding their faith like a hammer the cleric brings holy justice to their enemies."
 sprite_frames = ExtResource("2_j700n")
-weapon_type = 1
-modifiers = [SubResource("Resource_idv7u"), SubResource("Resource_txc68")]
+weapon_type = 24
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_idv7u"), SubResource("Resource_txc68")])

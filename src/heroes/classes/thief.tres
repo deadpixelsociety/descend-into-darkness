@@ -35,5 +35,5 @@ script = ExtResource("1_cc610")
 hero_name = "Thief"
 description = "The thief lurks in the shadows ready to strike with deadly precision."
 sprite_frames = ExtResource("2_6ruhx")
-weapon_type = 3
-modifiers = [SubResource("Resource_df18h"), SubResource("Resource_n3pdw")]
+weapon_type = 4
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_df18h"), SubResource("Resource_n3pdw")])

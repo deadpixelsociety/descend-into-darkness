@@ -20,7 +20,7 @@ var ITEM_DESCRIPTION_LABEL: PackedScene = load("res://src/items/item_description
 func _setup_control():
 	_item_name.text = item_def.item_name
 	_item_name.modulate = item_def.rarity.color
-	_weapon_info.visible = item_def.item_type == ItemConstants.ItemType.WEAPON
+	_weapon_info.visible = ItemConstants.WEAPON_TYPES.has(item_def.item_type)
 	if _weapon_info.visible:
 		_damage_range.text = "Damage: %s" % item_def.get_damage_range_description()
 		_attack_speed.text = "Attack Speed: %s/s" % item_def.get_attack_speed_description()
