@@ -13,6 +13,7 @@ var _controller: HeroController = null
 var _modifiers: Array[Modifier] = []
 var _passives: Dictionary = {}
 var _stat_modifiers: Dictionary = {}
+var _on_hit_modifiers: Array[OnHitModifier] = []
 var _health_current: float = 0.0
 var _health_max: float = 0.0
 
@@ -54,6 +55,8 @@ func apply_modifier(modifier: Modifier):
 	if modifier is StatModifier:
 		_store_stat_modifier(modifier)
 		modifier.calculate()
+	if modifier is OnHitModifier:
+		_on_hit_modifiers.append(modifier)
 	_recalculate_stats()
 
 
@@ -64,7 +67,13 @@ func remove_modifiers(owner_id: String):
 			_modifiers.remove_at(i)
 			if modifier is StatModifier:
 				_remove_stat_modifier(modifier)
+			if modifier is OnHitModifier:
+				_on_hit_modifiers.erase(modifier)
 	_recalculate_stats()
+
+
+func get_on_hit_modifiers() -> Array[OnHitModifier]:
+	return _on_hit_modifiers
 
 
 func apply_passive(passive: Passive):
@@ -135,7 +144,6 @@ func _whiteout(amount: float):
 	ShaderUtil.set_shader_param(_sprite, "amount", amount)
 
 
-
 func _set_hero_defaults():
 	_calculate_health()
 
@@ -165,7 +173,12 @@ func _setup_hero_class():
 		_sprite.play()
 	_modifiers.clear()
 	_stat_modifiers.clear()
+	_on_hit_modifiers.clear()
 	_passives.clear()
+	if hero_class.attack:
+		for modifier in hero_class.attack.modifiers:
+			modifier.ownder_id = hero_class.id
+			apply_modifier(modifier)
 	for modifier in hero_class.modifiers:
 		modifier.ownder_id = hero_class.id
 		apply_modifier(modifier)
@@ -178,7 +191,7 @@ func _calculate_health():
 	if not stats:
 		return
 	var is_full = _health_current == _health_max
-	_health_max = stats.health_max + (stats.health_per_level * Party.get_level())
+	_health_max = stats.health_max
 	if is_full:
 		_health_current = _health_max
 	_on_health_changed()

@@ -21,5 +21,5 @@ func spawn_text(
 	floating_text.outline = outline
 	floating_text.outline_color = outline_color
 	floating_text.outline_size = outline_size
-	add_child(floating_text)
+	GameUtil.get_entities_container().add_child(floating_text)
 	floating_text.spawn(text_position)

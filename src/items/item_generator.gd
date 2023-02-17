@@ -183,6 +183,8 @@ func _generate_modifiers(tiers: Array[ModifierTier]) -> Array[Modifier]:
 
 
 func _append_modifier(modifier: Modifier, list: Array[Modifier]):
+	if not modifier:
+		return
 	if modifier.submodifiers != null and modifier.submodifiers.size() > 0:
 		for submodifier in modifier.submodifiers:
 			_append_modifier(submodifier, list)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ue61s8dvhqkv"]
+
+[ext_resource type="Script" path="res://src/fx/after_image.gd" id="2_fw5pm"]
+
+[node name="AfterImage" type="Sprite2D"]
+script = ExtResource("2_fw5pm")

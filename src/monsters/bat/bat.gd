@@ -35,3 +35,11 @@ func attack(target: Node2D):
 	collision_mask |= 2
 	_attacking = false
 	attack_finished.emit()
+	#_leech_effect()
+
+
+func _leech_effect():
+	var leech_modifier = load("res://src/modifiers/leech/leech.tres") as OnHitModifier
+	var leech_effect = leech_modifier.on_hit_effect.instantiate() as LeechEffect
+	add_child(leech_effect)
+	leech_effect.apply_effect(leech_modifier, Party.get_leader(), self)

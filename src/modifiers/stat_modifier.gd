@@ -59,7 +59,10 @@ func _get_template_data(template_value: float) -> Dictionary:
 	data["value"] = _get_value_str(template_value)
 	data["increased"] = "increased" if template_value >= 0.0 else "reduced"
 	data["more"] = "more" if template_value >= 0.0 else "less"
-	data["plus"] = "+" if template_value >= 0.0 else "-"
+	if modifier_type == StatConstants.ModifierType.MULTIPLIER:
+		data["op"] = "*" if template_value >= 0.0 else "/"
+	else:
+		data["op"] = "+" if template_value >= 0.0 else "-"
 	return _add_custom_template_data(data, template_value)
 
 

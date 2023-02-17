@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv3n7utjr11lt"]
+
+[ext_resource type="Texture2D" uid="uid://c0w4i3gyodl2w" path="res://assets/textures/fx/large_dot.png" id="1_joqm2"]
+[ext_resource type="Script" path="res://src/fx/leech_trail.gd" id="2_pwcjx"]
+
+[node name="LeechTrail" type="Sprite2D"]
+modulate = Color(1, 0.17, 0.21, 0.5)
+top_level = true
+texture = ExtResource("1_joqm2")
+script = ExtResource("2_pwcjx")
+trail_delay = 0.1

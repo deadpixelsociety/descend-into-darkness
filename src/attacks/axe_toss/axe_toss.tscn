@@ -29,4 +29,5 @@ debug_color = Color(0, 0.643137, 0.27451, 0.419608)
 position = Vector2(0, 21)
 texture = ExtResource("3_3jgkg")
 
+[connection signal="area_entered" from="Axe/Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Axe/Hitbox" to="." method="_on_hitbox_body_entered"]

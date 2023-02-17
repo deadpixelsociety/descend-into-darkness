@@ -20,6 +20,7 @@ var _spawning: bool = false
 
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _behavior_tree: BTRoot = $BehaviorTree
+@onready var _effects: Node2D = $Effects
 @onready var _hitbox: Area2D = $Hitbox
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _terrain_ray: RayCast2D = $TerrainRay
@@ -41,6 +42,23 @@ func _physics_process(delta: float):
 
 func get_hitbox() -> Area2D:
 	return _hitbox
+
+
+func add_effect(applicator: Node2D, modifier: OnHitModifier):
+	if not modifier.can_apply_effect(self) or not modifier.on_hit_effect:
+		return
+	var effect = modifier.on_hit_effect.instantiate() as OnHitEffect
+	_effects.add_child(effect)
+	effect.apply_effect(modifier, applicator, self)
+
+
+func get_effects() -> Array[OnHitEffect]:
+	var list: Array[OnHitEffect] = []
+	for child in _effects.get_children():
+		var effect = child as OnHitEffect
+		if effect:
+			list.append(effect)
+	return list
 
 
 func spawn(spawn_point: Vector2):

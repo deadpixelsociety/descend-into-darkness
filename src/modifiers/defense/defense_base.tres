@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://c182aylbaeynw"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_kslm3"]
+
+[resource]
+script = ExtResource("1_kslm3")
+stat_type = 10
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 0.0
+max_value = 0.0
+modifier_name = "Defense"
+description_template = "Defense {op}{value}%%"
+base_modifier = false
+submodifiers = null

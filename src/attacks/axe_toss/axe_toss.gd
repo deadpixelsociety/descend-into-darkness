@@ -28,5 +28,19 @@ func _physics_process(delta: float):
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	# TODO: Consider piercing?
 	queue_free()
+
+
+func _apply_on_hit(monster: Monster):
+	if attack_owner is Hero:
+		var on_hit_modifiers = attack_owner.get_on_hit_modifiers()
+		for modifier in on_hit_modifiers:
+			monster.add_effect(attack_owner, modifier)
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area is HurtBox:
+		var monster = area.hurtbox_owner as Monster
+		if monster:
+			_apply_on_hit(monster)
+		queue_free()

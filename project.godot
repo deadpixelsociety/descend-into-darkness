@@ -21,6 +21,7 @@ Party="*res://src/heroes/party.gd"
 GameUtil="*res://src/util/game_util.gd"
 TextSpawner="*res://src/fx/text_spawner.gd"
 EventBus="*res://src/util/event_bus.gd"
+GlobalEffects="*res://src/fx/global_effects.gd"
 
 [display]
 

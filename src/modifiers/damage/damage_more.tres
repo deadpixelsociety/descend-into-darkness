@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bqvgexy1jsouh"]
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://bqvgexy1jsouh"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_juvye"]
 
@@ -10,6 +10,7 @@ modifier_type = 2
 stat_category = 1
 min_value = 0.0
 max_value = 0.0
-description_template = "{value} {more} damage"
 modifier_name = "More Damage"
+description_template = "Damage {op}{value}"
+base_modifier = false
 submodifiers = null

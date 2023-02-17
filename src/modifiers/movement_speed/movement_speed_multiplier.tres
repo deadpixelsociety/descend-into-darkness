@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://djcc5opral4r2"]
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://djcc5opral4r2"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_awds3"]
 
@@ -10,6 +10,6 @@ modifier_type = 2
 stat_category = 3
 min_value = 0.0
 max_value = 0.0
-description_template = "{value} {more} movement speed"
 modifier_name = "More Movement Speed"
+description_template = "Movement Speed {op}{value}"
 submodifiers = null

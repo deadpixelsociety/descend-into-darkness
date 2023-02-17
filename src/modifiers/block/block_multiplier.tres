@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://d4ib3su3560kl"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_cjdou"]
+
+[resource]
+script = ExtResource("1_cjdou")
+stat_type = 9
+value_type = 1
+modifier_type = 2
+stat_category = 2
+min_value = 0.0
+max_value = 0.0
+modifier_name = "More Block"
+description_template = "Block {op}{value}"
+base_modifier = false
+submodifiers = null

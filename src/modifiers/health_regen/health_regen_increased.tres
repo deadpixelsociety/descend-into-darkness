@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bd34eoy03qd6u"]
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://bd34eoy03qd6u"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_6bcmj"]
 
@@ -10,6 +10,7 @@ modifier_type = 1
 stat_category = 0
 min_value = 0.0
 max_value = 0.0
-description_template = "Regenerate {value} {increased} health per second"
 modifier_name = "Increased Health Regen"
+description_template = "Regen {op}{value}"
+base_modifier = false
 submodifiers = null

@@ -4,7 +4,6 @@ class_name Modifier
 @export_category("Modifier")
 @export var modifier_name: String
 @export var description_template: String
-@export var base_modifier: bool = false
 @export var submodifiers: Array[Modifier] = []
 
 var ownder_id: String

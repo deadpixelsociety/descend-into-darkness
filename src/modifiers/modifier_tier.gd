@@ -11,6 +11,7 @@ enum AffixType {
 @export var tier_group: String
 @export var affix_type: AffixType
 @export var display_priority: int = 0
-@export_flags("Weapon", "Armour", "Boots", "Gloves", "Helm", "Leggings", "Necklace", "Ring", "Offhand") var item_type: int
+@export_flags("Axe", "Bow", "Dagger", "Mace", "Staff", "Sword", "Wand", "Armour", "Boots", "Helm", "Necklace", "Ring", "Shield", "Focus") 
+var item_type: int
 @export var item_level_min: int
 @export var modifier: Modifier

@@ -6,10 +6,9 @@
 
 [resource]
 script = ExtResource("4_3smbl")
-weapon_type = 0
 two_handed = true
 projectile_texture = ExtResource("4_hxpej")
 base_name = "Greataxe"
 base_type = 1
 icon = ExtResource("1_dm00r")
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([null])

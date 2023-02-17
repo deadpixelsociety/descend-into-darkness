@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh2w2aitdgfxv"]
+
+[ext_resource type="Script" path="res://src/modifiers/leech/leech_effect.gd" id="1_7qeaq"]
+
+[node name="LeechEffect" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_7qeaq")

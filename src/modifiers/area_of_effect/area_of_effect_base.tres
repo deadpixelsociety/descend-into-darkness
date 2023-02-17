@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://brahjkhexhwle"]
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://brahjkhexhwle"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_8ufr5"]
 
@@ -11,6 +11,6 @@ stat_category = 1
 min_value = 0.0
 max_value = 0.0
 modifier_name = "Area of Effect"
-description_template = "{plus}{value}% area of effect"
+description_template = "AoE {op}{value}%%"
 base_modifier = false
-submodifiers = null
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

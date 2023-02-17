@@ -4,32 +4,34 @@ class_name Stats
 const STAT_MAP = {
 	StatConstants.StatType.HEALTH_MAX: "health_max",
 	StatConstants.StatType.HEALTH_REGEN: "health_regen",
-	StatConstants.StatType.HEALTH_PER_LEVEL: "health_per_level",
 	StatConstants.StatType.ATTACK_SPEED: "attack_speed",
 	StatConstants.StatType.DAMAGE_MIN: "damage_min",
 	StatConstants.StatType.DAMAGE_MAX: "damage_max",
+	StatConstants.StatType.SPELL_POWER: "spell_power",
 	StatConstants.StatType.CRITICAL_CHANCE: "critical_chance",
 	StatConstants.StatType.CRITICAL_BONUS: "critical_bonus",
-	StatConstants.StatType.DEFENSE_FLAT: "defense_flat",
-	StatConstants.StatType.DEFENSE_PERCENT: "defense_percent",
-	StatConstants.StatType.DODGE_CHANCE: "dodge_chance",
+	StatConstants.StatType.AREA_OF_EFFECT: "area_of_effect",
+	StatConstants.StatType.BLOCK: "block",
+	StatConstants.StatType.DEFENSE: "defense",
+	StatConstants.StatType.EVASION: "evasion",
 	StatConstants.StatType.MOVEMENT_SPEED: "movement_speed"
 }
 
 @export_category("Health")
 @export var health_max: float = 0.0
 @export var health_regen: float = 0.0
-@export var health_per_level: float = 0.0
 @export_category("Offense")
 @export var attack_speed: float = 0.0
 @export var damage_min: float = 0.0
 @export var damage_max: float = 0.0
+@export var spell_power: float = 0.0
 @export var critical_chance: float = 0.0
 @export var critical_bonus: float = 0.0
+@export var area_of_effect: float = 0.0
 @export_category("Defense")
-@export var defense_flat: float = 0.0
-@export var defense_percent: float = 0.0
-@export var dodge_chance: float = 0.0
+@export var block: float = 0.0
+@export var defense: float = 0.0
+@export var evasion: float = 0.0
 @export_category("Misc")
 @export var movement_speed: float = 0.0
 

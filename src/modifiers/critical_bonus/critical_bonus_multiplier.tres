@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://o18xof6tygyg"]
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://o18xof6tygyg"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_poybg"]
 
@@ -11,6 +11,6 @@ stat_category = 1
 min_value = 0.0
 max_value = 0.0
 modifier_name = "More Critical Bonus"
-modifier_group = "CriticalBonus"
-description_template = "{value} {more} critical strike bonus"
+description_template = "Crit Bonus {op}{value}"
+base_modifier = false
 submodifiers = null

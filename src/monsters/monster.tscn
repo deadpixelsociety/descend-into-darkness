@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://kvub8mmo2o40"]
+[gd_scene load_steps=7 format=3 uid="uid://kvub8mmo2o40"]
 
 [ext_resource type="Script" path="res://src/monsters/monster.gd" id="1_eldqe"]
 [ext_resource type="Script" path="res://addons/yet_another_behavior_tree/src/Nodes/BTRoot.gd" id="2_4tbjj"]
+[ext_resource type="Script" path="res://src/util/hurt_box.gd" id="2_qtgdr"]
 [ext_resource type="Script" path="res://addons/yet_another_behavior_tree/src/Blackboard/BTBlackboard.gd" id="3_7r0w7"]
 
 [sub_resource type="Shader" id="Shader_bq7ct"]
@@ -40,9 +41,11 @@ scale = Vector2(1e-05, 1e-05)
 target_position = Vector2(0, 32)
 collision_mask = 4
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("hurtbox_owner")]
 collision_layer = 16
 collision_mask = 32
+script = ExtResource("2_qtgdr")
+hurtbox_owner = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 debug_color = Color(0.951325, 0.126483, 0.369379, 0.42)
@@ -52,6 +55,8 @@ collision_layer = 64
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="Effects" type="Node2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

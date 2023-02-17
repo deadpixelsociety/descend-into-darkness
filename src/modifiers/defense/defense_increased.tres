@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://dfkrp67qvd2x8"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_ta3hn"]
+
+[resource]
+script = ExtResource("1_ta3hn")
+stat_type = 10
+value_type = 1
+modifier_type = 1
+stat_category = 2
+min_value = 0.0
+max_value = 0.0
+modifier_name = "Increased Defense"
+description_template = "Defense {op}{value}"
+base_modifier = false
+submodifiers = null

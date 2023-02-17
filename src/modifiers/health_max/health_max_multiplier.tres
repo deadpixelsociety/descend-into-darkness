@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cdhspid1ej2oh"]
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://cdhspid1ej2oh"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_a0onv"]
 
@@ -10,6 +10,7 @@ modifier_type = 2
 stat_category = 0
 min_value = 0.0
 max_value = 0.0
-description_template = "{value} {more} maximum health"
-modifier_name = "More Maximum Health"
+modifier_name = "More Health"
+description_template = "HP {op}{value}"
+base_modifier = false
 submodifiers = null

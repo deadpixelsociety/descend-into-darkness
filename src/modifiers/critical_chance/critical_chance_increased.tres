@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dgtud8eul4ndj"]
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://dgtud8eul4ndj"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_js8as"]
 
@@ -11,6 +11,6 @@ stat_category = 1
 min_value = 0.0
 max_value = 0.0
 modifier_name = "Increased Critical Strike"
-modifier_group = "CriticalChance"
-description_template = "{value} {increased} critical strike chance"
+description_template = "Crit Chance {op}{value}"
+base_modifier = false
 submodifiers = null

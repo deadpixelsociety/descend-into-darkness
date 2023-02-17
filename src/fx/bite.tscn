@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckb61jynu0t86"]
+
+[ext_resource type="Script" path="res://src/fx/bite.gd" id="1_1yasc"]
+[ext_resource type="Texture2D" uid="uid://1qu1fna56l67" path="res://assets/textures/fx/fangs.png" id="2_kyhfp"]
+
+[node name="Bite" type="Node2D"]
+script = ExtResource("1_1yasc")
+
+[node name="Fangs" type="Sprite2D" parent="."]
+modulate = Color(1, 0.168627, 0.211765, 0.8)
+texture = ExtResource("2_kyhfp")

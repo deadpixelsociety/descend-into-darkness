@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://4het8xslcbi3"]
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://4het8xslcbi3"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_o5a5l"]
 
@@ -10,6 +10,7 @@ modifier_type = 0
 stat_category = 1
 min_value = 0.0
 max_value = 0.0
-description_template = "{plus}{value} minimum damage"
 modifier_name = "Minimum Damage"
+description_template = "Min Damage {op}{value}"
+base_modifier = false
 submodifiers = null
