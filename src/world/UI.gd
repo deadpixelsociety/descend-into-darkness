@@ -3,6 +3,7 @@ class_name UI
 
 @onready var _inventory_panel: Control = %InventoryPanel
 @onready var _inventory_slots: InventorySlots = %InventorySlots
+@onready var world_render: SubViewport = $UIContainer/CenterContainer/WorldRenderContainer/WorldRender
 
 
 func _ready():
@@ -29,3 +30,7 @@ func _on_inventory_button_pressed() -> void:
 		0.1
 	)
 	tween.play()
+
+
+func _on_world_render_container_gui_input(event: InputEvent) -> void:
+	world_render.push_input(event, true)

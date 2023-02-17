@@ -7,7 +7,7 @@ var _counter = 0
 
 @onready var _entities: Node2D = $Entities
 @onready var _monster_spawner: MonsterSpawner = $MonsterSpawner
-@onready var _portrait_repository: Node = $"../UILayer/UI/PortraitRepository"
+@onready var _portrait_repository: PortraitRepository = %PortraitRepository
 
 
 func _ready() -> void:

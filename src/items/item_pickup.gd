@@ -97,6 +97,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_mouse_entered() -> void:
+	print("mouse entered")
 	_item_info.item_def = item_def
 	_item_info.global_position = _get_item_info_position()
 	_item_info.show()
