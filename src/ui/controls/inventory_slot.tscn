@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/ui/controls/inventory_slot.gd" id="1_n2acc"]
 [ext_resource type="Texture2D" uid="uid://cbhgvnhqks03u" path="res://assets/textures/ui/panel_brown2.png" id="2_usjc7"]
-[ext_resource type="PackedScene" uid="uid://ec2vxcj7eb0f" path="res://src/items/item_info_control.tscn" id="4_7o2k5"]
+[ext_resource type="PackedScene" path="res://src/ui/controls/item_info_control.tscn" id="4_7o2k5"]
 
 [sub_resource type="Shader" id="Shader_vtbmp"]
 resource_local_to_scene = true

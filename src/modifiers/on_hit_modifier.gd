@@ -7,7 +7,8 @@ enum OnHitType {
 	BLEED,
 	POISON,
 	SHOCK,
-	CHILL
+	CHILL,
+	CUSTOM
 }
 
 enum OnHitApplication {

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck5ltpec3t37i"]
+
+[ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="1_6pco2"]
+[ext_resource type="Script" path="res://src/ui/controls/item_info_description_line.gd" id="1_b5h1e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m02cl"]
+font = ExtResource("1_6pco2")
+font_size = 10
+
+[node name="ItemInfoDescriptionLine" type="HBoxContainer"]
+offset_right = 73.0
+offset_bottom = 16.0
+script = ExtResource("1_b5h1e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="ItemDescription" type="Label" parent="."]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_m02cl")
+horizontal_alignment = 1
+vertical_alignment = 2

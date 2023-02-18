@@ -7,12 +7,14 @@ var _rarities: Array[Rarity] = []
 var _tiers: Array[ModifierTier] = []
 # item type > affix > modifier group > tiers
 var _tier_map: Dictionary = {} 
+var _modifier_icons: Dictionary = {}
 
 
 func _init():
 	_load_tiers()
 	_load_rarities("res://src/items/rarity")
 	_load_bases("res://src/items/bases")
+	_load_modifier_icons()
 
 
 func generate_item(item_level: int) -> ItemDefinition:
@@ -194,8 +196,8 @@ func _append_modifier(modifier: Modifier, list: Array[Modifier]):
 		list.append(modifier)
 
 
-func _generate_description(tiers: Array[ModifierTier]) -> PackedStringArray:
-	var lines = PackedStringArray()
+func _generate_description(tiers: Array[ModifierTier]) -> Array[ItemDescriptionLine]:
+	var lines: Array[ItemDescriptionLine] = []
 	var prefixes = tiers.filter(func(tier): return tier.affix_type == ModifierTier.AffixType.PREFIX)
 	var suffixes = tiers.filter(func(tier): return tier.affix_type == ModifierTier.AffixType.SUFFIX)
 	prefixes.sort_custom(func(a, b): return a.display_priority < b.display_priority)
@@ -207,7 +209,12 @@ func _generate_description(tiers: Array[ModifierTier]) -> PackedStringArray:
 		var description = tier.modifier.get_description()
 		if description == null || description == "":
 			continue
-		lines.append(description)
+		var line = ItemDescriptionLine.new()
+		var stat_modifier = tier.modifier as StatModifier
+		if stat_modifier and _modifier_icons.has(stat_modifier.stat_type):
+			line.icon = _modifier_icons[stat_modifier.stat_type]
+		line.text = description
+		lines.append(line)
 	return lines
 
 
@@ -252,6 +259,14 @@ func _load_rarities(path: String):
 
 func _load_tiers():
 	_process_directory("res://src/modifiers")
+
+
+func _load_modifier_icons():
+	for type in StatConstants.STAT_ICONS.keys():
+		var res = StatConstants.STAT_ICONS[type]
+		if Strings.is_null_or_empty(res):
+			continue
+		_modifier_icons[type] = load(res)
 
 
 func _process_directory(path: String):

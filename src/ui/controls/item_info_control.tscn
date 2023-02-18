@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ec2vxcj7eb0f"]
+[gd_scene load_steps=6 format=3 uid="uid://b236s541hnihu"]
 
-[ext_resource type="Script" path="res://src/items/item_info_control.gd" id="1_lb2gu"]
+[ext_resource type="Script" path="res://src/ui/controls/item_info_control.gd" id="1_lb2gu"]
 [ext_resource type="Texture2D" uid="uid://elwgco4xqd7v" path="res://assets/textures/ui/panel.png" id="2_cmpdh"]
 [ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="3_6nxrq"]
 [ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="4_fbnfj"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bovb1ysjwvd0u"]
+[gd_scene load_steps=10 format=3 uid="uid://d4m58ttixuny2"]
 
 [ext_resource type="Script" path="res://src/ui/game_ui.gd" id="1_0goof"]
 [ext_resource type="Script" path="res://src/heroes/portraits/portrait_repository.gd" id="2_npxer"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cd6klutlscmx6" path="res://src/ui/controls/right_panel.tscn" id="7_0ff3g"]
 [ext_resource type="Shader" path="res://assets/shaders/darkness.gdshader" id="10_j865p"]
 [ext_resource type="PackedScene" uid="uid://b0wuora0aveks" path="res://src/world/game_world.tscn" id="12_iyy57"]
-[ext_resource type="PackedScene" uid="uid://ec2vxcj7eb0f" path="res://src/items/item_info_control.tscn" id="13_e2c1g"]
+[ext_resource type="PackedScene" uid="uid://b236s541hnihu" path="res://src/ui/controls/item_info_control.tscn" id="13_e2c1g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fir1q"]
 shader = ExtResource("10_j865p")

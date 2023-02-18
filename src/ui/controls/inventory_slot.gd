@@ -8,7 +8,7 @@ const INFO_MARGIN = 64.0
 		item_def = value
 		_setup_slot()
 
-var ITEM_PREVIEW: PackedScene = load("res://src/items/item_preview.tscn")
+var ITEM_PREVIEW: PackedScene = load("res://src/ui/controls/item_preview.tscn")
 
 @onready var _background: NinePatchRect = $Background
 @onready var _icon: TextureRect = $Icon

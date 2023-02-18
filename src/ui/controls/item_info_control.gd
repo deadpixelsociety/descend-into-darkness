@@ -8,7 +8,7 @@ var item_def: ItemDefinition:
 		item_def = value
 		_setup_control()
 
-var ITEM_DESCRIPTION_LABEL: PackedScene = load("res://src/items/item_description_label.tscn")
+var ITEM_DESCRIPTION: PackedScene = load("res://src/ui/controls/item_info_description_line.tscn")
 
 @onready var _item_name: Label = %ItemName
 @onready var _weapon_info: VBoxContainer = %WeaponInfo
@@ -35,9 +35,9 @@ func _setup_control():
 	_item_type.modulate = item_def.rarity.color
 	NodeUtil.clear_children(_description_lines)
 	for line in item_def.description_lines:
-		var label = ITEM_DESCRIPTION_LABEL.instantiate() as Label
-		label.text = line
-		_description_lines.add_child(label)
+		var descr = ITEM_DESCRIPTION.instantiate() as ItemInfoDescriptionLine
+		_description_lines.add_child(descr)
+		descr.set_description(line)
 	update_minimum_size()
 
 
