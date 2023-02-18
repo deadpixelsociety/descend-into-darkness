@@ -1,5 +1,5 @@
 shader_type canvas_item;
-render_mode blend_mix;
+render_mode blend_add;
 
 uniform vec4 light_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform vec4 darkness_color: source_color = vec4(0.3, 0.0, 0.3, 1.0);
@@ -24,6 +24,7 @@ void fragment() {
 	if(darkness_level > 0.0) {
 		vec2 uv = UV - 0.5;
 		vec2 darkness_pos = darkness_offset + (uv * darkness_size);
+		vec4 darkness = vec4(mix(color.rgb, darkness_color.rgb, darkness_level), 1.0);
 		
 		bool l1set = false;
 		bool l2set = false;
@@ -42,14 +43,14 @@ void fragment() {
 				l1set = true;
 			} else if(d < l2r && d > l1r && !l1set) {
 				final_color.rgb = mix(color.rgb, light_color.rgb, 0.2 * layer2_alpha);
-				final_color.rgb = mix(final_color.rgb, darkness_color.rgb, 0.5 * darkness_level);
+				final_color.rgb = mix(final_color.rgb, darkness.rgb, layer2_alpha);
 				l2set = true;
 			} else if(d < l3r && d > l2r && !l1set && !l2set) {
 				final_color.rgb = mix(color.rgb, light_color.rgb, 0.2 * layer3_alpha);
-				final_color.rgb = mix(final_color.rgb, darkness_color.rgb, 0.8 * darkness_level);
+				final_color.rgb = mix(final_color.rgb, darkness.rgb, layer3_alpha);
 				l3set = true;
 			} else if(!l1set && !l2set && !l3set) {
-				final_color.rgb = mix(color.rgb, darkness_color.rgb, darkness_level);
+				final_color.rgb = darkness.rgb;
 			}
 		}
 	}
