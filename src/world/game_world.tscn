@@ -27,19 +27,19 @@ shadow_offset = Vector2(2, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_votr5"]
 shader = ExtResource("5_rrjan")
-shader_parameter/light_color = Color(1, 0.690196, 0, 1)
 shader_parameter/darkness_color = Color(0.0588235, 0, 0.0588235, 1)
-shader_parameter/darkness_level = 1.0
+shader_parameter/darkness_level = 0.8
 shader_parameter/darkness_size = Vector2(768, 600)
 shader_parameter/darkness_offset = Vector2(0, -24)
 shader_parameter/light_count = null
 shader_parameter/light_positions = null
-shader_parameter/layer1_radius = 96.0
-shader_parameter/layer1_alpha = 0.3
-shader_parameter/layer2_radius = 144.0
-shader_parameter/layer2_alpha = 0.8
-shader_parameter/layer3_radius = 180.0
-shader_parameter/layer3_alpha = 1.0
+shader_parameter/light_colors = null
+shader_parameter/light_radii = null
+shader_parameter/radius2_multi = 1.5
+shader_parameter/radius3_multi = 1.25
+shader_parameter/radius1_alpha = 0.5
+shader_parameter/radius2_alpha = 0.5
+shader_parameter/radius3_alpha = 0.8
 shader_parameter/pulse_distance = 6.0
 shader_parameter/pulse_speed = 1.5
 

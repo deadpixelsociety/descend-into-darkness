@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bu7vd1nqncije"]
+[gd_scene load_steps=9 format=3 uid="uid://bu7vd1nqncije"]
 
 [ext_resource type="Script" path="res://src/heroes/hero.gd" id="1_yygb3"]
 [ext_resource type="Script" path="res://src/stats/stats.gd" id="2_sl370"]
 [ext_resource type="PackedScene" uid="uid://bem7wkdspps8q" path="res://src/fx/blood_splatter.tscn" id="3_edm3y"]
+[ext_resource type="PackedScene" uid="uid://lu2f8b4xwbr5" path="res://src/fx/light_source.tscn" id="4_pqlm3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62rw2"]
 radius = 6.0
@@ -61,6 +62,10 @@ material = SubResource("ShaderMaterial_7tair")
 [node name="EffectContainer" type="Node2D" parent="."]
 
 [node name="BloodSplatter" parent="." instance=ExtResource("3_edm3y")]
+
+[node name="LightSource" parent="." instance=ExtResource("4_pqlm3")]
+light_color = Color(0.929412, 0.623529, 0, 1)
+light_radius = 64.0
 
 [node name="AttackTimer" type="Timer" parent="."]
 process_callback = 0

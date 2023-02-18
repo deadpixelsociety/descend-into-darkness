@@ -14,6 +14,7 @@ var _picked_up: bool = false
 var _spawning: bool = false
 
 @onready var _item_info: ItemInfoControl = $ItemInfoControl
+@onready var _light_source: LightSource = $LightSource
 @onready var _rarity_beam: GPUParticles2D = $Sprite2D/RarityBeam
 @onready var _sprite: Sprite2D = $Sprite2D
 
@@ -60,6 +61,7 @@ func _setup_pickup():
 		return
 	if _sprite:
 		_sprite.texture = item_def.item_base.icon
+	_setup_light_source()
 	_setup_rarity_emitter(_rarity_beam)
 
 
@@ -79,6 +81,13 @@ func _pickup(node: Node2D):
 			tween.play()
 			await tween.finished
 			queue_free()
+
+
+func _setup_light_source():
+	if not _light_source:
+		return
+	_light_source.light_enabled = item_def.rarity.particles_enabled
+	_light_source.light_color = item_def.rarity.color
 
 
 func _setup_rarity_emitter(emitter: GPUParticles2D):
