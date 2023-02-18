@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponBase" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://6r7kt0m80f6k" path="res://assets/textures/items/weapon_longbow.png" id="1_ald7j"]
+[ext_resource type="Script" path="res://src/items/bases/weapon/weapon_base.gd" id="4_3pis3"]
+
+[resource]
+script = ExtResource("4_3pis3")
+two_handed = true
+base_name = "Longbow"
+base_type = 2
+icon = ExtResource("1_ald7j")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

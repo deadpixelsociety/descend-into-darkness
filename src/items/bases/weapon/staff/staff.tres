@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponBase" load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://cwpcq861cbmen" path="res://assets/textures/items/weapon_staff.png" id="1_vwtgq"]
+[ext_resource type="Texture2D" uid="uid://cd2evmp37h74q" path="res://assets/textures/projectiles/staff.png" id="2_uvtq4"]
+[ext_resource type="Script" path="res://src/items/bases/weapon/weapon_base.gd" id="4_q0iym"]
+
+[resource]
+script = ExtResource("4_q0iym")
+two_handed = true
+projectile_texture = ExtResource("2_uvtq4")
+base_name = "Staff"
+base_type = 16
+icon = ExtResource("1_vwtgq")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

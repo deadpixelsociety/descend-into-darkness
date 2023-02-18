@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ArmourBase" load_steps=3 format=3 uid="uid://c6kilgf7ho82n"]
+
+[ext_resource type="Script" path="res://src/items/bases/armour/armour_base.gd" id="1_60bir"]
+[ext_resource type="Texture2D" uid="uid://bfhhkhr08c7bd" path="res://assets/textures/items/armor_chain_boot.png" id="1_g64hi"]
+
+[resource]
+script = ExtResource("1_60bir")
+armour_type = 2
+base_name = "Chain Boots"
+base_type = 256
+icon = ExtResource("1_g64hi")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

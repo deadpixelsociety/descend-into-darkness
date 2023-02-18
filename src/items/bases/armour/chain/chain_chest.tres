@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ArmourBase" load_steps=3 format=3 uid="uid://dqe25md1iiiy5"]
+
+[ext_resource type="Texture2D" uid="uid://cfl34h5842rg3" path="res://assets/textures/items/armor_chain_chest.png" id="1_tbwr7"]
+[ext_resource type="Script" path="res://src/items/bases/armour/armour_base.gd" id="2_ybwfw"]
+
+[resource]
+script = ExtResource("2_ybwfw")
+armour_type = 2
+base_name = "Chainmail"
+base_type = 128
+icon = ExtResource("1_tbwr7")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

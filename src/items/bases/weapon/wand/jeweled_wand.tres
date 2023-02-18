@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponBase" load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://df5ji3li7esd3" path="res://assets/textures/items/weapon_wand_jeweled.png" id="1_csj0p"]
+[ext_resource type="Texture2D" uid="uid://cod3n66l41o7l" path="res://assets/textures/projectiles/jeweled_wand.png" id="2_uvq1e"]
+[ext_resource type="Script" path="res://src/items/bases/weapon/weapon_base.gd" id="3_iqxiv"]
+
+[resource]
+script = ExtResource("3_iqxiv")
+two_handed = false
+projectile_texture = ExtResource("2_uvq1e")
+base_name = "Jeweled Wand"
+base_type = 64
+icon = ExtResource("1_csj0p")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

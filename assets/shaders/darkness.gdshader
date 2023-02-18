@@ -48,7 +48,6 @@ void fragment() {
 			if(d < lr1) {
 				final_color.rgb = mix(color.rgb, light_color.rgb, 0.2 * radius1_alpha);
 				l1set = true;
-				break;
 			} else if(d < lr2 && d > lr1 && !l1set) {
 				final_color.rgb = mix(color.rgb, light_color.rgb, 0.2 * radius2_alpha);
 				final_color.rgb = mix(final_color.rgb, darkness.rgb, radius2_alpha);

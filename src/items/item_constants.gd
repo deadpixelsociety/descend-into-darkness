@@ -8,7 +8,7 @@ enum ItemType {
 	WEAPON_STAFF = 16,
 	WEAPON_SWORD = 32,
 	WEAPON_WAND = 64,
-	ARMOUR = 128,
+	CHEST = 128,
 	BOOTS = 256,
 	HELM = 512,
 	NECKLACE = 1024,
@@ -252,7 +252,7 @@ const ITEM_NAME_SUFFIXES = {
 		"Spire",
 		"Weaver"
 	],
-	ItemType.ARMOUR: [
+	ItemType.CHEST: [
 		"Carapace",
 		"Cloak",
 		"Coat",

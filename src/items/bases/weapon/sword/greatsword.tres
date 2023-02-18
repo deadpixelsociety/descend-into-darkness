@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponBase" load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://brmb25hkiivml" path="res://assets/textures/items/weapon_sword_exotic1.png" id="1_q0pfi"]
+[ext_resource type="Texture2D" uid="uid://c6rl355qpvjus" path="res://assets/textures/projectiles/greatsword.png" id="2_0hbnr"]
+[ext_resource type="Script" path="res://src/items/bases/weapon/weapon_base.gd" id="4_um64b"]
+
+[resource]
+script = ExtResource("4_um64b")
+two_handed = true
+projectile_texture = ExtResource("2_0hbnr")
+base_name = "Greatsword"
+base_type = 32
+icon = ExtResource("1_q0pfi")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

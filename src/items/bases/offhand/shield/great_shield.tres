@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OffhandBase" load_steps=3 format=3 uid="uid://b71xwd2pf6bgf"]
+
+[ext_resource type="Texture2D" uid="uid://bhkwvda1w36k3" path="res://assets/textures/items/shield_iron_great.png" id="1_eluvf"]
+[ext_resource type="Script" path="res://src/items/bases/offhand/offhand_base.gd" id="2_qif53"]
+
+[resource]
+script = ExtResource("2_qif53")
+base_name = "Great Shield"
+base_type = 4096
+icon = ExtResource("1_eluvf")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

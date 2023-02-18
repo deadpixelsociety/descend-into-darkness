@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OffhandBase" load_steps=3 format=3 uid="uid://h4jxxetcok8b"]
+
+[ext_resource type="Texture2D" uid="uid://dygac6mub6g0h" path="res://assets/textures/items/shield_iron_buckler.png" id="1_61efh"]
+[ext_resource type="Script" path="res://src/items/bases/offhand/offhand_base.gd" id="2_0xudf"]
+
+[resource]
+script = ExtResource("2_0xudf")
+base_name = "Buckler"
+base_type = 4096
+icon = ExtResource("1_61efh")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

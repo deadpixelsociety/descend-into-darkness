@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="JewelryBase" load_steps=3 format=3 uid="uid://iy1oi25uegba"]
+
+[ext_resource type="Texture2D" uid="uid://bgp5p540ch257" path="res://assets/textures/items/ring_diamond.png" id="1_hmp01"]
+[ext_resource type="Script" path="res://src/items/bases/jewelry/jewelry_base.gd" id="2_hpwb1"]
+
+[resource]
+script = ExtResource("2_hpwb1")
+base_name = "Diamond Ring"
+base_type = 2048
+icon = ExtResource("1_hmp01")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

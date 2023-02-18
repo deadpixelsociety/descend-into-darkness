@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="JewelryBase" load_steps=3 format=3 uid="uid://bm4x4sjuqiyru"]
+
+[ext_resource type="Texture2D" uid="uid://ccdfa0h26xxin" path="res://assets/textures/items/necklace_tourmaline.png" id="1_2v8dj"]
+[ext_resource type="Script" path="res://src/items/bases/jewelry/jewelry_base.gd" id="2_4w1yl"]
+
+[resource]
+script = ExtResource("2_4w1yl")
+base_name = "Tourmaline Necklace"
+base_type = 1024
+icon = ExtResource("1_2v8dj")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

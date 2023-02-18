@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OffhandBase" load_steps=3 format=3 uid="uid://bins4qy2emegl"]
+
+[ext_resource type="Texture2D" uid="uid://bxmd68y3hu8si" path="res://assets/textures/items/book_latch.png" id="1_ewsjj"]
+[ext_resource type="Script" path="res://src/items/bases/offhand/offhand_base.gd" id="1_istvo"]
+
+[resource]
+script = ExtResource("1_istvo")
+base_name = "Tome"
+base_type = 8192
+icon = ExtResource("1_ewsjj")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

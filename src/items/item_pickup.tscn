@@ -70,6 +70,7 @@ debug_color = Color(0.745098, 0.458824, 0.129412, 0.419608)
 modulate = Color(1.5, 1.5, 1.5, 0.75)
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_5oiko")
+position = Vector2(0, -8)
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_fcdmv")
 texture = ExtResource("3_prw35")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="JewelryBase" load_steps=3 format=3 uid="uid://dcf445nkojahf"]
+
+[ext_resource type="Texture2D" uid="uid://n2vxayk0bktg" path="res://assets/textures/items/necklace_ruby.png" id="1_ccfmy"]
+[ext_resource type="Script" path="res://src/items/bases/jewelry/jewelry_base.gd" id="2_rfpa0"]
+
+[resource]
+script = ExtResource("2_rfpa0")
+base_name = "Ruby Necklace"
+base_type = 1024
+icon = ExtResource("1_ccfmy")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

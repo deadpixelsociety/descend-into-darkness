@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="JewelryBase" load_steps=3 format=3 uid="uid://b5ktl58vi316c"]
+
+[ext_resource type="Script" path="res://src/items/bases/jewelry/jewelry_base.gd" id="1_a5v1x"]
+[ext_resource type="Texture2D" uid="uid://vh5nw2qcmwgg" path="res://assets/textures/items/ring_ruby.png" id="1_kpmh4"]
+
+[resource]
+script = ExtResource("1_a5v1x")
+base_name = "Ruby Ring"
+base_type = 2048
+icon = ExtResource("1_kpmh4")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="JewelryBase" load_steps=3 format=3 uid="uid://bvfvnsngpmvkp"]
+
+[ext_resource type="Texture2D" uid="uid://dgfs0f0lmc3yj" path="res://assets/textures/items/ring_copper.png" id="1_rhg07"]
+[ext_resource type="Script" path="res://src/items/bases/jewelry/jewelry_base.gd" id="2_6yinp"]
+
+[resource]
+script = ExtResource("2_6yinp")
+base_name = "Copper Ring"
+base_type = 2048
+icon = ExtResource("1_rhg07")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

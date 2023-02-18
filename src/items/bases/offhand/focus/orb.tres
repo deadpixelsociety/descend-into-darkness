@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OffhandBase" load_steps=3 format=3 uid="uid://d01xgrs38ef4l"]
+
+[ext_resource type="Script" path="res://src/items/bases/offhand/offhand_base.gd" id="1_o2p57"]
+[ext_resource type="Texture2D" uid="uid://c427khtu8t5nk" path="res://assets/textures/items/crystal_sky.png" id="1_y408e"]
+
+[resource]
+script = ExtResource("1_o2p57")
+base_name = "Orb"
+base_type = 8192
+icon = ExtResource("1_y408e")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

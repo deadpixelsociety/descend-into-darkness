@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="JewelryBase" load_steps=3 format=3 uid="uid://cfljv5fce2d8"]
+
+[ext_resource type="Texture2D" uid="uid://b6ixx8keitjat" path="res://assets/textures/items/ring_emerald.png" id="1_n8275"]
+[ext_resource type="Script" path="res://src/items/bases/jewelry/jewelry_base.gd" id="2_g1q2i"]
+
+[resource]
+script = ExtResource("2_g1q2i")
+base_name = "Emerald Ring"
+base_type = 2048
+icon = ExtResource("1_n8275")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

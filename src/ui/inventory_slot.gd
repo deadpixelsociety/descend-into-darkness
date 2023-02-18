@@ -85,4 +85,5 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			if item_def:
-				EventBus.item_dropped.emit(item_def)
+				var def = item_def
+				EventBus.item_dropped.emit(def)

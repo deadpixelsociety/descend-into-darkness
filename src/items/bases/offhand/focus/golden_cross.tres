@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OffhandBase" load_steps=3 format=3 uid="uid://e4ghk7ftxwyg"]
+
+[ext_resource type="Script" path="res://src/items/bases/offhand/offhand_base.gd" id="1_cwkq7"]
+[ext_resource type="Texture2D" uid="uid://dl7etqyukwiu3" path="res://assets/textures/items/weapon_gold_cross.png" id="1_wi6x4"]
+
+[resource]
+script = ExtResource("1_cwkq7")
+base_name = "Golden Cross"
+base_type = 8192
+icon = ExtResource("1_wi6x4")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

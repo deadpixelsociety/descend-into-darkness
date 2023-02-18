@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OffhandBase" load_steps=2 format=3 uid="uid://cu5167euvq5kd"]
+
+[ext_resource type="Script" path="res://src/items/bases/offhand/offhand_base.gd" id="1_bsbsn"]
+
+[resource]
+script = ExtResource("1_bsbsn")
+base_name = ""
+base_type = null
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

@@ -20,7 +20,6 @@ func _process(delta: float):
 	_light_colors.clear()
 	_light_radii.clear()
 	var light_sources = get_tree().get_nodes_in_group("light_source")
-	light_sources.reverse()
 	for node in light_sources:
 		var light_source = node as LightSource
 		if not light_source.light_enabled:

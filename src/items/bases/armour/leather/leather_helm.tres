@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ArmourBase" load_steps=3 format=3 uid="uid://cgtl2475rvj6m"]
+
+[ext_resource type="Script" path="res://src/items/bases/armour/armour_base.gd" id="1_qnoc2"]
+[ext_resource type="Texture2D" uid="uid://s64xg2vkasfv" path="res://assets/textures/items/armor_leather_helm.png" id="1_tjrqe"]
+
+[resource]
+script = ExtResource("1_qnoc2")
+armour_type = 1
+base_name = "Leather Helm"
+base_type = 512
+icon = ExtResource("1_tjrqe")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

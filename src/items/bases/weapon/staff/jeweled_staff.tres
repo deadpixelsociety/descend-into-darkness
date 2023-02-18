@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponBase" load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://bb1hxpqg4qyfs" path="res://assets/textures/items/weapon_staff_jeweled.png" id="1_ex56q"]
+[ext_resource type="Texture2D" uid="uid://b5v4qllk4qyff" path="res://assets/textures/projectiles/jeweled_staff.png" id="2_e1vw7"]
+[ext_resource type="Script" path="res://src/items/bases/weapon/weapon_base.gd" id="4_fbign"]
+
+[resource]
+script = ExtResource("4_fbign")
+two_handed = true
+projectile_texture = ExtResource("2_e1vw7")
+base_name = "Jeweled Staff"
+base_type = 16
+icon = ExtResource("1_ex56q")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ArmourBase" load_steps=3 format=3 uid="uid://dqunspt4i81fj"]
+
+[ext_resource type="Texture2D" uid="uid://brxie1scpxcn3" path="res://assets/textures/items/armor_plate_boot.png" id="1_ltbu2"]
+[ext_resource type="Script" path="res://src/items/bases/armour/armour_base.gd" id="2_bgjk6"]
+
+[resource]
+script = ExtResource("2_bgjk6")
+armour_type = 3
+base_name = "Greaves"
+base_type = 256
+icon = ExtResource("1_ltbu2")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

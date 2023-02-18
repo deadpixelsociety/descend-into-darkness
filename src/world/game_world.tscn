@@ -28,7 +28,7 @@ shadow_offset = Vector2(2, 2)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_votr5"]
 shader = ExtResource("5_rrjan")
 shader_parameter/darkness_color = Color(0.0588235, 0, 0.0588235, 1)
-shader_parameter/darkness_level = 0.8
+shader_parameter/darkness_level = 0.0
 shader_parameter/darkness_size = Vector2(768, 600)
 shader_parameter/darkness_offset = Vector2(0, -24)
 shader_parameter/light_count = null

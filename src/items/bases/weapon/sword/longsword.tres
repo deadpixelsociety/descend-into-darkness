@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponBase" load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://h02usbri1qfh" path="res://assets/textures/items/weapon_sword.png" id="1_nljvo"]
+[ext_resource type="Texture2D" uid="uid://bnx4g5bb1td8y" path="res://assets/textures/projectiles/longsword.png" id="2_aj85y"]
+[ext_resource type="Script" path="res://src/items/bases/weapon/weapon_base.gd" id="4_tmsyb"]
+
+[resource]
+script = ExtResource("4_tmsyb")
+two_handed = false
+projectile_texture = ExtResource("2_aj85y")
+base_name = "Longsword"
+base_type = 32
+icon = ExtResource("1_nljvo")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
