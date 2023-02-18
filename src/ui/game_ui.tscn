@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://bi4wxkeblfqfe"]
+
+[ext_resource type="Script" path="res://src/ui/game_ui.gd" id="1_0goof"]
+[ext_resource type="Script" path="res://src/heroes/portraits/portrait_repository.gd" id="2_npxer"]
+[ext_resource type="PackedScene" uid="uid://cunx8gi22pijl" path="res://src/ui/controls/left_panel.tscn" id="3_vc5yy"]
+[ext_resource type="PackedScene" uid="uid://cd6klutlscmx6" path="res://src/ui/controls/right_panel.tscn" id="7_0ff3g"]
+[ext_resource type="Shader" path="res://assets/shaders/darkness.gdshader" id="10_j865p"]
+[ext_resource type="Script" path="res://src/world/world_render_container.gd" id="11_6shnm"]
+[ext_resource type="PackedScene" uid="uid://b0wuora0aveks" path="res://src/world/game_world.tscn" id="12_iyy57"]
+[ext_resource type="PackedScene" uid="uid://ec2vxcj7eb0f" path="res://src/items/item_info_control.tscn" id="13_e2c1g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fir1q"]
+shader = ExtResource("10_j865p")
+shader_parameter/darkness_color = Color(0.0588235, 0, 0.0588235, 1)
+shader_parameter/darkness_level = 0.0
+shader_parameter/darkness_size = Vector2(768, 600)
+shader_parameter/darkness_offset = Vector2(0, -24)
+shader_parameter/light_count = null
+shader_parameter/light_positions = null
+shader_parameter/light_colors = null
+shader_parameter/light_radii = null
+shader_parameter/radius2_multi = 1.5
+shader_parameter/radius3_multi = 1.25
+shader_parameter/radius1_alpha = 0.5
+shader_parameter/radius2_alpha = 0.5
+shader_parameter/radius3_alpha = 0.8
+shader_parameter/pulse_distance = 6.0
+shader_parameter/pulse_speed = 1.5
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_0goof")
+
+[node name="PortraitRepository" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_npxer")
+
+[node name="UIContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPanel" parent="UIContainer" instance=ExtResource("3_vc5yy")]
+layout_mode = 2
+
+[node name="CenterPanel" type="CenterContainer" parent="UIContainer"]
+layout_mode = 2
+
+[node name="WorldRenderContainer" type="SubViewportContainer" parent="UIContainer/CenterPanel"]
+material = SubResource("ShaderMaterial_fir1q")
+custom_minimum_size = Vector2(768, 600)
+layout_mode = 2
+script = ExtResource("11_6shnm")
+
+[node name="WorldRender" type="SubViewport" parent="UIContainer/CenterPanel/WorldRenderContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+physics_object_picking = true
+gui_embed_subwindows = true
+size = Vector2i(768, 600)
+size_2d_override = Vector2i(768, 600)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="GameWorld" parent="UIContainer/CenterPanel/WorldRenderContainer/WorldRender" instance=ExtResource("12_iyy57")]
+
+[node name="RightPanel" parent="UIContainer" instance=ExtResource("7_0ff3g")]
+layout_mode = 2
+
+[node name="ItemInfoControl" parent="UIContainer" instance=ExtResource("13_e2c1g")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2

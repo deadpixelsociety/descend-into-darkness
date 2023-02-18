@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd3jypmidabom"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://src/ui/gauage.gd" id="1_ec2kg"]
+[ext_resource type="Script" path="res://src/ui/controls/gauage.gd" id="1_ec2kg"]
 [ext_resource type="Texture2D" uid="uid://bw0in1m12582a" path="res://assets/textures/ui/gauge_square.png" id="2_8qwsx"]
 [ext_resource type="Texture2D" uid="uid://d3yh5ugh8hsk4" path="res://assets/textures/ui/gauge_square_fill_red.png" id="3_gfbpq"]
 [ext_resource type="Texture2D" uid="uid://jl1wtvd58bdn" path="res://assets/textures/ui/gauge_square_fill_red_edge.png" id="4_fsaf5"]

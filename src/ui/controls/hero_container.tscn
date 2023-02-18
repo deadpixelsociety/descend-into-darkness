@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmpxcxoyc21aq"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://src/ui/hero_container.gd" id="1_le6r3"]
+[ext_resource type="Script" path="res://src/ui/controls/hero_container.gd" id="1_le6r3"]
 [ext_resource type="PackedScene" uid="uid://cjvsxk4maf0qq" path="res://src/heroes/portraits/portrait_container.tscn" id="1_re4i1"]
 [ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="2_yos7n"]
 [ext_resource type="Texture2D" uid="uid://eeonnrq0f443" path="res://assets/textures/ui/crown.png" id="3_nn814"]
-[ext_resource type="PackedScene" uid="uid://dd3jypmidabom" path="res://src/ui/gauage.tscn" id="4_wsod7"]
+[ext_resource type="PackedScene" path="res://src/ui/controls/gauage.tscn" id="4_wsod7"]
 [ext_resource type="FontFile" uid="uid://dr7nd717dtgvt" path="res://assets/fonts/04B_03__.TTF" id="6_f1m12"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_toxgy"]

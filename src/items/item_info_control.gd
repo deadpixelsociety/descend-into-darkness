@@ -1,6 +1,8 @@
 extends FitContainer
 class_name ItemInfoControl
 
+const INFO_MARGIN = 16.0
+
 var item_def: ItemDefinition:
 	set(value):
 		item_def = value
@@ -15,6 +17,10 @@ var ITEM_DESCRIPTION_LABEL: PackedScene = load("res://src/items/item_description
 @onready var _crit_chance: Label = %CritChance
 @onready var _item_type: Label = %ItemType
 @onready var _description_lines: VBoxContainer = %DescriptionLines
+
+
+func set_item_info_position(pos: Vector2):
+	global_position = _get_item_info_position(pos)
 
 
 func _setup_control():
@@ -33,4 +39,14 @@ func _setup_control():
 		label.text = line
 		_description_lines.add_child(label)
 	update_minimum_size()
-		
+
+
+func _get_item_info_position(pos: Vector2) -> Vector2:
+	var info_size = get_combined_minimum_size()
+	var item_pos = pos
+	var offset = Vector2(INFO_MARGIN, -info_size.y * 0.5)
+	item_pos += offset
+	var info_rect = Rect2(item_pos, info_size)
+	
+	return info_rect.position
+

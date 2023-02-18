@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cd6klutlscmx6"]
+
+[node name="RightPanel" type="MarginContainer"]
+size_flags_horizontal = 3

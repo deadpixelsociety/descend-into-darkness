@@ -2,7 +2,6 @@ extends RigidBody2D
 class_name ItemPickup
 
 const SEPARATION_DISTANCE = 64.0
-const INFO_MARGIN = 16.0
 
 @export var item_def: ItemDefinition:
 	set(value):
@@ -13,7 +12,6 @@ var _can_pick_up: bool = true
 var _picked_up: bool = false
 var _spawning: bool = false
 
-@onready var _item_info: ItemInfoControl = $ItemInfoControl
 @onready var _light_source: LightSource = $LightSource
 @onready var _rarity_beam: GPUParticles2D = $Sprite2D/RarityBeam
 @onready var _sprite: Sprite2D = $Sprite2D
@@ -106,34 +104,8 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_mouse_entered() -> void:
-	print("mouse entered")
-	_item_info.item_def = item_def
-	_item_info.global_position = _get_item_info_position()
-	_item_info.show()
-
-
-func _get_item_info_position() -> Vector2:
-	var info_size = _item_info.get_combined_minimum_size()
-	var item_pos = global_position
-	var offset = Vector2(INFO_MARGIN, -info_size.y * 0.5)
-	item_pos += offset
-	var info_rect = Rect2(item_pos, info_size)
-	
-	var camera = get_viewport().get_camera_2d()
-	var viewport_rect = get_viewport_rect() 
-	viewport_rect.size *= Vector2.ONE / camera.zoom
-	var camera_bounds = Rect2(-viewport_rect.size * 0.5, viewport_rect.size)
-	camera_bounds.position -= camera.get_screen_center_position()
-	
-	if info_rect.end.x > camera_bounds.end.x:
-		info_rect.position.x = item_pos.x - info_rect.size.x - (offset.x * 2.0)
-	if info_rect.position.y < camera_bounds.position.y:
-		info_rect.position.y = camera_bounds.position.y + INFO_MARGIN
-	if info_rect.end.y > camera_bounds.end.y:
-		info_rect.position.y = camera_bounds.end.y - info_size.y - INFO_MARGIN
-	
-	return info_rect.position
+	EventBus.item_hovered.emit(item_def)
 
 
 func _on_mouse_exited() -> void:
-	_item_info.hide()
+	EventBus.item_unhovered.emit(item_def)

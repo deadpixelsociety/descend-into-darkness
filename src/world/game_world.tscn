@@ -1,268 +1,31 @@
-[gd_scene load_steps=18 format=3 uid="uid://dm0p683qjjsek"]
+[gd_scene load_steps=5 format=3 uid="uid://b0wuora0aveks"]
 
 [ext_resource type="Script" path="res://src/world/game_world.gd" id="1_o4d0d"]
 [ext_resource type="PackedScene" uid="uid://dnn1mnho2f20u" path="res://src/world/rooms/room.tscn" id="2_6p0iw"]
 [ext_resource type="PackedScene" uid="uid://sve4sca2p3qb" path="res://src/monsters/spawn_area.tscn" id="3_2d08g"]
 [ext_resource type="Script" path="res://src/monsters/monster_spawner.gd" id="4_xnk1j"]
-[ext_resource type="Shader" path="res://assets/shaders/darkness.gdshader" id="5_rrjan"]
-[ext_resource type="Script" path="res://src/heroes/portraits/portrait_repository.gd" id="8_0iqu3"]
-[ext_resource type="Script" path="res://src/world/UI.gd" id="8_owgnw"]
-[ext_resource type="PackedScene" uid="uid://dmpxcxoyc21aq" path="res://src/ui/hero_container.tscn" id="9_evb0h"]
-[ext_resource type="Script" path="res://src/world/world_render_container.gd" id="11_gany3"]
-[ext_resource type="Texture2D" uid="uid://b0ns6d6cbjoxq" path="res://assets/textures/ui/panel_brown.png" id="11_ub3jr"]
-[ext_resource type="Texture2D" uid="uid://xpbs3fr04w1" path="res://assets/textures/ui/button_inventory.png" id="11_vr6ua"]
-[ext_resource type="Texture2D" uid="uid://dbvo3y53y381n" path="res://assets/textures/ui/button_inventory_inverted.png" id="12_a62om"]
-[ext_resource type="PackedScene" uid="uid://cunh2k5mgef8h" path="res://src/ui/inventory_slot.tscn" id="14_kv7xf"]
-[ext_resource type="Script" path="res://src/ui/inventory_slots.gd" id="14_t21ja"]
-[ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="15_xhb24"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_d6tgu"]
-font = ExtResource("15_xhb24")
-font_size = 24
-outline_size = 2
-outline_color = Color(1, 0.733333, 0.2, 1)
-shadow_size = 2
-shadow_color = Color(0, 0, 0, 0.25098)
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_votr5"]
-shader = ExtResource("5_rrjan")
-shader_parameter/darkness_color = Color(0.0588235, 0, 0.0588235, 1)
-shader_parameter/darkness_level = 0.0
-shader_parameter/darkness_size = Vector2(768, 600)
-shader_parameter/darkness_offset = Vector2(0, -24)
-shader_parameter/light_count = null
-shader_parameter/light_positions = null
-shader_parameter/light_colors = null
-shader_parameter/light_radii = null
-shader_parameter/radius2_multi = 1.5
-shader_parameter/radius3_multi = 1.25
-shader_parameter/radius1_alpha = 0.5
-shader_parameter/radius2_alpha = 0.5
-shader_parameter/radius3_alpha = 0.8
-shader_parameter/pulse_distance = 6.0
-shader_parameter/pulse_speed = 1.5
-
-[node name="GameLayer" type="CanvasLayer"]
-follow_viewport_enabled = true
-
-[node name="UILayer" type="CanvasLayer" parent="."]
-layer = 10
-
-[node name="UI" type="Control" parent="UILayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("8_owgnw")
-
-[node name="PortraitRepository" type="Node" parent="UILayer/UI"]
-unique_name_in_owner = true
-script = ExtResource("8_0iqu3")
-
-[node name="UIContainer" type="HBoxContainer" parent="UILayer/UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LeftPanel" type="MarginContainer" parent="UILayer/UI/UIContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/UIContainer/LeftPanel"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="PartyContainer" type="VBoxContainer" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/separation = 16
-
-[node name="HeroContainer1" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/PartyContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("9_evb0h")]
-layout_mode = 2
-portrait_repository = NodePath("../../../../../PortraitRepository")
-
-[node name="HeroContainer2" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/PartyContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("9_evb0h")]
-layout_mode = 2
-portrait_repository = NodePath("../../../../../PortraitRepository")
-hero_index = 1
-
-[node name="HeroContainer3" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/PartyContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("9_evb0h")]
-layout_mode = 2
-portrait_repository = NodePath("../../../../../PortraitRepository")
-hero_index = 2
-
-[node name="HeroContainer4" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/PartyContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("9_evb0h")]
-layout_mode = 2
-portrait_repository = NodePath("../../../../../PortraitRepository")
-hero_index = 3
-
-[node name="ButtonBar" type="HBoxContainer" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer"]
-layout_mode = 2
-
-[node name="InventoryButton" type="TextureButton" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/ButtonBar"]
-unique_name_in_owner = true
-clip_contents = true
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture_normal = ExtResource("11_vr6ua")
-texture_pressed = ExtResource("12_a62om")
-texture_hover = ExtResource("12_a62om")
-
-[node name="InventoryPanel" type="Control" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="NinePatchRect" type="NinePatchRect" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_ub3jr")
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -156.0
-offset_right = 96.0
-offset_bottom = 156.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="InventorySlots" type="GridContainer" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-columns = 3
-script = ExtResource("14_t21ja")
-
-[node name="InventorySlot1" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot2" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot3" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot4" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot5" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot6" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot7" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot8" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot9" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot10" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot11" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot12" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot13" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot14" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="InventorySlot15" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel/MarginContainer/InventorySlots" instance=ExtResource("14_kv7xf")]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/InventoryPanel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -64.5
-offset_top = -12.0
-offset_right = 64.5
-offset_bottom = 14.0
-grow_horizontal = 2
-text = "INVENTORY"
-label_settings = SubResource("LabelSettings_d6tgu")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="UILayer/UI/UIContainer"]
-layout_mode = 2
-
-[node name="WorldRenderContainer" type="SubViewportContainer" parent="UILayer/UI/UIContainer/CenterContainer"]
-material = SubResource("ShaderMaterial_votr5")
-custom_minimum_size = Vector2(768, 600)
-layout_mode = 2
-script = ExtResource("11_gany3")
-
-[node name="WorldRender" type="SubViewport" parent="UILayer/UI/UIContainer/CenterContainer/WorldRenderContainer"]
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-size = Vector2i(768, 600)
-size_2d_override = Vector2i(768, 600)
-size_2d_override_stretch = true
-render_target_update_mode = 4
-
-[node name="GameWorld" type="Node2D" parent="UILayer/UI/UIContainer/CenterContainer/WorldRenderContainer/WorldRender"]
+[node name="GameWorld" type="Node2D"]
 script = ExtResource("1_o4d0d")
 
-[node name="PartyCamera" type="Camera2D" parent="UILayer/UI/UIContainer/CenterContainer/WorldRenderContainer/WorldRender/GameWorld"]
+[node name="PartyCamera" type="Camera2D" parent="."]
 offset = Vector2(0, -24)
 process_callback = 0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="Room" parent="UILayer/UI/UIContainer/CenterContainer/WorldRenderContainer/WorldRender/GameWorld" instance=ExtResource("2_6p0iw")]
+[node name="Room" parent="." instance=ExtResource("2_6p0iw")]
 
-[node name="Entities" type="Node2D" parent="UILayer/UI/UIContainer/CenterContainer/WorldRenderContainer/WorldRender/GameWorld"]
+[node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="SpawnArea" parent="UILayer/UI/UIContainer/CenterContainer/WorldRenderContainer/WorldRender/GameWorld" instance=ExtResource("3_2d08g")]
+[node name="SpawnArea" parent="." instance=ExtResource("3_2d08g")]
 collision_layer = 0
 collision_mask = 0
 monitoring = false
 monitorable = false
 
-[node name="MonsterSpawner" type="Node2D" parent="UILayer/UI/UIContainer/CenterContainer/WorldRenderContainer/WorldRender/GameWorld" node_paths=PackedStringArray("spawn_area", "entities")]
+[node name="MonsterSpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawn_area", "entities")]
 script = ExtResource("4_xnk1j")
 spawn_area = NodePath("../SpawnArea")
 entities = NodePath("../Entities")
-
-[connection signal="pressed" from="UILayer/UI/UIContainer/LeftPanel/VBoxContainer/ButtonBar/InventoryButton" to="UILayer/UI" method="_on_inventory_button_pressed"]
-[connection signal="gui_input" from="UILayer/UI/UIContainer/CenterContainer/WorldRenderContainer" to="UILayer/UI" method="_on_world_render_container_gui_input"]
