@@ -12,5 +12,5 @@ min_value = 0.0
 max_value = 0.0
 modifier_name = "Health Regen"
 description_template = "Regen {op}{value}%%"
-base_modifier = false
+modifier_property = "health_regen"
 submodifiers = null

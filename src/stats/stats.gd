@@ -1,22 +1,6 @@
 extends Node
 class_name Stats
 
-const STAT_MAP = {
-	StatConstants.StatType.HEALTH_MAX: "health_max",
-	StatConstants.StatType.HEALTH_REGEN: "health_regen",
-	StatConstants.StatType.ATTACK_SPEED: "attack_speed",
-	StatConstants.StatType.DAMAGE_MIN: "damage_min",
-	StatConstants.StatType.DAMAGE_MAX: "damage_max",
-	StatConstants.StatType.SPELL_POWER: "spell_power",
-	StatConstants.StatType.CRITICAL_CHANCE: "critical_chance",
-	StatConstants.StatType.CRITICAL_BONUS: "critical_bonus",
-	StatConstants.StatType.AREA_OF_EFFECT: "area_of_effect",
-	StatConstants.StatType.BLOCK: "block",
-	StatConstants.StatType.DEFENSE: "defense",
-	StatConstants.StatType.EVASION: "evasion",
-	StatConstants.StatType.MOVEMENT_SPEED: "movement_speed"
-}
-
 @export_category("Health")
 @export var health_max: float = 0.0
 @export var health_regen: float = 0.0
@@ -34,15 +18,19 @@ const STAT_MAP = {
 @export var evasion: float = 0.0
 @export_category("Misc")
 @export var movement_speed: float = 0.0
+@export_category("On Hit")
+@export var leech: float = 0.0
+@export var burn: float = 0.0
+@export var bleed: float = 0.0
+@export var poison: float = 0.0
+@export var shock: float = 0.0
+@export var chill: float = 0.0
 
 
-# modifiers is assumed to be a Dictionary of StatType/Array[StatModifier] pairs
-func calculate(modifiers: Dictionary):
-	for stat_type in StatConstants.StatType:
-		var idx = StatConstants.StatType[stat_type]
-		if not STAT_MAP.has(idx):
-			continue
-		var property = STAT_MAP[idx]
+func calculate(modifiers: Array[Modifier]):
+	var _modifier_map = _create_modifier_map(modifiers)
+	for property in _modifier_map.keys():
+		var list = Collections.get_dict_array(_modifier_map, property)
 		var value = 0.0
 		var data = {
 			"base": 0.0,
@@ -50,19 +38,31 @@ func calculate(modifiers: Dictionary):
 			"multiplier": 0.0
 		}
 		
-		if modifiers.has(idx):
-			var type_modifiers = modifiers[idx]
-			for modifier in type_modifiers:
+		for modifier in list:
+			if modifier.has_method("accumulate"):
 				modifier.accumulate(data)
-			value += data["base"]
-			value += data["base"] * data["increased"]
-			if data["multiplier"] != 0.0:
-				value *= data["multiplier"]
+		
+		value += data["base"]
+		value += data["base"] * data["increased"]
+		if data["multiplier"] != 0.0:
+			value *= data["multiplier"]
 		
 		set(property, value)
 
 
+func _create_modifier_map(modifiers: Array[Modifier]) -> Dictionary:
+	var map: Dictionary = {}
+	for modifier in modifiers:
+		if Strings.is_null_or_empty(modifier.modifier_property):
+			continue
+		assert(get(modifier.modifier_property) != null)
+		var list = Collections.get_dict_array(map, modifier.modifier_property)
+		list.append(modifier)
+	return map
+
+
 func print_stats():
-	for property in STAT_MAP.values():
-		var value = get(property)
-		print("%s: %.02f" % [property, value])
+	var prop_list = get_property_list()
+	for data in prop_list:
+		if data["type"] == 3:
+			print_debug("%s: %.02f" % [ data["name"], get(data["name"])])

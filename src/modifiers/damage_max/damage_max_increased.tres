@@ -12,5 +12,5 @@ min_value = 0.0
 max_value = 0.0
 modifier_name = "Increased Maximum Damage"
 description_template = "Max Damage {op}{value}"
-base_modifier = false
+modifier_property = "damage_max"
 submodifiers = null

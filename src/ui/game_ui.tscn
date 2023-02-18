@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bi4wxkeblfqfe"]
+[gd_scene load_steps=10 format=3 uid="uid://bovb1ysjwvd0u"]
 
 [ext_resource type="Script" path="res://src/ui/game_ui.gd" id="1_0goof"]
 [ext_resource type="Script" path="res://src/heroes/portraits/portrait_repository.gd" id="2_npxer"]
 [ext_resource type="PackedScene" uid="uid://cunx8gi22pijl" path="res://src/ui/controls/left_panel.tscn" id="3_vc5yy"]
+[ext_resource type="Script" path="res://src/ui/world_render_container.gd" id="5_feqkk"]
 [ext_resource type="PackedScene" uid="uid://cd6klutlscmx6" path="res://src/ui/controls/right_panel.tscn" id="7_0ff3g"]
 [ext_resource type="Shader" path="res://assets/shaders/darkness.gdshader" id="10_j865p"]
-[ext_resource type="Script" path="res://src/world/world_render_container.gd" id="11_6shnm"]
 [ext_resource type="PackedScene" uid="uid://b0wuora0aveks" path="res://src/world/game_world.tscn" id="12_iyy57"]
 [ext_resource type="PackedScene" uid="uid://ec2vxcj7eb0f" path="res://src/items/item_info_control.tscn" id="13_e2c1g"]
 
@@ -59,7 +59,7 @@ layout_mode = 2
 material = SubResource("ShaderMaterial_fir1q")
 custom_minimum_size = Vector2(768, 600)
 layout_mode = 2
-script = ExtResource("11_6shnm")
+script = ExtResource("5_feqkk")
 
 [node name="WorldRender" type="SubViewport" parent="UIContainer/CenterPanel/WorldRenderContainer"]
 unique_name_in_owner = true

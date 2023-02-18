@@ -12,5 +12,5 @@ min_value = 0.0
 max_value = 0.0
 modifier_name = "More Minimum Damage"
 description_template = "Min Damage {op}{value}"
-base_modifier = false
+modifier_property = "damage_min"
 submodifiers = null

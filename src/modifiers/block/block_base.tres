@@ -12,5 +12,5 @@ min_value = 0.0
 max_value = 0.0
 modifier_name = "Block"
 description_template = "Block {op}{value}"
-base_modifier = false
+modifier_property = "block"
 submodifiers = null

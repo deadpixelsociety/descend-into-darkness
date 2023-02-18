@@ -12,5 +12,5 @@ min_value = 0.0
 max_value = 0.0
 modifier_name = "Increased Attack Speed"
 description_template = "Attack Speed {plus}{value}"
-base_modifier = false
+modifier_property = "attack_speed"
 submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

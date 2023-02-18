@@ -6,20 +6,20 @@
 [ext_resource type="SpriteFrames" uid="uid://bxtkn2ffe5frl" path="res://assets/animations/barbarian.tres" id="2_60ie4"]
 [ext_resource type="Resource" uid="uid://bw2b25sg47tkm" path="res://src/passives/fervor/fervor.tres" id="2_miisi"]
 
-[sub_resource type="Resource" id="Resource_n6cs2"]
+[sub_resource type="Resource" id="Resource_gopu3"]
 script = ExtResource("1_dilvr")
-stat_type = 2
+stat_type = 0
 value_type = 0
 modifier_type = 0
 stat_category = 0
-min_value = 8.0
-max_value = 8.0
-modifier_name = "Maximum Health Per Level"
-description_template = "{plus}{value} to maximum health per level"
-base_modifier = false
+min_value = 10.0
+max_value = 10.0
+modifier_name = "Maximum Health"
+description_template = "HP {op}{value}"
+modifier_property = "health_max"
 submodifiers = null
 
-[sub_resource type="Resource" id="Resource_7k2ji"]
+[sub_resource type="Resource" id="Resource_sjebp"]
 script = ExtResource("1_dilvr")
 stat_type = 12
 value_type = 0
@@ -28,8 +28,8 @@ stat_category = 3
 min_value = 100.0
 max_value = 100.0
 modifier_name = "Movement Speed"
-description_template = "{plus}{value} to movement speed"
-base_modifier = false
+description_template = "Movement Speed {op}{value}%%"
+modifier_property = "movement_speed"
 submodifiers = null
 
 [resource]
@@ -40,4 +40,4 @@ attack = ExtResource("1_qga1q")
 passive = ExtResource("2_miisi")
 sprite_frames = ExtResource("2_60ie4")
 weapon_type = 1
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_n6cs2"), SubResource("Resource_7k2ji")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_gopu3"), SubResource("Resource_sjebp")])

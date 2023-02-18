@@ -12,5 +12,5 @@ min_value = 0.0
 max_value = 0.0
 modifier_name = "Attack Speed"
 description_template = "{op}{value} attacks per second"
-base_modifier = false
+modifier_property = "attack_speed"
 submodifiers = null

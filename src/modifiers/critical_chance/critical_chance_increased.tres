@@ -12,5 +12,5 @@ min_value = 0.0
 max_value = 0.0
 modifier_name = "Increased Critical Strike"
 description_template = "Crit Chance {op}{value}"
-base_modifier = false
+modifier_property = "critical_chance"
 submodifiers = null

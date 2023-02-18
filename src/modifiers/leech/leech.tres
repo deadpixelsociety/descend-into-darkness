@@ -14,4 +14,5 @@ on_hit_application = 2
 on_hit_stacks = 0
 modifier_name = "Leech"
 description_template = "Leech {op}{value}%%"
+modifier_property = "leech"
 submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

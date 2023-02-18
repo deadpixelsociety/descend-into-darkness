@@ -203,7 +203,8 @@ func _on_health_changed():
 
 func _recalculate_stats():
 	if _stats:
-		_stats.calculate(_stat_modifiers)
+		_stats.calculate(_modifiers)
+		#_stats.print_stats()
 	_calculate_health()
 	_update_attack_timer()
 

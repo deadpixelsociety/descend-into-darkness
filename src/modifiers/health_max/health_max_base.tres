@@ -12,5 +12,5 @@ min_value = 0.0
 max_value = 0.0
 modifier_name = "Maximum Health"
 description_template = "HP {op}{value}"
-base_modifier = false
+modifier_property = "health_max"
 submodifiers = null

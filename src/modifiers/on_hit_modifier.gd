@@ -32,6 +32,10 @@ enum OnHitApplication {
 @export var on_hit_stacks: int
 
 
+func accumulate(data: Dictionary):
+	data["base"] += on_hit_value
+
+
 func can_apply_effect(target: Node2D) -> bool:
 	match on_hit_application:
 		OnHitModifier.OnHitApplication.STACK:

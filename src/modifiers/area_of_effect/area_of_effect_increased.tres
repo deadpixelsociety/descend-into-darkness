@@ -12,5 +12,5 @@ min_value = 0.0
 max_value = 0.0
 modifier_name = "Increased Area of Effect"
 description_template = "AoE {op}{value}"
-base_modifier = false
+modifier_property = "area_of_effect"
 submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

@@ -12,5 +12,5 @@ min_value = 0.0
 max_value = 0.0
 modifier_name = "Increased Critical Bonus"
 description_template = "Crit Bonus {op}{value}"
-base_modifier = false
+modifier_property = "critical_bonus"
 submodifiers = null

@@ -4,20 +4,20 @@
 [ext_resource type="Script" path="res://src/heroes/classes/hero_class.gd" id="1_h1fqf"]
 [ext_resource type="SpriteFrames" uid="uid://yib6e20ffecs" path="res://assets/animations/wizard.tres" id="2_8eq4v"]
 
-[sub_resource type="Resource" id="Resource_gxuat"]
+[sub_resource type="Resource" id="Resource_brp4r"]
 script = ExtResource("1_1st7t")
-stat_type = 2
+stat_type = 0
 value_type = 0
 modifier_type = 0
 stat_category = 0
 min_value = 4.0
 max_value = 4.0
-modifier_name = "Maximum Health Per Level"
-description_template = "{plus}{value} to maximum health per level"
-base_modifier = false
+modifier_name = "Maximum Health"
+description_template = "HP {op}{value}"
+modifier_property = "health_max"
 submodifiers = null
 
-[sub_resource type="Resource" id="Resource_ad4w7"]
+[sub_resource type="Resource" id="Resource_wmq6i"]
 script = ExtResource("1_1st7t")
 stat_type = 12
 value_type = 0
@@ -26,8 +26,8 @@ stat_category = 3
 min_value = 80.0
 max_value = 80.0
 modifier_name = "Movement Speed"
-description_template = "{plus}{value} to movement speed"
-base_modifier = false
+description_template = "Movement Speed {op}{value}%%"
+modifier_property = "movement_speed"
 submodifiers = null
 
 [resource]
@@ -36,4 +36,4 @@ hero_name = "Wizard"
 description = "The wizard weaves arcane forces to rain destruction upon their enemies."
 sprite_frames = ExtResource("2_8eq4v")
 weapon_type = 80
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_gxuat"), SubResource("Resource_ad4w7")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_brp4r"), SubResource("Resource_wmq6i")])

@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=4 format=3 uid="uid://bi2b3v2cbjpf"]
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://bi2b3v2cbjpf"]
 
 [ext_resource type="PackedScene" uid="uid://cve6wyy5jhf6k" path="res://src/attacks/axe_toss/axe_toss.tscn" id="1_0l23d"]
 [ext_resource type="Script" path="res://src/attacks/attack.gd" id="1_av7pm"]
-[ext_resource type="Resource" uid="uid://ymi5dkut75nk" path="res://src/modifiers/leech/leech.tres" id="2_gvjax"]
 
 [resource]
 script = ExtResource("1_av7pm")
 attack_name = "Axe Toss"
 description = "Hurls the wielder's axe at the nearest target."
 applied_attack = ExtResource("1_0l23d")
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([ExtResource("2_gvjax")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
