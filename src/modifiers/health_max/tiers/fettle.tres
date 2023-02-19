@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ModifierTier" load_steps=4 format=3 uid="uid://dtq51nguxc2p6"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_e8voi"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="2_dsaq0"]
+
+[sub_resource type="Resource" id="Resource_bront"]
+script = ExtResource("1_e8voi")
+stat_type = 0
+value_type = 0
+modifier_type = 0
+stat_category = 0
+min_value = 45.0
+max_value = 60.0
+modifier_name = "Maximum Health"
+description_template = "HP {op}{value}"
+modifier_property = "health_max"
+submodifiers = null
+
+[resource]
+script = ExtResource("2_dsaq0")
+tier_name = "Fettle"
+tier_group = "HealthMax"
+affix_type = 0
+display_priority = 1
+item_type = 16256
+item_level_min = 20
+modifier = SubResource("Resource_bront")

@@ -11,6 +11,6 @@ stat_category = 2
 min_value = 0.0
 max_value = 0.0
 modifier_name = "Defense"
-description_template = "Defense {op}{value}%%"
+description_template = "Defense {op}{value}%"
 modifier_property = "defense"
 submodifiers = null

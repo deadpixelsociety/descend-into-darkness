@@ -1,11 +1,61 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=10 format=3 uid="uid://b0dqed0761j3i"]
 
-[ext_resource type="Script" path="res://src/ui/controls/hero_container.gd" id="1_le6r3"]
+[ext_resource type="Texture2D" uid="uid://3akvy4urhekk" path="res://assets/textures/ui/panel_gray2.png" id="1_1s61j"]
 [ext_resource type="PackedScene" uid="uid://cjvsxk4maf0qq" path="res://src/heroes/portraits/portrait_container.tscn" id="1_re4i1"]
 [ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="2_yos7n"]
 [ext_resource type="Texture2D" uid="uid://eeonnrq0f443" path="res://assets/textures/ui/crown.png" id="3_nn814"]
 [ext_resource type="PackedScene" path="res://src/ui/controls/gauage.tscn" id="4_wsod7"]
 [ext_resource type="FontFile" uid="uid://dr7nd717dtgvt" path="res://assets/fonts/04B_03__.TTF" id="6_f1m12"]
+
+[sub_resource type="GDScript" id="GDScript_hoj20"]
+script/source = "extends Control
+class_name HeroContainer
+
+@export var portrait_repository: PortraitRepository
+@export var hero_index: int
+
+var _hero: Hero = null
+
+@onready var _portrait_container: PortraintContainer = %PortraitContainer
+@onready var _hero_name: Label = %HeroName
+@onready var _crown: TextureRect = %Crown
+@onready var _health_bar: Gauge = %HealthBar
+@onready var _health_value: Label = %HealthValue
+
+
+func _ready():
+	EventBus.hero_health_changed.connect(_on_hero_health_changed)
+	Party.hero_data_changed.connect(_on_hero_data_changed)
+	if _portrait_container:
+		_portrait_container.portrait_repository = portrait_repository
+	_hero = Party.get_hero(hero_index)
+	_setup_hero()
+
+
+func _setup_hero():
+	if not is_inside_tree() or not _hero:
+		return
+	_portrait_container.set_portrait_data(Party.get_portrait(_hero))
+	_hero_name.text = Party.get_hero_name(_hero)
+	_crown.visible = Party.is_leader(_hero)
+
+
+func _on_hero_health_changed(hero: Hero, max: float, current: float):
+	if hero != _hero:
+		return
+	var percent = 0.0
+	if max != 0.0:
+		percent = clampf(current / max, 0.0, 1.0)
+	_health_bar.tween_value(percent, 0.25)
+	_health_value.text = \"%d/%d\" % [ current, max ]
+
+
+func _on_hero_data_changed(hero: Hero, index: int):
+	if index != hero_index:
+		return
+	_hero = hero
+	_setup_hero()
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_toxgy"]
 font = ExtResource("2_yos7n")
@@ -21,33 +71,64 @@ outline_color = Color(1, 0.0352941, 0.12549, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.25098)
 
-[node name="HeroContainer" type="HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-theme_override_constants/separation = 8
-script = ExtResource("1_le6r3")
+[node name="HeroContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 216.0
+offset_bottom = 64.0
+script = SubResource("GDScript_hoj20")
 
-[node name="PortraitContainer" parent="." node_paths=PackedStringArray("portrait_repository") instance=ExtResource("1_re4i1")]
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_1s61j")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PortraitContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("1_re4i1")]
 unique_name_in_owner = true
 layout_mode = 2
 portrait_repository = NodePath("../../../../PortraitRepository")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="HeroName" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="HeroName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Hero 1"
 label_settings = SubResource("LabelSettings_toxgy")
 
-[node name="Crown" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+[node name="Crown" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(18, 18)
@@ -55,12 +136,12 @@ layout_mode = 2
 texture = ExtResource("3_nn814")
 stretch_mode = 5
 
-[node name="HealthBar" parent="VBoxContainer" instance=ExtResource("4_wsod7")]
+[node name="HealthBar" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_wsod7")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 12)
 layout_mode = 2
 
-[node name="HealthValue" type="Label" parent="VBoxContainer/HealthBar"]
+[node name="HealthValue" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HealthBar"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8

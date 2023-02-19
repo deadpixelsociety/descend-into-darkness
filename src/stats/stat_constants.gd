@@ -44,7 +44,7 @@ enum ModifierType {
 
 const STAT_ICONS = {
 	StatType.HEALTH_MAX : "res://assets/textures/stats/health_max.png",
-	StatType.HEALTH_REGEN : "",
+	StatType.HEALTH_REGEN : "res://assets/textures/stats/health_regen.png",
 	StatType.ATTACK_SPEED : "",
 	StatType.DAMAGE : "",
 	StatType.DAMAGE_MIN : "",

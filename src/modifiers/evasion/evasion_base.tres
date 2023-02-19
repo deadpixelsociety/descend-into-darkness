@@ -11,6 +11,6 @@ stat_category = 2
 min_value = 0.0
 max_value = 0.0
 modifier_name = "Evasion"
-description_template = "Evasion {op}{value}%%"
+description_template = "Evasion {op}{value}%"
 modifier_property = "evasion"
 submodifiers = null

@@ -11,6 +11,6 @@ stat_category = 1
 min_value = 0.0
 max_value = 0.0
 modifier_name = "Critical Chance"
-description_template = "Crit Chance {op}{value}"
+description_template = "Crit Chance {op}{value}%"
 modifier_property = "critical_chance"
 submodifiers = null

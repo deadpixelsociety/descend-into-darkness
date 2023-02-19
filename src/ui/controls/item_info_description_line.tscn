@@ -5,20 +5,28 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_m02cl"]
 font = ExtResource("1_6pco2")
-font_size = 10
+font_size = 14
 
 [node name="ItemInfoDescriptionLine" type="HBoxContainer"]
 offset_right = 73.0
-offset_bottom = 16.0
+offset_bottom = 24.0
 script = ExtResource("1_b5h1e")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(16, 16)
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 5
 
-[node name="ItemDescription" type="Label" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemDescription" type="Label" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 label_settings = SubResource("LabelSettings_m02cl")
-horizontal_alignment = 1
 vertical_alignment = 2

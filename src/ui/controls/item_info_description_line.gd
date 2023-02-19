@@ -1,8 +1,8 @@
 extends HBoxContainer
 class_name ItemInfoDescriptionLine
 
-@onready var _icon: TextureRect = $TextureRect
-@onready var _text: Label = $ItemDescription
+@onready var _icon: TextureRect = %Icon
+@onready var _text: Label = %ItemDescription
 
 
 func set_description(line: ItemDescriptionLine):

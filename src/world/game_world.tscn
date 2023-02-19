@@ -9,7 +9,7 @@
 script = ExtResource("1_o4d0d")
 
 [node name="PartyCamera" type="Camera2D" parent="."]
-offset = Vector2(0, -24)
+offset = Vector2(0, -12)
 process_callback = 0
 editor_draw_limits = true
 editor_draw_drag_margin = true

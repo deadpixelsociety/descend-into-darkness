@@ -11,6 +11,6 @@ stat_category = 3
 min_value = 0.0
 max_value = 0.0
 modifier_name = "Movement Speed"
-description_template = "Movement Speed {op}{value}%%"
+description_template = "Movement Speed {op}{value}%"
 modifier_property = "movement_speed"
 submodifiers = null

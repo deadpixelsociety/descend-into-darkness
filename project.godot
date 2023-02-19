@@ -25,10 +25,10 @@ GlobalEffects="*res://src/fx/global_effects.gd"
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=672
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
@@ -77,6 +77,4 @@ move_down={
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.0392157, 0.0196078, 0.0392157, 1)
-2d/snap/snap_2d_transforms_to_pixel=true
-2d/snap/snap_2d_vertices_to_pixel=true
 textures/canvas_textures/default_texture_filter=0

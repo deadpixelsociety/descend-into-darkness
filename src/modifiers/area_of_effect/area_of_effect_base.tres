@@ -11,6 +11,6 @@ stat_category = 1
 min_value = 0.0
 max_value = 0.0
 modifier_name = "Area of Effect"
-description_template = "AoE {op}{value}%%"
+description_template = "AoE {op}{value}%"
 modifier_property = "area_of_effect"
 submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

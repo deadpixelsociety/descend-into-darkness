@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 class_name LeftPanel
 
 @onready var _hero_container_1: HeroContainer = %HeroContainer1

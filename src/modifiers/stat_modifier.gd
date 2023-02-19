@@ -8,6 +8,7 @@ class_name StatModifier
 @export var stat_category: StatConstants.StatCategory
 @export var min_value: float = 0.0
 @export var max_value: float = 0.0
+@export var rounded: bool = true
 
 var value: float = 0.0
 
@@ -47,11 +48,12 @@ func get_description(override_value: float = 0.0) -> String:
 
 
 func _get_value_str(template_value: float) -> String:
+	var prefix = "%.f" if rounded else "%0.2f"
 	match value_type:
 		StatConstants.ValueType.PERCENT:
-			return "%.f%%" % abs(template_value)
+			return (prefix + "%%") % abs(template_value)
 		_:
-			return "%.f" % abs(template_value)
+			return prefix % abs(template_value)
 
 
 func _get_template_data(template_value: float) -> Dictionary:

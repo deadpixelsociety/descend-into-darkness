@@ -10,6 +10,7 @@ modifier_type = 1
 stat_category = 0
 min_value = 0.0
 max_value = 0.0
+rounded = false
 modifier_name = "Increased Health Regen"
 description_template = "Regen {op}{value}"
 modifier_property = "health_regen"

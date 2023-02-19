@@ -11,6 +11,6 @@ stat_category = 1
 min_value = 0.0
 max_value = 0.0
 modifier_name = "Critical Bonus"
-description_template = "Crit Bonus {op}{value}%%"
+description_template = "Crit Bonus {op}{value}%"
 modifier_property = "critical_bonus"
 submodifiers = null
