@@ -4,7 +4,8 @@ enum StatCategory {
 	HEALTH,
 	OFFENSE,
 	DEFENSE,
-	MISC
+	MISC,
+	MANA
 }
 
 enum StatType {
@@ -28,7 +29,8 @@ enum StatType {
 	BLEED,
 	POISON,
 	SHOCK,
-	CHILL
+	CHILL,
+	MANA_MAX
 }
 
 enum ValueType {
@@ -62,5 +64,6 @@ const STAT_ICONS = {
 	StatType.BLEED : "",
 	StatType.POISON : "",
 	StatType.SHOCK : "",
-	StatType.CHILL : ""
+	StatType.CHILL : "",
+	StatType.MANA_MAX : "res://assets/textures/stats/mana_max.png"
 }

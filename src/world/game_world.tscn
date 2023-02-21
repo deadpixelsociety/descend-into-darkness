@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0wuora0aveks"]
+[gd_scene load_steps=6 format=3 uid="uid://b0wuora0aveks"]
 
 [ext_resource type="Script" path="res://src/world/game_world.gd" id="1_o4d0d"]
 [ext_resource type="PackedScene" uid="uid://dnn1mnho2f20u" path="res://src/world/rooms/room.tscn" id="2_6p0iw"]
+[ext_resource type="Script" path="res://src/world/party_camera.gd" id="2_n2ewl"]
 [ext_resource type="PackedScene" uid="uid://sve4sca2p3qb" path="res://src/monsters/spawn_area.tscn" id="3_2d08g"]
 [ext_resource type="Script" path="res://src/monsters/monster_spawner.gd" id="4_xnk1j"]
 
@@ -13,6 +14,7 @@ offset = Vector2(0, -12)
 process_callback = 0
 editor_draw_limits = true
 editor_draw_drag_margin = true
+script = ExtResource("2_n2ewl")
 
 [node name="Room" parent="." instance=ExtResource("2_6p0iw")]
 

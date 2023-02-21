@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ModifierTier" load_steps=4 format=3 uid="uid://cfd2itqs8dfhe"]
+
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="1_776lk"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_uljud"]
+
+[sub_resource type="Resource" id="Resource_6wykb"]
+script = ExtResource("1_uljud")
+stat_type = 21
+value_type = 0
+modifier_type = 0
+stat_category = 4
+min_value = 2.0
+max_value = 4.0
+rounded = true
+modifier_name = "Maximum Mana"
+description_template = "Mana {op}{value}"
+modifier_property = "mana_max"
+submodifiers = null
+
+[resource]
+script = ExtResource("1_776lk")
+tier_name = "Beryl"
+tier_group = "ManaMax"
+affix_type = 0
+display_priority = 2
+item_type = 11856
+item_level_min = 1
+modifier = SubResource("Resource_6wykb")

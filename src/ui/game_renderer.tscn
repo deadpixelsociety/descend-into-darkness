@@ -1,35 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdgp0gfve6h0t"]
+[gd_scene load_steps=5 format=3 uid="uid://cfpf5v7aee8lx"]
 
-[ext_resource type="PackedScene" uid="uid://d4m58ttixuny2" path="res://src/ui/game_ui.tscn" id="1_6unit"]
-
-[sub_resource type="GDScript" id="GDScript_d8b87"]
-script/source = "extends SubViewportContainer
-class_name IntegerScaledViewportContainer
-
-@export var base_resolution: Vector2
-
-
-func _ready():
-	get_tree().root.size_changed.connect(_on_root_size_changed)
-	_update_resolution()
-
-
-func _update_resolution():
-	var video_mode: Vector2 = DisplayServer.window_get_size()
-
-	var x = float(video_mode.x) / base_resolution.x
-	var y = float(video_mode.y) / base_resolution.y
-	var _scale := int(max(floor(min(x, y)), 1))
-	print(\"_scale: \", _scale)
-	var screen_size: Vector2 = base_resolution
-	var viewport_size: Vector2 = screen_size * _scale
-	custom_minimum_size = viewport_size
-	update_minimum_size()
-
-
-func _on_root_size_changed():
-	_update_resolution()
-"
+[ext_resource type="PackedScene" uid="uid://cw8i66c6unms0" path="res://src/world/game_container.tscn" id="1_am68e"]
+[ext_resource type="Script" path="res://src/ui/game_ui.gd" id="1_ulat0"]
+[ext_resource type="PackedScene" uid="uid://qldkd3vun555" path="res://src/ui/controls/game_right_panel.tscn" id="2_3gxm8"]
+[ext_resource type="PackedScene" uid="uid://b236s541hnihu" path="res://src/ui/controls/item_info_control.tscn" id="4_ygy8p"]
 
 [node name="GameRenderer" type="CenterContainer"]
 anchors_preset = 15
@@ -37,19 +11,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="IntegerScaledViewportContainer" type="SubViewportContainer" parent="."]
+[node name="GameUI" type="HBoxContainer" parent="."]
 layout_mode = 2
-stretch = true
-script = SubResource("GDScript_d8b87")
-base_resolution = Vector2(1280, 720)
+script = ExtResource("1_ulat0")
 
-[node name="SubViewport" type="SubViewport" parent="IntegerScaledViewportContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="GameUI"]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GameUI/CenterContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="GameUI/CenterContainer/SubViewportContainer"]
+transparent_bg = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(2, 2)
+physics_object_picking = true
+size = Vector2i(776, 540)
 render_target_update_mode = 4
 
-[node name="GameUI" parent="IntegerScaledViewportContainer/SubViewport" instance=ExtResource("1_6unit")]
+[node name="GameContainer" parent="GameUI/CenterContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_am68e")]
+unique_name_in_owner = true
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="GameRightPanel" parent="GameUI/MarginContainer" instance=ExtResource("2_3gxm8")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(168, 526)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ItemInfoControl" parent="." instance=ExtResource("4_ygy8p")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2

@@ -1,161 +1,285 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0dqed0761j3i"]
+[gd_scene load_steps=25 format=3 uid="uid://bc0kdh47uxcii"]
 
-[ext_resource type="Texture2D" uid="uid://3akvy4urhekk" path="res://assets/textures/ui/panel_gray2.png" id="1_1s61j"]
+[ext_resource type="Texture2D" uid="uid://8lwtvg15pa5k" path="res://assets/textures/ui/frame_metal.png" id="1_csyur"]
 [ext_resource type="PackedScene" uid="uid://cjvsxk4maf0qq" path="res://src/heroes/portraits/portrait_container.tscn" id="1_re4i1"]
+[ext_resource type="Script" path="res://src/ui/controls/hero_container.gd" id="1_umtnh"]
 [ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="2_yos7n"]
-[ext_resource type="Texture2D" uid="uid://eeonnrq0f443" path="res://assets/textures/ui/crown.png" id="3_nn814"]
-[ext_resource type="PackedScene" path="res://src/ui/controls/gauage.tscn" id="4_wsod7"]
-[ext_resource type="FontFile" uid="uid://dr7nd717dtgvt" path="res://assets/fonts/04B_03__.TTF" id="6_f1m12"]
+[ext_resource type="Texture2D" uid="uid://bqqrulyl7tk6g" path="res://assets/textures/ui/health_vertical.png" id="4_0nuif"]
+[ext_resource type="PackedScene" uid="uid://bpj1kpktkxo02" path="res://src/ui/controls/resource_vial.tscn" id="4_6q6tu"]
+[ext_resource type="Texture2D" uid="uid://beua7w4ffth46" path="res://assets/textures/ui/mana_vertical.png" id="5_qi5vw"]
+[ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="7_e5tv8"]
+[ext_resource type="Texture2D" uid="uid://d1pnpvfcmhmsg" path="res://assets/textures/ui/hero_divider.png" id="8_inr8o"]
+[ext_resource type="Texture2D" uid="uid://bvqxjsaelvg1w" path="res://assets/textures/ui/box_tiny.png" id="9_rp7fb"]
+[ext_resource type="Texture2D" uid="uid://2ns6o8kla76k" path="res://assets/textures/ui/status_bleed.png" id="10_5os4t"]
+[ext_resource type="Texture2D" uid="uid://ovr7yruqd3s2" path="res://assets/textures/ui/status_burn.png" id="11_1nlle"]
+[ext_resource type="Texture2D" uid="uid://di7icv7vjmjpk" path="res://assets/textures/ui/status_poison.png" id="12_dp7gn"]
+[ext_resource type="Texture2D" uid="uid://ck5axackiw86r" path="res://assets/textures/ui/status_shock.png" id="13_jp5wt"]
+[ext_resource type="Texture2D" uid="uid://c066efl2ijpjg" path="res://assets/textures/ui/status_chill.png" id="14_6y4ti"]
 
-[sub_resource type="GDScript" id="GDScript_hoj20"]
-script/source = "extends Control
-class_name HeroContainer
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vp378"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+texture = ExtResource("1_csyur")
+texture_margin_left = 22.0
+texture_margin_top = 16.0
+texture_margin_right = 22.0
+texture_margin_bottom = 16.0
 
-@export var portrait_repository: PortraitRepository
-@export var hero_index: int
-
-var _hero: Hero = null
-
-@onready var _portrait_container: PortraintContainer = %PortraitContainer
-@onready var _hero_name: Label = %HeroName
-@onready var _crown: TextureRect = %Crown
-@onready var _health_bar: Gauge = %HealthBar
-@onready var _health_value: Label = %HealthValue
-
-
-func _ready():
-	EventBus.hero_health_changed.connect(_on_hero_health_changed)
-	Party.hero_data_changed.connect(_on_hero_data_changed)
-	if _portrait_container:
-		_portrait_container.portrait_repository = portrait_repository
-	_hero = Party.get_hero(hero_index)
-	_setup_hero()
-
-
-func _setup_hero():
-	if not is_inside_tree() or not _hero:
-		return
-	_portrait_container.set_portrait_data(Party.get_portrait(_hero))
-	_hero_name.text = Party.get_hero_name(_hero)
-	_crown.visible = Party.is_leader(_hero)
-
-
-func _on_hero_health_changed(hero: Hero, max: float, current: float):
-	if hero != _hero:
-		return
-	var percent = 0.0
-	if max != 0.0:
-		percent = clampf(current / max, 0.0, 1.0)
-	_health_bar.tween_value(percent, 0.25)
-	_health_value.text = \"%d/%d\" % [ current, max ]
-
-
-func _on_hero_data_changed(hero: Hero, index: int):
-	if index != hero_index:
-		return
-	_hero = hero
-	_setup_hero()
-"
-
-[sub_resource type="LabelSettings" id="LabelSettings_toxgy"]
+[sub_resource type="LabelSettings" id="LabelSettings_xvgv1"]
 font = ExtResource("2_yos7n")
-shadow_size = 4
-shadow_color = Color(1, 1, 1, 0.25098)
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="LabelSettings" id="LabelSettings_qhk6o"]
-font = ExtResource("6_f1m12")
-font_size = 18
-outline_size = 1
-outline_color = Color(1, 0.0352941, 0.12549, 1)
+font_size = 12
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.44, 0.429, 0.396, 1)
 shadow_size = 2
-shadow_color = Color(0, 0, 0, 0.25098)
+shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
 
-[node name="HeroContainer" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 216.0
-offset_bottom = 64.0
-script = SubResource("GDScript_hoj20")
+[sub_resource type="LabelSettings" id="LabelSettings_4bnwy"]
+resource_local_to_scene = true
+font = ExtResource("7_e5tv8")
+font_size = 6
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.811765, 0.337255, 0.219608, 1)
+shadow_size = 2
+shadow_color = Color(0.811765, 0.337255, 0.219608, 0.25098)
 
-[node name="Background" type="NinePatchRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("1_1s61j")
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
+[sub_resource type="LabelSettings" id="LabelSettings_et4tr"]
+font = ExtResource("7_e5tv8")
+font_size = 6
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.44, 0.429, 0.396, 1)
+shadow_size = 2
+shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[sub_resource type="LabelSettings" id="LabelSettings_rvesn"]
+font = ExtResource("7_e5tv8")
+font_size = 6
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.682353, 0.443137, 0, 1)
+shadow_size = 2
+shadow_color = Color(0.682353, 0.443137, 0, 0.25098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s5d1w"]
+font = ExtResource("7_e5tv8")
+font_size = 7
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.858824, 0.0784314, 0.168627, 1)
+shadow_size = 2
+shadow_color = Color(0.858824, 0.0784314, 0.168627, 0.25098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s3uvy"]
+font = ExtResource("7_e5tv8")
+font_size = 7
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.345098, 0.392157, 0.901961, 1)
+shadow_size = 2
+shadow_color = Color(0.345098, 0.392157, 0.901961, 0.25098)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2p7h"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+texture = ExtResource("9_rp7fb")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tmx7c"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+texture = ExtResource("9_rp7fb")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[node name="HeroContainer" type="HBoxContainer"]
+theme_override_constants/separation = 2
+script = ExtResource("1_umtnh")
+
+[node name="PortraitFrame" type="PanelContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_vp378")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="PortraitContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("1_re4i1")]
+[node name="Portrait" parent="PortraitFrame" instance=ExtResource("1_re4i1")]
 unique_name_in_owner = true
 layout_mode = 2
-portrait_repository = NodePath("../../../../PortraitRepository")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="ResourceContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="HeroName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HealthVial" parent="ResourceContainer" instance=ExtResource("4_6q6tu")]
 unique_name_in_owner = true
+layout_mode = 2
+resource_bar_texture = ExtResource("4_0nuif")
+resource_value = 0.0
+
+[node name="ManaVial" parent="ResourceContainer" instance=ExtResource("4_6q6tu")]
+unique_name_in_owner = true
+layout_mode = 2
+resource_bar_texture = ExtResource("5_qi5vw")
+resource_value = 0.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Hero 1"
-label_settings = SubResource("LabelSettings_toxgy")
+theme_override_constants/separation = 0
 
-[node name="Crown" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HeroName" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
-texture = ExtResource("3_nn814")
-stretch_mode = 5
-
-[node name="HealthBar" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_wsod7")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 12)
-layout_mode = 2
-
-[node name="HealthValue" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HealthBar"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -8.0
-offset_right = 24.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "0/0"
-label_settings = SubResource("LabelSettings_qhk6o")
+text = "deadpixelsociety"
+label_settings = SubResource("LabelSettings_xvgv1")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HeroInfo" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="HeroClass" type="Label" parent="VBoxContainer/HeroInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "BARB"
+label_settings = SubResource("LabelSettings_4bnwy")
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="VBoxContainer/HeroInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lv. 20"
+label_settings = SubResource("LabelSettings_et4tr")
+vertical_alignment = 1
+
+[node name="Leader" type="Label" parent="VBoxContainer/HeroInfo"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+text = "Leader"
+label_settings = SubResource("LabelSettings_rvesn")
+vertical_alignment = 1
+
+[node name="Divider" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+texture = ExtResource("8_inr8o")
+
+[node name="ConditionContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Health" type="Label" parent="VBoxContainer/ConditionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "999/999"
+label_settings = SubResource("LabelSettings_s5d1w")
+vertical_alignment = 1
+
+[node name="Mana" type="Label" parent="VBoxContainer/ConditionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99/99"
+label_settings = SubResource("LabelSettings_s3uvy")
+vertical_alignment = 1
+
+[node name="StatusContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BleedStatus" type="PanelContainer" parent="VBoxContainer/StatusContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s2p7h")
+
+[node name="StatusIcon" type="TextureRect" parent="VBoxContainer/StatusContainer/BleedStatus"]
+modulate = Color(1, 0.1, 0.205, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_5os4t")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BurnStatus" type="PanelContainer" parent="VBoxContainer/StatusContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tmx7c")
+
+[node name="StatusIcon" type="TextureRect" parent="VBoxContainer/StatusContainer/BurnStatus"]
+modulate = Color(1, 0.28, 0.1, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_1nlle")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PoisonStatus" type="PanelContainer" parent="VBoxContainer/StatusContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tmx7c")
+
+[node name="StatusIcon" type="TextureRect" parent="VBoxContainer/StatusContainer/PoisonStatus"]
+modulate = Color(0.556863, 0.352941, 1, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_dp7gn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ShockStatus" type="PanelContainer" parent="VBoxContainer/StatusContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tmx7c")
+
+[node name="StatusIcon" type="TextureRect" parent="VBoxContainer/StatusContainer/ShockStatus"]
+modulate = Color(1, 1, 0.1, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_jp5wt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ChillStatus" type="PanelContainer" parent="VBoxContainer/StatusContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tmx7c")
+
+[node name="StatusIcon" type="TextureRect" parent="VBoxContainer/StatusContainer/ChillStatus"]
+modulate = Color(0.1, 1, 1, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_6y4ti")
+expand_mode = 1
+stretch_mode = 5

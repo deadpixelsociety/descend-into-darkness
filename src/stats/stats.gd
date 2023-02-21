@@ -4,6 +4,8 @@ class_name Stats
 @export_category("Health")
 @export var health_max: float = 0.0
 @export var health_regen: float = 0.0
+@export_category("Mana")
+@export var mana_max: float = 0.0
 @export_category("Offense")
 @export var attack_speed: float = 0.0
 @export var damage_min: float = 0.0

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="HeroClass" load_steps=8 format=3 uid="uid://wn8k7of0bhb3"]
+[gd_resource type="Resource" script_class="HeroClass" load_steps=9 format=3 uid="uid://wn8k7of0bhb3"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_dilvr"]
 [ext_resource type="Resource" uid="uid://bi2b3v2cbjpf" path="res://src/attacks/axe_toss/axe_toss.tres" id="1_qga1q"]
@@ -14,6 +14,7 @@ modifier_type = 0
 stat_category = 0
 min_value = 10.0
 max_value = 10.0
+rounded = true
 modifier_name = "Maximum Health"
 description_template = "HP {op}{value}"
 modifier_property = "health_max"
@@ -27,17 +28,34 @@ modifier_type = 0
 stat_category = 3
 min_value = 100.0
 max_value = 100.0
+rounded = true
 modifier_name = "Movement Speed"
 description_template = "Movement Speed {op}{value}%%"
 modifier_property = "movement_speed"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_sc0sq"]
+script = ExtResource("1_dilvr")
+stat_type = 21
+value_type = 0
+modifier_type = 0
+stat_category = 4
+min_value = 4.0
+max_value = 4.0
+rounded = true
+modifier_name = "Maximum Mana"
+description_template = "Mana {op}{value}"
+modifier_property = "mana_max"
 submodifiers = null
 
 [resource]
 script = ExtResource("1_tcgt1")
 hero_name = "Barbarian"
 description = "Wielding an axe and a fistful of rage the barbarian charges into battle with a ferocious roar."
+hero_tag = "BARB"
+hero_color = Color(0.811765, 0.337255, 0.219608, 1)
 attack = ExtResource("1_qga1q")
 passive = ExtResource("2_miisi")
 sprite_frames = ExtResource("2_60ie4")
 weapon_type = 1
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_gopu3"), SubResource("Resource_sjebp")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_gopu3"), SubResource("Resource_sjebp"), SubResource("Resource_sc0sq")])

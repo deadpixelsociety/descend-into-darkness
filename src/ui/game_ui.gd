@@ -1,14 +1,15 @@
-extends Control
+extends HBoxContainer
 class_name GameUI
 
 @onready var _item_info: ItemInfoControl = %ItemInfoControl
-@onready var _world_render: SubViewport = %WorldRender
+@onready var _game_container: Node = %GameContainer
+@onready var _right_panel: GameRightPanel = %GameRightPanel
 
 
 func _ready():
-	EventBus.ui_ready.emit()
 	EventBus.item_hovered.connect(_on_item_hovered)
 	EventBus.item_unhovered.connect(_on_item_unhovered)
+	EventBus.ui_ready.emit()
 
 
 func _can_drop_data(at_position: Vector2, data) -> bool:
@@ -18,10 +19,6 @@ func _can_drop_data(at_position: Vector2, data) -> bool:
 func _drop_data(at_position: Vector2, data):
 	var item_def = data["item_def"] as ItemDefinition
 	EventBus.item_dropped.emit(item_def)
-
-
-func _on_world_render_container_gui_input(event: InputEvent) -> void:
-	_world_render.push_input(event, true)
 
 
 func _on_item_hovered(item_def: ItemDefinition):

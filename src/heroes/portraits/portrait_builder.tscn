@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bb2inwyqc8077"]
+[gd_scene load_steps=12 format=3 uid="uid://bb2inwyqc8077"]
 
 [ext_resource type="Script" path="res://src/heroes/portraits/portrait_builder.gd" id="1_s5im3"]
 [ext_resource type="Script" path="res://src/heroes/portraits/portrait_repository.gd" id="2_0glk7"]
 [ext_resource type="Texture2D" uid="uid://elwgco4xqd7v" path="res://assets/textures/ui/panel.png" id="2_wqjb1"]
 [ext_resource type="PackedScene" uid="uid://cjvsxk4maf0qq" path="res://src/heroes/portraits/portrait_container.tscn" id="3_7kq1i"]
-[ext_resource type="Texture2D" uid="uid://n1keunwmkwqp" path="res://assets/textures/ui/filagree.png" id="3_yppm3"]
 [ext_resource type="PackedScene" uid="uid://b3r3ik3ssdvdb" path="res://src/heroes/portraits/portrait_piece_controller.tscn" id="4_tig1k"]
 [ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="9_ajewl"]
 [ext_resource type="Texture2D" uid="uid://uf6v178kbpyx" path="res://assets/textures/ui/button.png" id="10_mxprd"]
@@ -85,12 +84,6 @@ layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Filagree1" type="TextureRect" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer"]
-modulate = Color(1, 1, 1, 0.501961)
-layout_mode = 2
-texture = ExtResource("3_yppm3")
-stretch_mode = 3
-
 [node name="HeadContainer" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer" node_paths=PackedStringArray("repository") instance=ExtResource("4_tig1k")]
 layout_mode = 2
 piece_type = 6
@@ -136,22 +129,16 @@ layout_mode = 2
 piece_type = 1
 repository = NodePath("../../../../../../PortraitRepository")
 
-[node name="Filagree2" type="TextureRect" parent="MarginContainer/HBoxContainer/SelectorPanel/MarginContainer/SelectorContainer"]
-modulate = Color(1, 1, 1, 0.501961)
-layout_mode = 2
-texture = ExtResource("3_yppm3")
-stretch_mode = 3
-flip_v = true
-
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 
 [node name="PortraitContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("3_7kq1i")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(512, 512)
+custom_minimum_size = Vector2(384, 384)
 layout_mode = 2
 portrait_repository = NodePath("../../../../PortraitRepository")
+show_background = true
 
 [node name="ButtonContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

@@ -2,6 +2,7 @@ extends Control
 class_name PortraintContainer
 
 @export var portrait_repository: PortraitRepository
+@export var show_background: bool = false
 
 var _data: Dictionary = {}
 
@@ -14,6 +15,8 @@ var _data: Dictionary = {}
 @onready var _accessory_2: TextureRect = %Accessory2
 @onready var _hair: TextureRect = %Hair
 @onready var _helm: TextureRect = %Helm
+@onready var _background: TextureRect = $Background
+@onready var _background_border: TextureRect = $BackgroundBorder
 
 
 func set_portrait_data(data: Dictionary):
@@ -28,6 +31,8 @@ func set_portrait_data(data: Dictionary):
 		control.texture = portrait_repository.get_textures(piece_type)[index]
 		control.set_meta("index", index)
 	_apply_rules()
+	_background.visible = show_background
+	_background_border.visible = show_background
 
 
 func get_portrait_data() -> Dictionary:

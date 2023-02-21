@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Hero
 
+const MAX_HEALTH: float = 999.0
+const MAX_MANA: float = 99.0
+
 var id: String = Guid.generate()
 var hero_class: HeroClass:
 	set(value):
@@ -16,6 +19,8 @@ var _stat_modifiers: Dictionary = {}
 var _on_hit_modifiers: Array[OnHitModifier] = []
 var _health_current: float = 0.0
 var _health_max: float = 0.0
+var _mana_current: float = 0.0
+var _mana_max: float = 0.0
 
 @onready var _attack_container: Node2D = $AttackContainer
 @onready var _attack_timer: Timer = $AttackTimer
@@ -146,6 +151,7 @@ func _whiteout(amount: float):
 
 func _set_hero_defaults():
 	_calculate_health()
+	_calculate_mana()
 
 
 func _store_stat_modifier(modifier: StatModifier):
@@ -191,14 +197,29 @@ func _calculate_health():
 	if not stats:
 		return
 	var is_full = _health_current == _health_max
-	_health_max = stats.health_max
+	_health_max = clampf(stats.health_max, 0.0, MAX_HEALTH)
 	if is_full:
 		_health_current = _health_max
 	_on_health_changed()
 
 
 func _on_health_changed():
-	EventBus.hero_health_changed.emit(self, _health_max, _health_current)
+	Party.hero_health_changed.emit(self, _health_max, _health_current)
+
+
+func _calculate_mana():
+	var stats = get_stats()
+	if not stats:
+		return
+	var is_full = _mana_current == _mana_max
+	_mana_max = clampf(stats.mana_max, 0.0, MAX_MANA)
+	if is_full:
+		_mana_current = _mana_max
+	_on_mana_changed()
+
+
+func _on_mana_changed():
+	Party.hero_mana_changed.emit(self, _mana_max, _mana_current)
 
 
 func _recalculate_stats():
@@ -206,6 +227,7 @@ func _recalculate_stats():
 		_stats.calculate(_modifiers)
 		#_stats.print_stats()
 	_calculate_health()
+	_calculate_mana()
 	_update_attack_timer()
 
 
@@ -231,3 +253,4 @@ func _on_attack_timer_timeout():
 
 func _on_ui_ready():
 	_on_health_changed()
+	_on_mana_changed()

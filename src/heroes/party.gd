@@ -1,6 +1,8 @@
 extends Node
 
 signal hero_data_changed(index, hero)
+signal hero_health_changed(hero, value_max, value_current)
+signal hero_mana_changed(hero, value_max, value_current)
 
 const MAX_LEVEL = 20
 const MIN_LEVEL = 1

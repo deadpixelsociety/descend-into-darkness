@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Descend into Darkness"
-run/main_scene="res://src/ui/game_ui.tscn"
+run/main_scene="res://src/main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -28,7 +28,7 @@ GlobalEffects="*res://src/fx/global_effects.gd"
 window/size/viewport_width=960
 window/size/viewport_height=540
 window/size/mode=3
-window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
 
 [editor_plugins]
 

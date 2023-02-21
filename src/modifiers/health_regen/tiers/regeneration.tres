@@ -19,7 +19,7 @@ submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
 
 [resource]
 script = ExtResource("1_h0cee")
-tier_name = "Regeneration"
+tier_name = "of Regeneration"
 tier_group = "HealthRegen"
 affix_type = 1
 display_priority = 0

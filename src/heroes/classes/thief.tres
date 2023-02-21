@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="HeroClass" load_steps=6 format=3 uid="uid://ba3u14s18hlnt"]
+[gd_resource type="Resource" script_class="HeroClass" load_steps=7 format=3 uid="uid://ba3u14s18hlnt"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_67a7s"]
 [ext_resource type="Script" path="res://src/heroes/classes/hero_class.gd" id="1_cc610"]
@@ -12,6 +12,7 @@ modifier_type = 0
 stat_category = 0
 min_value = 6.0
 max_value = 6.0
+rounded = true
 modifier_name = "Maximum Health"
 description_template = "HP {op}{value}"
 modifier_property = "health_max"
@@ -25,15 +26,32 @@ modifier_type = 0
 stat_category = 3
 min_value = 120.0
 max_value = 120.0
+rounded = true
 modifier_name = "Movement Speed"
 description_template = "Movement Speed {op}{value}%%"
 modifier_property = "movement_speed"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_usojy"]
+script = ExtResource("1_67a7s")
+stat_type = 21
+value_type = 0
+modifier_type = 0
+stat_category = 4
+min_value = 4.0
+max_value = 4.0
+rounded = true
+modifier_name = "Maximum Mana"
+description_template = "Mana {op}{value}"
+modifier_property = "mana_max"
 submodifiers = null
 
 [resource]
 script = ExtResource("1_cc610")
 hero_name = "Thief"
 description = "The thief lurks in the shadows ready to strike with deadly precision."
+hero_tag = "THF"
+hero_color = Color(0.568627, 0.168627, 0.666667, 1)
 sprite_frames = ExtResource("2_6ruhx")
 weapon_type = 4
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_d07uo"), SubResource("Resource_2spos")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_d07uo"), SubResource("Resource_2spos"), SubResource("Resource_usojy")])

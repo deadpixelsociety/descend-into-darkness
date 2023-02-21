@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="HeroClass" load_steps=6 format=3 uid="uid://42wj3yu2hltu"]
+[gd_resource type="Resource" script_class="HeroClass" load_steps=7 format=3 uid="uid://42wj3yu2hltu"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_1st7t"]
 [ext_resource type="Script" path="res://src/heroes/classes/hero_class.gd" id="1_h1fqf"]
@@ -12,6 +12,7 @@ modifier_type = 0
 stat_category = 0
 min_value = 4.0
 max_value = 4.0
+rounded = true
 modifier_name = "Maximum Health"
 description_template = "HP {op}{value}"
 modifier_property = "health_max"
@@ -25,15 +26,32 @@ modifier_type = 0
 stat_category = 3
 min_value = 80.0
 max_value = 80.0
+rounded = true
 modifier_name = "Movement Speed"
 description_template = "Movement Speed {op}{value}%%"
 modifier_property = "movement_speed"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_mbvds"]
+script = ExtResource("1_1st7t")
+stat_type = 21
+value_type = 0
+modifier_type = 0
+stat_category = 4
+min_value = 12.0
+max_value = 12.0
+rounded = true
+modifier_name = "Maximum Mana"
+description_template = "Mana {op}{value}"
+modifier_property = "mana_max"
 submodifiers = null
 
 [resource]
 script = ExtResource("1_h1fqf")
 hero_name = "Wizard"
 description = "The wizard weaves arcane forces to rain destruction upon their enemies."
+hero_tag = "WIZ"
+hero_color = Color(0.0705882, 0.65098, 0.482353, 1)
 sprite_frames = ExtResource("2_8eq4v")
 weapon_type = 80
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_brp4r"), SubResource("Resource_wmq6i")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_brp4r"), SubResource("Resource_wmq6i"), SubResource("Resource_mbvds")])
