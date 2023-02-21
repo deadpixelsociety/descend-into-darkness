@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cobxum4wjxev"]
+
+[ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="1_kuwpf"]
+[ext_resource type="Texture2D" uid="uid://dg0d0s06ielkd" path="res://assets/textures/ui/frame_basic.png" id="2_xuu4u"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_71c58"]
+content_margin_left = 16.0
+content_margin_top = 24.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+texture = ExtResource("2_xuu4u")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[resource]
+TooltipLabel/colors/font_color = Color(0.883075, 0.860466, 0.793451, 1)
+TooltipLabel/colors/font_outline_color = Color(0.352941, 0.345098, 0.313726, 1)
+TooltipLabel/colors/font_shadow_color = Color(0.439216, 0.427451, 0.396078, 0)
+TooltipLabel/constants/outline_size = 0
+TooltipLabel/constants/shadow_offset_x = 0
+TooltipLabel/constants/shadow_offset_y = 0
+TooltipLabel/font_sizes/font_size = 14
+TooltipLabel/fonts/font = ExtResource("1_kuwpf")
+TooltipPanel/styles/panel = SubResource("StyleBoxTexture_71c58")

@@ -67,7 +67,7 @@ debug_color = Color(0.745098, 0.458824, 0.129412, 0.419608)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="RarityBeam" type="GPUParticles2D" parent="Sprite2D"]
-modulate = Color(1.5, 1.5, 1.5, 0.75)
+modulate = Color(1.2, 1.2, 1.2, 0.75)
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_5oiko")
 position = Vector2(0, -8)

@@ -1,7 +1,22 @@
-[gd_resource type="Resource" script_class="ArmourBase" load_steps=3 format=3 uid="uid://0k5ph63m7ej5"]
+[gd_resource type="Resource" script_class="ArmourBase" load_steps=5 format=3 uid="uid://0k5ph63m7ej5"]
 
 [ext_resource type="Texture2D" uid="uid://brmiv5sgx1yd5" path="res://assets/textures/items/armor_cloth_chest.png" id="1_j0u1x"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="2_jad3y"]
 [ext_resource type="Script" path="res://src/items/bases/armour/armour_base.gd" id="2_yu8p0"]
+
+[sub_resource type="Resource" id="Resource_skl7r"]
+script = ExtResource("2_jad3y")
+stat_type = 10
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 5.0
+max_value = 8.0
+rounded = true
+modifier_name = "Defense"
+description_template = "Defense {op}{value}%"
+modifier_property = "defense"
+submodifiers = null
 
 [resource]
 script = ExtResource("2_yu8p0")
@@ -9,4 +24,4 @@ armour_type = 0
 base_name = "Cloth Chest"
 base_type = 128
 icon = ExtResource("1_j0u1x")
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_skl7r")])

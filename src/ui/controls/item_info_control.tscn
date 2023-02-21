@@ -1,10 +1,66 @@
-[gd_scene load_steps=6 format=3 uid="uid://b236s541hnihu"]
+[gd_scene load_steps=12 format=3 uid="uid://b236s541hnihu"]
 
 [ext_resource type="Script" path="res://src/ui/controls/item_info_control.gd" id="1_lb2gu"]
-[ext_resource type="Texture2D" uid="uid://elwgco4xqd7v" path="res://assets/textures/ui/panel.png" id="2_cmpdh"]
+[ext_resource type="Texture2D" uid="uid://cx1x4foslqv33" path="res://assets/textures/ui/frame_decorated.png" id="2_1wg6x"]
 [ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="3_6nxrq"]
 [ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="4_fbnfj"]
-[ext_resource type="Texture2D" uid="uid://dc17ctnkdlf4p" path="res://assets/textures/ui/separator.png" id="4_l1ccc"]
+[ext_resource type="Texture2D" uid="uid://d1pnpvfcmhmsg" path="res://assets/textures/ui/hero_divider.png" id="5_ywmr0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ntll"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("2_1wg6x")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_01fgw"]
+font = ExtResource("3_6nxrq")
+font_size = 12
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.44, 0.429, 0.396, 1)
+shadow_size = 2
+shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2slxg"]
+font = ExtResource("4_fbnfj")
+font_size = 6
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.44, 0.429, 0.396, 1)
+shadow_size = 2
+shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ehicv"]
+font = ExtResource("4_fbnfj")
+font_size = 8
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.44, 0.429, 0.396, 1)
+shadow_size = 2
+shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_we3xj"]
+font = ExtResource("4_fbnfj")
+font_size = 8
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.44, 0.429, 0.396, 1)
+shadow_size = 2
+shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jcepr"]
+font = ExtResource("4_fbnfj")
+font_size = 8
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.44, 0.429, 0.396, 1)
+shadow_size = 2
+shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
 
 [node name="ItemInfoControl" type="Container"]
 top_level = true
@@ -12,86 +68,111 @@ z_index = 900
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
+offset_right = -822.0
+offset_bottom = -427.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lb2gu")
 
-[node name="Background" type="NinePatchRect" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_cmpdh")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+theme_override_styles/panel = SubResource("StyleBoxTexture_6ntll")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="ItemName" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="ItemName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6nxrq")
-theme_override_font_sizes/font_size = 16
 text = "Item Name"
+label_settings = SubResource("LabelSettings_01fgw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemType" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="ItemType" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_fbnfj")
 theme_override_font_sizes/font_size = 10
+label_settings = SubResource("LabelSettings_2slxg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WeaponInfo" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="WeaponInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="DamageRange" type="Label" parent="MarginContainer/VBoxContainer/WeaponInfo"]
+[node name="DamageRange" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/WeaponInfo"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_fbnfj")
 theme_override_font_sizes/font_size = 10
 text = "Damage: %s"
+label_settings = SubResource("LabelSettings_ehicv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AttackSpeed" type="Label" parent="MarginContainer/VBoxContainer/WeaponInfo"]
+[node name="AttackSpeed" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/WeaponInfo"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_fbnfj")
 theme_override_font_sizes/font_size = 10
 text = "Attack Speed: %s"
+label_settings = SubResource("LabelSettings_we3xj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CritChance" type="Label" parent="MarginContainer/VBoxContainer/WeaponInfo"]
+[node name="CritChance" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/WeaponInfo"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_fbnfj")
 theme_override_font_sizes/font_size = 10
 text = "Critical Chance: %s"
+label_settings = SubResource("LabelSettings_jcepr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="ArmourInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("4_l1ccc")
 
-[node name="DescriptionLines" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Defense" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ArmourInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fbnfj")
+theme_override_font_sizes/font_size = 10
+text = "Defense: %s"
+label_settings = SubResource("LabelSettings_ehicv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Block" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ArmourInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fbnfj")
+theme_override_font_sizes/font_size = 10
+text = "Block %s"
+label_settings = SubResource("LabelSettings_ehicv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Divider" type="NinePatchRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+texture = ExtResource("5_ywmr0")
+patch_margin_left = 46
+patch_margin_top = 4
+patch_margin_right = 46
+patch_margin_bottom = 4
+
+[node name="DescriptionLines" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

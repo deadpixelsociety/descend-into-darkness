@@ -673,15 +673,17 @@ texture = ExtResource("18_hu4oo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="InventorySlot15" type="PanelContainer" parent="Inventory/GridContainer"]
+[node name="AutoSellSlot" type="PanelContainer" parent="Inventory/GridContainer"]
 custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3dsl6")
 
-[node name="TextureRect" type="TextureRect" parent="Inventory/GridContainer/InventorySlot15"]
+[node name="TextureRect" type="TextureRect" parent="Inventory/GridContainer/AutoSellSlot"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture = ExtResource("18_hu4oo")
+tooltip_text = "Items dropped here will be 
+automatically sold for gold."
+texture = ExtResource("4_5csa7")
 expand_mode = 1
 stretch_mode = 5
 

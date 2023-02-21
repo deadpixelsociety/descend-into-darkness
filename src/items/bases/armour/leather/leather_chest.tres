@@ -1,7 +1,22 @@
-[gd_resource type="Resource" script_class="ArmourBase" load_steps=3 format=3 uid="uid://dw653geva1lg2"]
+[gd_resource type="Resource" script_class="ArmourBase" load_steps=5 format=3 uid="uid://dw653geva1lg2"]
 
 [ext_resource type="Texture2D" uid="uid://do720rqgreaoy" path="res://assets/textures/items/armor_leather_chest.png" id="1_3d1yd"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="2_davuo"]
 [ext_resource type="Script" path="res://src/items/bases/armour/armour_base.gd" id="2_fsvv7"]
+
+[sub_resource type="Resource" id="Resource_m4jl6"]
+script = ExtResource("2_davuo")
+stat_type = 10
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 9.0
+max_value = 12.0
+rounded = true
+modifier_name = "Defense"
+description_template = "Defense {op}{value}%"
+modifier_property = "defense"
+submodifiers = null
 
 [resource]
 script = ExtResource("2_fsvv7")
@@ -9,4 +24,4 @@ armour_type = 1
 base_name = "Leather Chest"
 base_type = 128
 icon = ExtResource("1_3d1yd")
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_m4jl6")])

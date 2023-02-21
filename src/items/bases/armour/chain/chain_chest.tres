@@ -1,7 +1,22 @@
-[gd_resource type="Resource" script_class="ArmourBase" load_steps=3 format=3 uid="uid://dqe25md1iiiy5"]
+[gd_resource type="Resource" script_class="ArmourBase" load_steps=5 format=3 uid="uid://dqe25md1iiiy5"]
 
 [ext_resource type="Texture2D" uid="uid://cfl34h5842rg3" path="res://assets/textures/items/armor_chain_chest.png" id="1_tbwr7"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="2_bfnrq"]
 [ext_resource type="Script" path="res://src/items/bases/armour/armour_base.gd" id="2_ybwfw"]
+
+[sub_resource type="Resource" id="Resource_xec5o"]
+script = ExtResource("2_bfnrq")
+stat_type = 10
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 13.0
+max_value = 16.0
+rounded = true
+modifier_name = "Defense"
+description_template = "Defense {op}{value}%"
+modifier_property = "defense"
+submodifiers = null
 
 [resource]
 script = ExtResource("2_ybwfw")
@@ -9,4 +24,4 @@ armour_type = 2
 base_name = "Chainmail"
 base_type = 128
 icon = ExtResource("1_tbwr7")
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_xec5o")])

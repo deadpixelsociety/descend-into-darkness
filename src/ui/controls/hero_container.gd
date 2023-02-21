@@ -55,7 +55,7 @@ func _update_health(value_max: float, value_current: float):
 		var health = 0.0 if value_max <= 0.0 else value_current / value_max
 		_health_vial.tween_resource_value(health)
 	if _health:
-		_health.text = "HP %3d/%d" % [ floor(value_current), floor(value_max) ]
+		_health.text = "H %3d/%d" % [ floor(value_current), floor(value_max) ]
 
 
 func _update_mana(value_max: float, value_current: float):
@@ -63,7 +63,7 @@ func _update_mana(value_max: float, value_current: float):
 		var mana = 0.0 if value_max <= 0.0 else value_current / value_max
 		_mana_vial.tween_resource_value(mana)
 	if _mana:
-		_mana.text = "MN %2d/%d" % [ floor(value_current), floor(value_max) ]
+		_mana.text = "M %2d/%d" % [ floor(value_current), floor(value_max) ]
 
 
 func _on_hero_data_changed(index: int, hero: Hero):

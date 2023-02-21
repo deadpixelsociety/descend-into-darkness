@@ -1,7 +1,22 @@
-[gd_resource type="Resource" script_class="ArmourBase" load_steps=3 format=3 uid="uid://d2c24dg41f4oe"]
+[gd_resource type="Resource" script_class="ArmourBase" load_steps=5 format=3 uid="uid://d2c24dg41f4oe"]
 
 [ext_resource type="Texture2D" uid="uid://xu7sey01s7s3" path="res://assets/textures/items/armor_plate_helm.png" id="1_6jvuh"]
 [ext_resource type="Script" path="res://src/items/bases/armour/armour_base.gd" id="1_e4ueh"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="2_v8a0k"]
+
+[sub_resource type="Resource" id="Resource_0p4y6"]
+script = ExtResource("2_v8a0k")
+stat_type = 10
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 7.0
+max_value = 8.0
+rounded = true
+modifier_name = "Defense"
+description_template = "Defense {op}{value}%"
+modifier_property = "defense"
+submodifiers = null
 
 [resource]
 script = ExtResource("1_e4ueh")
@@ -9,4 +24,4 @@ armour_type = 3
 base_name = "Plate Helm"
 base_type = 512
 icon = ExtResource("1_6jvuh")
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_0p4y6")])

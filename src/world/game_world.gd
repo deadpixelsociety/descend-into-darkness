@@ -7,7 +7,7 @@ var _counter = 0
 
 @onready var _entities: Node2D = $Entities
 @onready var _monster_spawner: MonsterSpawner = $MonsterSpawner
-#@onready var _portrait_repository: PortraitRepository = %PortraitRepository
+@onready var _portrait_repository: PortraitRepository = $PortraitRepository
 
 
 func _ready() -> void:
@@ -32,10 +32,10 @@ func _ready() -> void:
 	Party.set_hero_name(hero2, "Dark Sylvan")
 	Party.set_hero_name(hero3, "Jonny Walker")
 	Party.set_hero_name(hero4, "Ron Cheese")
-	#Party.set_portrait(hero, _portrait_repository.get_random_portrait())
-	#Party.set_portrait(hero2, _portrait_repository.get_random_portrait())
-	#Party.set_portrait(hero3, _portrait_repository.get_random_portrait())
-	#Party.set_portrait(hero4, _portrait_repository.get_random_portrait())
+	Party.set_portrait(hero, _portrait_repository.get_random_portrait())
+	Party.set_portrait(hero2, _portrait_repository.get_random_portrait())
+	Party.set_portrait(hero3, _portrait_repository.get_random_portrait())
+	Party.set_portrait(hero4, _portrait_repository.get_random_portrait())
 	_spawn_items()
 
 
@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 func _spawn_items():
 	var generator = ItemGenerator.new()
 	var pickup = load("res://src/items/item_pickup.tscn")
-	for i in range(0, 50):
+	for i in range(0, 100):
 		var item_set: Array[ItemConstants.ItemType] = [
 			ItemConstants.ItemType.BOOTS,
 			ItemConstants.ItemType.CHEST,

@@ -1,7 +1,22 @@
-[gd_resource type="Resource" script_class="ArmourBase" load_steps=3 format=3 uid="uid://bfyyuap7a1sqi"]
+[gd_resource type="Resource" script_class="ArmourBase" load_steps=5 format=3 uid="uid://bfyyuap7a1sqi"]
 
 [ext_resource type="Texture2D" uid="uid://j7vmka584fs5" path="res://assets/textures/items/armor_leather_boot.png" id="1_i66x6"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="2_7byoc"]
 [ext_resource type="Script" path="res://src/items/bases/armour/armour_base.gd" id="2_53tj3"]
+
+[sub_resource type="Resource" id="Resource_tel78"]
+script = ExtResource("2_7byoc")
+stat_type = 10
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 3.0
+max_value = 4.0
+rounded = true
+modifier_name = "Defense"
+description_template = "Defense {op}{value}%"
+modifier_property = "defense"
+submodifiers = null
 
 [resource]
 script = ExtResource("2_53tj3")
@@ -9,4 +24,4 @@ armour_type = 1
 base_name = "Leather Boots"
 base_type = 256
 icon = ExtResource("1_i66x6")
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_tel78")])

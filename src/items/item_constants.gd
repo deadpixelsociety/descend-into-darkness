@@ -27,6 +27,13 @@ const WEAPON_TYPES = [
 	ItemType.WEAPON_WAND
 ]
 
+const ARMOUR_TYPES = [
+	ItemType.BOOTS,
+	ItemType.HELM,
+	ItemType.CHEST,
+	ItemType.SHIELD
+]
+
 const ITEM_NAME_PREFIXES = [
 	"Agony",
 	"Apocalypse",

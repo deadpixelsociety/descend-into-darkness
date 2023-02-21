@@ -1,11 +1,40 @@
-[gd_resource type="Resource" script_class="OffhandBase" load_steps=3 format=3 uid="uid://h4jxxetcok8b"]
+[gd_resource type="Resource" script_class="OffhandBase" load_steps=6 format=3 uid="uid://h4jxxetcok8b"]
 
 [ext_resource type="Texture2D" uid="uid://bsr5re08jjf4q" path="res://assets/textures/items/shield_iron_heater.png" id="1_ga2vi"]
 [ext_resource type="Script" path="res://src/items/bases/offhand/offhand_base.gd" id="2_0xudf"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="2_dt24f"]
+
+[sub_resource type="Resource" id="Resource_8ds2f"]
+script = ExtResource("2_dt24f")
+stat_type = 10
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 10.0
+max_value = 12.0
+rounded = true
+modifier_name = "Defense"
+description_template = "Defense {op}{value}%"
+modifier_property = "defense"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_0jmn8"]
+script = ExtResource("2_dt24f")
+stat_type = 9
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 5.0
+max_value = 10.0
+rounded = true
+modifier_name = "Block"
+description_template = "Block {op}{value}"
+modifier_property = "block"
+submodifiers = null
 
 [resource]
 script = ExtResource("2_0xudf")
 base_name = "Shield"
 base_type = 4096
 icon = ExtResource("1_ga2vi")
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_8ds2f"), SubResource("Resource_0jmn8")])

@@ -28,11 +28,20 @@ GlobalEffects="*res://src/fx/global_effects.gd"
 window/size/viewport_width=960
 window/size/viewport_height=540
 window/size/mode=3
+window/size/resizable=false
+window/size/borderless=true
 window/stretch/aspect="ignore"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/yet_another_behavior_tree/plugin.cfg")
+
+[gui]
+
+theme/custom="res://assets/custom_theme.tres"
+theme/default_font_antialiasing=0
+theme/default_font_multichannel_signed_distance_field=true
+timers/tooltip_delay_sec=0.2
 
 [input]
 
