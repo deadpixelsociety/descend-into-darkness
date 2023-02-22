@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_3r344"]
 [ext_resource type="Script" path="res://src/modifiers/damage/added_damage_modifier.gd" id="1_wco62"]
 
-[sub_resource type="Resource" id="Resource_3dn6f"]
+[sub_resource type="Resource" id="Resource_fwfr5"]
 script = ExtResource("1_3r344")
 stat_type = 5
 value_type = 0
@@ -17,7 +17,7 @@ description_template = "Min Damage {op}{value}"
 modifier_property = ""
 submodifiers = null
 
-[sub_resource type="Resource" id="Resource_4kcw2"]
+[sub_resource type="Resource" id="Resource_tanb6"]
 script = ExtResource("1_3r344")
 stat_type = 6
 value_type = 0
@@ -43,4 +43,4 @@ rounded = true
 modifier_name = "Added Damage"
 description_template = "Damage {op1}{value1} - {op2}{value2}"
 modifier_property = ""
-submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_3dn6f"), SubResource("Resource_4kcw2")])
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_fwfr5"), SubResource("Resource_tanb6")])

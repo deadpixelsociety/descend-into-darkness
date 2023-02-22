@@ -1,8 +1,80 @@
-[gd_resource type="Resource" script_class="WeaponBase" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="WeaponBase" load_steps=11 format=3 uid="uid://vfpr21oldw8o"]
 
 [ext_resource type="Texture2D" uid="uid://brmb25hkiivml" path="res://assets/textures/items/weapon_sword_exotic1.png" id="1_q0pfi"]
 [ext_resource type="Texture2D" uid="uid://c6rl355qpvjus" path="res://assets/textures/projectiles/greatsword.png" id="2_0hbnr"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="2_jn4is"]
+[ext_resource type="Script" path="res://src/modifiers/damage/added_damage_modifier.gd" id="3_w5wfa"]
 [ext_resource type="Script" path="res://src/items/bases/weapon/weapon_base.gd" id="4_um64b"]
+
+[sub_resource type="Resource" id="Resource_pq64y"]
+script = ExtResource("2_jn4is")
+stat_type = 3
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 1.0
+max_value = 1.0
+rounded = true
+modifier_name = "Attack Speed"
+description_template = "{op}{value} attacks per second"
+modifier_property = "attack_speed"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_tmww4"]
+script = ExtResource("2_jn4is")
+stat_type = 5
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 28.0
+max_value = 32.0
+rounded = true
+modifier_name = "Minimum Damage"
+description_template = "Min Damage {op}{value}"
+modifier_property = ""
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_rdwnv"]
+script = ExtResource("2_jn4is")
+stat_type = 6
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 38.0
+max_value = 42.0
+rounded = true
+modifier_name = "Maximum Damage"
+description_template = "Max Damage {op}{value}"
+modifier_property = ""
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_5p73h"]
+script = ExtResource("3_w5wfa")
+stat_type = 4
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+rounded = true
+modifier_name = "Added Damage"
+description_template = "Damage {op1}{value1} - {op2}{value2}"
+modifier_property = ""
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_tmww4"), SubResource("Resource_rdwnv")])
+
+[sub_resource type="Resource" id="Resource_pav6c"]
+script = ExtResource("2_jn4is")
+stat_type = 7
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 6.0
+max_value = 6.0
+rounded = true
+modifier_name = "Critical Chance"
+description_template = "Crit Chance {op}{value}%"
+modifier_property = "critical_chance"
+submodifiers = null
 
 [resource]
 script = ExtResource("4_um64b")
@@ -11,4 +83,4 @@ projectile_texture = ExtResource("2_0hbnr")
 base_name = "Greatsword"
 base_type = 32
 icon = ExtResource("1_q0pfi")
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_pq64y"), SubResource("Resource_5p73h"), SubResource("Resource_pav6c")])

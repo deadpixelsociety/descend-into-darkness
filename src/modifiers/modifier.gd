@@ -7,7 +7,7 @@ class_name Modifier
 @export var modifier_property: String
 @export var submodifiers: Array[Modifier] = []
 
-var ownder_id: String
+var owner_id: String
 
 
 func get_description(override_value: float = 0.0) -> String:

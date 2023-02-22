@@ -58,7 +58,7 @@ func generate_item_of_type(item_level: int, item_type: ItemConstants.ItemType) -
 func _get_item_base_modifiers(item_base: ItemBase) -> Array[Modifier]:
 	var list: Array[Modifier] = []
 	for modifier in item_base.modifiers:
-		_append_modifier(modifier, list)
+		_append_modifier(modifier.duplicate(true), list)
 	return list
 
 
@@ -177,7 +177,7 @@ func _append_affixes(
 			if available.size() == 0:
 				continue
 			var tier = available[randi() % available.size()]
-			list.append(tier)
+			list.append(tier.duplicate(true))
 			affix_count -= 1
 
 

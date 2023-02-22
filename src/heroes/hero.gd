@@ -68,7 +68,7 @@ func apply_modifier(modifier: Modifier):
 func remove_modifiers(owner_id: String):
 	for i in range(_modifiers.size() - 1, -1, -1):
 		var modifier = _modifiers[i] as Modifier
-		if modifier.ownder_id == owner_id:
+		if modifier.owner_id == owner_id:
 			_modifiers.remove_at(i)
 			if modifier is StatModifier:
 				_remove_stat_modifier(modifier)
@@ -86,7 +86,7 @@ func apply_passive(passive: Passive):
 		return
 	_passives[passive.id] = passive
 	for modifier in passive.modifiers:
-		modifier.ownder_id = passive.id
+		modifier.owner_id = passive.id
 		apply_modifier(modifier)
 	if _passive_container and passive.applied_passive:
 		var applied_passive = passive.applied_passive.instantiate() as AppliedPassive
@@ -183,10 +183,10 @@ func _setup_hero_class():
 	_passives.clear()
 	if hero_class.attack:
 		for modifier in hero_class.attack.modifiers:
-			modifier.ownder_id = hero_class.id
+			modifier.owner_id = hero_class.id
 			apply_modifier(modifier)
 	for modifier in hero_class.modifiers:
-		modifier.ownder_id = hero_class.id
+		modifier.owner_id = hero_class.id
 		apply_modifier(modifier)
 	if hero_class.passive:
 		apply_passive(hero_class.passive)
