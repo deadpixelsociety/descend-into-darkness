@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfpf5v7aee8lx"]
+[gd_scene load_steps=5 format=3 uid="uid://drxkc5y1n26td"]
 
 [ext_resource type="PackedScene" uid="uid://cw8i66c6unms0" path="res://src/world/game_container.tscn" id="1_am68e"]
 [ext_resource type="Script" path="res://src/ui/game_ui.gd" id="1_ulat0"]
 [ext_resource type="PackedScene" uid="uid://qldkd3vun555" path="res://src/ui/controls/game_right_panel.tscn" id="2_3gxm8"]
-[ext_resource type="PackedScene" uid="uid://b236s541hnihu" path="res://src/ui/controls/item_info_control.tscn" id="4_ygy8p"]
+[ext_resource type="PackedScene" uid="uid://blpvj8q0yfc8i" path="res://src/ui/controls/item_info_panel.tscn" id="4_ygy8p"]
 
 [node name="GameRenderer" type="CenterContainer"]
 anchors_preset = 15
@@ -50,7 +50,7 @@ custom_minimum_size = Vector2(168, 526)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ItemInfoControl" parent="." instance=ExtResource("4_ygy8p")]
+[node name="ItemInfoPanel" parent="." instance=ExtResource("4_ygy8p")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2

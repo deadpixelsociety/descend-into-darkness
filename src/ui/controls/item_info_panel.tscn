@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://b236s541hnihu"]
+[gd_scene load_steps=12 format=3 uid="uid://blpvj8q0yfc8i"]
 
-[ext_resource type="Script" path="res://src/ui/controls/item_info_control.gd" id="1_lb2gu"]
+[ext_resource type="Script" path="res://src/ui/controls/item_info_panel.gd" id="1_lb2gu"]
 [ext_resource type="Texture2D" uid="uid://cx1x4foslqv33" path="res://assets/textures/ui/frame_decorated.png" id="2_1wg6x"]
 [ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="3_6nxrq"]
 [ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="4_fbnfj"]
@@ -62,16 +62,11 @@ outline_color = Color(0.44, 0.429, 0.396, 1)
 shadow_size = 2
 shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
 
-[node name="ItemInfoControl" type="Container"]
+[node name="ItemInfoPanel" type="Container"]
 top_level = true
 z_index = 900
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -822.0
-offset_bottom = -427.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 130.0
+offset_bottom = 153.0
 script = ExtResource("1_lb2gu")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

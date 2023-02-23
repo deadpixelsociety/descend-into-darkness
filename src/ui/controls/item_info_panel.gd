@@ -1,6 +1,6 @@
 @tool
 extends FitContainer
-class_name ItemInfoControl
+class_name ItemInfoPanel
 
 const INFO_MARGIN = 16.0
 

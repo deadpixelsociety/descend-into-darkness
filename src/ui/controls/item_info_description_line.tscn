@@ -19,7 +19,7 @@ script = ExtResource("1_b5h1e")
 
 [node name="Icon" type="TextureRect" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5

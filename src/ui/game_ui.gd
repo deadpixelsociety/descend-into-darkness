@@ -1,7 +1,7 @@
 extends HBoxContainer
 class_name GameUI
 
-@onready var _item_info: ItemInfoControl = %ItemInfoControl
+@onready var _item_info: ItemInfoPanel = %ItemInfoPanel
 @onready var _game_container: Node = %GameContainer
 @onready var _right_panel: GameRightPanel = %GameRightPanel
 

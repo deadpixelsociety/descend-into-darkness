@@ -59,7 +59,7 @@ const STAT_ICONS = {
 	StatType.MOVEMENT_SPEED : "res://assets/textures/stats/movement_speed.png",
 	StatType.AREA_OF_EFFECT : "res://assets/textures/stats/area_of_effect.png",
 	StatType.SPELL_POWER : "res://assets/textures/stats/spell_power.png",
-	StatType.LEECH : "res://assets/textures/stats/leach.png",
+	StatType.LEECH : "res://assets/textures/stats/leech.png",
 	StatType.BURN : "res://assets/textures/stats/burn.png",
 	StatType.BLEED : "res://assets/textures/stats/bleed.png",
 	StatType.POISON : "res://assets/textures/stats/poison.png",

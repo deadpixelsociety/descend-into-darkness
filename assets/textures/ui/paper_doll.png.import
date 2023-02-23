@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbrevmmrxm4dv"
-path="res://.godot/imported/leach.png-ebec1267734177e3c5cea3c76426f1cc.ctex"
+uid="uid://n8qe41ytljl5"
+path="res://.godot/imported/paper_doll.png-c3dce4458bf50171fd6cb2e5895957e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/stats/leach.png"
-dest_files=["res://.godot/imported/leach.png-ebec1267734177e3c5cea3c76426f1cc.ctex"]
+source_file="res://assets/textures/ui/paper_doll.png"
+dest_files=["res://.godot/imported/paper_doll.png-c3dce4458bf50171fd6cb2e5895957e9.ctex"]
 
 [params]
 

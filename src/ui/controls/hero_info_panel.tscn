@@ -1,0 +1,226 @@
+[gd_scene load_steps=12 format=3 uid="uid://dp0hn1j4mwlsp"]
+
+[ext_resource type="Texture2D" uid="uid://ytm6q0nwjm4q" path="res://assets/textures/ui/box_paper.png" id="1_gt4dv"]
+[ext_resource type="Texture2D" uid="uid://n8qe41ytljl5" path="res://assets/textures/ui/paper_doll.png" id="2_r35su"]
+[ext_resource type="Texture2D" uid="uid://dkoyttvqwqsf3" path="res://assets/textures/ui/item_slot.png" id="3_jwc7p"]
+[ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="4_0m56n"]
+[ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="4_bkmew"]
+[ext_resource type="Texture2D" uid="uid://fig1sun7b6rb" path="res://assets/textures/ui/paper_label_background.png" id="4_wksky"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bkua4"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+texture = ExtResource("1_gt4dv")
+texture_margin_left = 24.0
+texture_margin_top = 22.0
+texture_margin_right = 24.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mox2v"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+texture = ExtResource("4_wksky")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_rtjua"]
+font = ExtResource("4_0m56n")
+font_size = 24
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.44, 0.429, 0.396, 1)
+shadow_size = 2
+shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ty8ob"]
+resource_local_to_scene = true
+font = ExtResource("4_bkmew")
+font_size = 18
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.811765, 0.337255, 0.219608, 1)
+shadow_size = 2
+shadow_color = Color(0.811765, 0.337255, 0.219608, 0.25098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g3tdo"]
+font = ExtResource("4_bkmew")
+font_size = 18
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.44, 0.429, 0.396, 1)
+shadow_size = 2
+shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
+
+[node name="HeroInfoPanel" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -240.0
+offset_right = 91.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_bkua4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HeroDataContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HeroName" type="Label" parent="VBoxContainer/HBoxContainer/HeroDataContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_mox2v")
+text = "deadpixelsociety
+"
+label_settings = SubResource("LabelSettings_rtjua")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/HeroDataContainer"]
+layout_mode = 2
+
+[node name="ClassName" type="Label" parent="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_mox2v")
+text = "Barbarian"
+label_settings = SubResource("LabelSettings_ty8ob")
+vertical_alignment = 2
+
+[node name="Level" type="Label" parent="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_mox2v")
+text = "Lv. 20"
+label_settings = SubResource("LabelSettings_g3tdo")
+vertical_alignment = 2
+
+[node name="EquipmentContainer" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(155, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="PaperDoll" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer"]
+custom_minimum_size = Vector2(123, 168)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -84.0
+offset_right = 61.5
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r35su")
+stretch_mode = 5
+
+[node name="Helm" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.752941)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_left = 36.0
+offset_top = -8.0
+offset_right = 84.0
+offset_bottom = 40.0
+texture = ExtResource("3_jwc7p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Chest" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.752941)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_left = 36.0
+offset_top = 48.0
+offset_right = 84.0
+offset_bottom = 96.0
+texture = ExtResource("3_jwc7p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Weapon" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.752941)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_left = -17.0
+offset_top = 16.0
+offset_right = 31.0
+offset_bottom = 64.0
+texture = ExtResource("3_jwc7p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Offhand" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.752941)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_left = 91.0
+offset_top = 16.0
+offset_right = 139.0
+offset_bottom = 64.0
+texture = ExtResource("3_jwc7p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Boots" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.752941)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_left = 36.0
+offset_top = 128.0
+offset_right = 84.0
+offset_bottom = 176.0
+texture = ExtResource("3_jwc7p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Necklace" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.752941)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_left = -17.0
+offset_top = 72.0
+offset_right = 31.0
+offset_bottom = 120.0
+texture = ExtResource("3_jwc7p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Ring" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.752941)
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_left = 92.0
+offset_top = 72.0
+offset_right = 140.0
+offset_bottom = 120.0
+texture = ExtResource("3_jwc7p")
+expand_mode = 1
+stretch_mode = 5
