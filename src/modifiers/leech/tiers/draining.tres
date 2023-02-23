@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ModifierTier" load_steps=6 format=3 uid="uid://bytoh14sw4qpb"]
+
+[ext_resource type="Script" path="res://src/modifiers/leech/leech_effect.gd" id="1_eelsm"]
+[ext_resource type="Script" path="res://src/modifiers/on_hit_modifier.gd" id="2_dwxp3"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="3_qx43l"]
+
+[sub_resource type="PackedScene" id="PackedScene_sbgqx"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("LeechEffect", "Node2D", "scale", "script"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0),
+"variants": [Vector2(0.5, 0.5), ExtResource("1_eelsm")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_y0upq"]
+script = ExtResource("2_dwxp3")
+on_hit_tyoe = 0
+on_hit_chance = 1.0
+on_hit_value = 3.0
+on_hit_duration = 0.0
+on_hit_effect = SubResource("PackedScene_sbgqx")
+on_hit_application = 2
+on_hit_stacks = 0
+stat_type = 15
+value_type = 0
+modifier_type = 0
+stat_category = 3
+min_value = 0.0
+max_value = 0.0
+rounded = true
+modifier_name = "Leech"
+description_template = "Leech {op}{value}%"
+modifier_property = "leech"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+
+[resource]
+script = ExtResource("3_qx43l")
+tier_name = "Draining"
+tier_group = "Leach"
+affix_type = 0
+display_priority = 5
+item_type = 127
+item_level_min = 10
+modifier = SubResource("Resource_y0upq")

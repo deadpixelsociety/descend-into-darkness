@@ -1,18 +1,25 @@
-[gd_resource type="Resource" script_class="OnHitModifier" load_steps=3 format=3 uid="uid://ymi5dkut75nk"]
+[gd_resource type="Resource" script_class="OnHitModifier" load_steps=3 format=3]
 
-[ext_resource type="PackedScene" uid="uid://bh2w2aitdgfxv" path="res://src/modifiers/leech/leech_effect.tscn" id="1_5otah"]
-[ext_resource type="Script" path="res://src/modifiers/on_hit_modifier.gd" id="1_toys4"]
+[ext_resource type="PackedScene" path="res://src/modifiers/leech/leech_effect.tscn" id="1_xicjr"]
+[ext_resource type="Script" path="res://src/modifiers/on_hit_modifier.gd" id="2_sgf2b"]
 
 [resource]
-script = ExtResource("1_toys4")
+script = ExtResource("2_sgf2b")
 on_hit_tyoe = 0
 on_hit_chance = 1.0
 on_hit_value = 0.0
 on_hit_duration = 0.0
-on_hit_effect = ExtResource("1_5otah")
+on_hit_effect = ExtResource("1_xicjr")
 on_hit_application = 2
 on_hit_stacks = 0
-modifier_name = "Leech"
-description_template = "Leech {op}{value}%"
-modifier_property = "leech"
+stat_type = 15
+value_type = 0
+modifier_type = 0
+stat_category = 3
+min_value = 0.0
+max_value = 0.0
+rounded = true
+modifier_name = "Leach"
+description_template = "Leach {op}{value}%"
+modifier_property = "leach"
 submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://dnpdyrwjkxcav"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_6mw0k"]
+
+[resource]
+script = ExtResource("1_6mw0k")
+stat_type = 14
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+rounded = true
+modifier_name = "Increased Spell Power"
+description_template = "Spell Power {op}{value}"
+modifier_property = "spell_power"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

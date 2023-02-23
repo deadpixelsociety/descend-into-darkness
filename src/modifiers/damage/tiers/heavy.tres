@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ModifierTier" load_steps=4 format=3 uid="uid://brmexcyn7vcfo"]
+
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="1_j80jw"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_ougp7"]
+
+[sub_resource type="Resource" id="Resource_iad35"]
+script = ExtResource("1_ougp7")
+stat_type = 4
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 40.0
+max_value = 49.0
+rounded = true
+modifier_name = "Increased Damage"
+description_template = "Damage {op}{value}"
+modifier_property = ""
+submodifiers = null
+
+[resource]
+script = ExtResource("1_j80jw")
+tier_name = "Heavy"
+tier_group = "IncreasedDamage"
+affix_type = 0
+display_priority = 1
+item_type = 8319
+item_level_min = 1
+modifier = SubResource("Resource_iad35")

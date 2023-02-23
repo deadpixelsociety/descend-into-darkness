@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="OnHitModifier" load_steps=2 format=3 uid="uid://dkv64y448d1na"]
+
+[ext_resource type="Script" path="res://src/modifiers/on_hit_modifier.gd" id="1_h54fj"]
+
+[resource]
+script = ExtResource("1_h54fj")
+on_hit_tyoe = 4
+on_hit_chance = 0.2
+on_hit_value = 0.0
+on_hit_duration = 10.0
+on_hit_application = 0
+on_hit_stacks = 5
+stat_type = 19
+value_type = 0
+modifier_type = 0
+stat_category = 0
+min_value = 0.0
+max_value = 0.0
+rounded = true
+modifier_name = "Shock"
+description_template = "Shock {op}{value}%"
+modifier_property = "shock"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

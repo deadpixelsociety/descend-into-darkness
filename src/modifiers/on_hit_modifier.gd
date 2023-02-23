@@ -1,4 +1,4 @@
-extends Modifier
+extends StatModifier
 class_name OnHitModifier
 
 enum OnHitType {
@@ -35,6 +35,19 @@ enum OnHitApplication {
 
 func accumulate(data: Dictionary):
 	data["base"] += on_hit_value
+
+
+func calculate():
+	value = on_hit_value
+	_calculate_submodifiers()
+
+
+func _add_custom_template_data(data: Dictionary, template_value: float) -> Dictionary:
+	if on_hit_duration > 0.0:
+		data["duration"] = "%.0f/s" % on_hit_duration
+	else:
+		data["duration"] = ""
+	return data
 
 
 func can_apply_effect(target: Node2D) -> bool:

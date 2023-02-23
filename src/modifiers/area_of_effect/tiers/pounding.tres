@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ModifierTier" load_steps=4 format=3 uid="uid://c27qrvsujsed2"]
+
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="1_4skbn"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_hnrsc"]
+
+[sub_resource type="Resource" id="Resource_8pmur"]
+script = ExtResource("1_hnrsc")
+stat_type = 13
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 5.0
+max_value = 7.0
+rounded = true
+modifier_name = "Area of Effect"
+description_template = "AoE {op}{value}%"
+modifier_property = "area_of_effect"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+
+[resource]
+script = ExtResource("1_4skbn")
+tier_name = "of Pounding"
+tier_group = "AreaOfEffect"
+affix_type = 1
+display_priority = 1
+item_type = 11391
+item_level_min = 1
+modifier = SubResource("Resource_8pmur")

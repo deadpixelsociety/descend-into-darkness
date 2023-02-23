@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://djsjq5ifap3tk"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_xsmoe"]
+
+[resource]
+script = ExtResource("1_xsmoe")
+stat_type = 14
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+rounded = true
+modifier_name = "Spell Power"
+description_template = "Spell Power {op}{value}%"
+modifier_property = "spell_power"
+submodifiers = null

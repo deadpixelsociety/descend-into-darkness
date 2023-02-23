@@ -66,7 +66,11 @@ func _get_item_info_position(pos: Vector2) -> Vector2:
 	var item_pos = pos
 	var offset = Vector2(INFO_MARGIN, -info_size.y * 0.5)
 	item_pos += offset
+	var viewport_rect = get_viewport_rect()
 	var info_rect = Rect2(item_pos, info_size)
-	
+	if info_rect.end.y > viewport_rect.end.y:
+		info_rect.position.y -= (info_rect.end.y - viewport_rect.end.y)
+	if info_rect.end.x > viewport_rect.end.x:
+		info_rect.position.x -= (info_rect.end.x - viewport_rect.end.x)
 	return info_rect.position
 

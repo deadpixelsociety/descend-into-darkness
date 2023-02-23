@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="OnHitModifier" load_steps=2 format=3 uid="uid://bgdvdb2omd5g1"]
+
+[ext_resource type="Script" path="res://src/modifiers/on_hit_modifier.gd" id="1_ecs2t"]
+
+[resource]
+script = ExtResource("1_ecs2t")
+on_hit_tyoe = 1
+on_hit_chance = 0.25
+on_hit_value = 0.0
+on_hit_duration = 4.0
+on_hit_application = 0
+on_hit_stacks = 5
+stat_type = 16
+value_type = 0
+modifier_type = 0
+stat_category = 3
+min_value = 0.0
+max_value = 0.0
+rounded = true
+modifier_name = "Burn"
+description_template = "Burn {op}{value}/s"
+modifier_property = "burn"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

@@ -8,7 +8,7 @@ const MAX_LEVEL = 20
 const MIN_LEVEL = 1
 
 var _heroes: Array[Hero] = []
-var _level: int = MIN_LEVEL
+var _level: int = MAX_LEVEL
 var _portraits: Dictionary = {}
 var _names: Dictionary = {}
 

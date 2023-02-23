@@ -1,7 +1,6 @@
 class_name ItemGenerator
 
 const ITEM_DEFINITION = preload("res://src/items/item_definition.gd")
-const ITEM_LEVEL_SPREAD = 7
 
 var _item_bases: Dictionary = {}
 var _rarities: Array[Rarity] = []
@@ -159,8 +158,6 @@ func _append_affixes(
 	item_type: ItemConstants.ItemType, 
 	affix_type: ModifierTier.AffixType
 ):
-	var level_max = item_level
-	var level_min = max(1, level_max - ITEM_LEVEL_SPREAD)
 	var affixes_map = Collections.get_dict_dict(_tier_map, item_type)
 	var group_map = Collections.get_dict_dict(affixes_map, affix_type)
 	var groups = group_map.keys()
@@ -171,8 +168,7 @@ func _append_affixes(
 			var tiers: Array = Collections.get_dict_array(group_map, group) as Array[ModifierTier]
 			var available: Array[ModifierTier] = []
 			for tier in tiers:
-				if level_max >= tier.item_level_min \
-					and tier.item_level_min >= level_min:
+				if item_level >= tier.item_level_min:
 					available.append(tier)
 			if available.size() == 0:
 				continue

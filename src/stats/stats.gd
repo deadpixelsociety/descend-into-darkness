@@ -21,7 +21,7 @@ class_name Stats
 @export_category("Misc")
 @export var movement_speed: float = 0.0
 @export_category("On Hit")
-@export var leech: float = 0.0
+@export var leach: float = 0.0
 @export var burn: float = 0.0
 @export var bleed: float = 0.0
 @export var poison: float = 0.0

@@ -44,6 +44,9 @@ func calculate_damage_range() -> Dictionary:
 				elif modifier.modifier_type == StatConstants.ModifierType.MULTIPLIER:
 					damage_multiplier += modifier.get_adjusted_value()
 	
+	var level = Party.get_level()
+	min_damage_base *= level
+	max_damage_base *= level
 	var min_damage = (min_damage_base + (min_damage_base * min_damage_increased))
 	if min_damage_multiplier != 0.0:
 		min_damage *= min_damage_multiplier

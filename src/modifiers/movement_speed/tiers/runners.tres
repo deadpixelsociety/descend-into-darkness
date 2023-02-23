@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ModifierTier" load_steps=4 format=3 uid="uid://8ljid6ectgul"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_f5jef"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="1_o145y"]
+
+[sub_resource type="Resource" id="Resource_bp0ga"]
+script = ExtResource("1_f5jef")
+stat_type = 12
+value_type = 0
+modifier_type = 0
+stat_category = 3
+min_value = 10.0
+max_value = 0.0
+rounded = true
+modifier_name = "Movement Speed"
+description_template = "Movement Speed {op}{value}%"
+modifier_property = "movement_speed"
+submodifiers = null
+
+[resource]
+script = ExtResource("1_o145y")
+tier_name = "Runner's"
+tier_group = "MovementSpeed"
+affix_type = 0
+display_priority = 2
+item_type = 256
+item_level_min = 1
+modifier = SubResource("Resource_bp0ga")

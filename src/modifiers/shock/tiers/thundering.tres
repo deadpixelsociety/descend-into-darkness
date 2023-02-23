@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ModifierTier" load_steps=4 format=3 uid="uid://crqhhvvj8rx75"]
+
+[ext_resource type="Script" path="res://src/modifiers/on_hit_modifier.gd" id="1_o6lji"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="2_1m6oi"]
+
+[sub_resource type="Resource" id="Resource_ioaq0"]
+script = ExtResource("1_o6lji")
+on_hit_tyoe = 4
+on_hit_chance = 0.2
+on_hit_value = 6.0
+on_hit_duration = 10.0
+on_hit_application = 0
+on_hit_stacks = 5
+stat_type = 19
+value_type = 0
+modifier_type = 0
+stat_category = 0
+min_value = 0.0
+max_value = 0.0
+rounded = true
+modifier_name = "Shock"
+description_template = "Shock {op}{value}%"
+modifier_property = "shock"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+
+[resource]
+script = ExtResource("2_1m6oi")
+tier_name = "of Thundering"
+tier_group = "Shock"
+affix_type = 1
+display_priority = 5
+item_type = 11391
+item_level_min = 10
+modifier = SubResource("Resource_ioaq0")

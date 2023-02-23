@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ModifierTier" load_steps=4 format=3 uid="uid://cjrp2s1vgsnab"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_btq6w"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="2_4qwrc"]
+
+[sub_resource type="Resource" id="Resource_iad35"]
+script = ExtResource("1_btq6w")
+stat_type = 4
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 50.0
+max_value = 59.0
+rounded = true
+modifier_name = "Increased Damage"
+description_template = "Damage {op}{value}"
+modifier_property = ""
+submodifiers = null
+
+[resource]
+script = ExtResource("2_4qwrc")
+tier_name = "Serrated"
+tier_group = "IncreasedDamage"
+affix_type = 0
+display_priority = 1
+item_type = 8319
+item_level_min = 5
+modifier = SubResource("Resource_iad35")

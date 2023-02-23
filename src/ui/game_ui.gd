@@ -22,8 +22,8 @@ func _drop_data(at_position: Vector2, data):
 
 
 func _on_item_hovered(item_def: ItemDefinition):
-	_item_info.set_item_info_position(get_global_mouse_position())
 	_item_info.item_def = item_def
+	_item_info.set_item_info_position(get_global_mouse_position())
 	_item_info.show()
 
 

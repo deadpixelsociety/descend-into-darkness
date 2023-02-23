@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ModifierTier" load_steps=4 format=3 uid="uid://dsa4hgepa1fwn"]
+
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_jo0u2"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="2_omy5j"]
+
+[sub_resource type="Resource" id="Resource_iad35"]
+script = ExtResource("1_jo0u2")
+stat_type = 4
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 60.0
+max_value = 69.0
+rounded = true
+modifier_name = "Increased Damage"
+description_template = "Damage {op}{value}"
+modifier_property = ""
+submodifiers = null
+
+[resource]
+script = ExtResource("2_omy5j")
+tier_name = "Wicked"
+tier_group = "IncreasedDamage"
+affix_type = 0
+display_priority = 1
+item_type = 8319
+item_level_min = 10
+modifier = SubResource("Resource_iad35")

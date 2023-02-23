@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="OnHitModifier" load_steps=2 format=3 uid="uid://cm2678t6vvk54"]
+
+[ext_resource type="Script" path="res://src/modifiers/on_hit_modifier.gd" id="1_fq5ha"]
+
+[resource]
+script = ExtResource("1_fq5ha")
+on_hit_tyoe = 3
+on_hit_chance = 0.5
+on_hit_value = 0.0
+on_hit_duration = 10.0
+on_hit_application = 1
+on_hit_stacks = 0
+stat_type = 18
+value_type = 0
+modifier_type = 0
+stat_category = 0
+min_value = 0.0
+max_value = 0.0
+rounded = true
+modifier_name = "Poison"
+description_template = "Poison {op}{value}/s"
+modifier_property = "poison"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
