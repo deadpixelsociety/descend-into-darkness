@@ -8,6 +8,7 @@ var _tiers: Array[ModifierTier] = []
 # item type > affix > modifier group > tiers
 var _tier_map: Dictionary = {} 
 var _modifier_icons: Dictionary = {}
+var _uniques: Dictionary = {}
 
 
 func _init():
@@ -15,6 +16,26 @@ func _init():
 	_load_rarities("res://src/items/rarity")
 	_load_bases("res://src/items/bases")
 	_load_modifier_icons()
+	_load_uniques("res://src/items/uniques")
+
+
+func generate_unique(item_level: int, item_type: ItemConstants.ItemType) -> ItemDefinition:
+	if _uniques.has(item_type):
+		var unique_list = Collections.get_dict_array(_uniques, item_type)
+		var valid: Array[ItemDefinition] = []
+		for item_def in unique_list:
+			if item_def.item_level <= item_level:
+				valid.append(item_def)
+		if valid.size() == 0:
+			return null
+		var unique = valid[randi() % valid.size()] as ItemDefinition
+		if unique:
+			unique.modifiers.append_array(_get_item_base_modifiers(unique.item_base))
+			unique.modifiers.append_array(_generate_modifiers(unique.tiers))
+			_tag_modifiers(unique.id, unique.modifiers)
+			unique.description_lines = _generate_description(unique.tiers)
+			return unique
+	return null
 
 
 func generate_base_item(item_level: int, item_base: ItemBase) -> ItemDefinition:
@@ -46,13 +67,24 @@ func generate_item_of_set(item_level: int, item_set: Array[ItemConstants.ItemTyp
 
 
 func generate_item_of_type(item_level: int, item_type: ItemConstants.ItemType) -> ItemDefinition:
+	var rarity = _generate_rarity()
+	if rarity.rarity_name == "Unique":
+		if _uniques.has(item_type):
+			var unique_list = Collections.get_dict_array(_uniques, item_type)
+			var unique = unique_list[randi() % unique_list.size()] as ItemDefinition
+			if unique:
+				return unique
+		else:
+			while rarity.rarity_name == "Unique":
+				rarity = _generate_rarity()
+		
 	var def: ItemDefinition = ITEM_DEFINITION.new()
 	
 	var base_list = Collections.get_dict_array(_item_bases, item_type)
 	def.item_base = base_list[randi() % base_list.size()]
 	def.item_level = item_level
 	def.item_type = item_type
-	def.rarity = _generate_rarity()
+	def.rarity = rarity
 	def.tiers.append_array(_generate_modifier_tiers(
 		item_type,
 		def.rarity.total_affixes,
@@ -262,6 +294,25 @@ func _load_bases(path: String):
 				if base:
 					var base_list = Collections.get_dict_array(_item_bases, base.base_type)
 					base_list.append(base)
+		else:
+			_load_bases(path + "/" + file_name)
+		file_name = dir.get_next()
+	dir.list_dir_end()
+
+
+func _load_uniques(path: String):
+	var dir = DirAccess.open(path)
+	if not dir:
+		return
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir():
+			if file_name.ends_with("tres"):
+				var item_def: ItemDefinition = load(path + "/" + file_name)
+				if item_def:
+					var item_def_list = Collections.get_dict_array(_uniques, item_def.item_type)
+					item_def_list.append(item_def)
 		else:
 			_load_bases(path + "/" + file_name)
 		file_name = dir.get_next()

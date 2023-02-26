@@ -46,19 +46,20 @@ func _process(delta: float) -> void:
 
 func _spawn_items():
 	var pickup = load("res://src/items/item_pickup.tscn")
-	for i in range(0, 50):
+	for i in range(0, 1):
 		var item_set: Array[ItemConstants.ItemType] = [
-			ItemConstants.ItemType.BOOTS,
-			ItemConstants.ItemType.CHEST,
-			ItemConstants.ItemType.HELM,
-			ItemConstants.ItemType.RING,
-			ItemConstants.ItemType.NECKLACE,
-			ItemConstants.ItemType.SHIELD,
-			ItemConstants.ItemType.FOCUS,
+#			ItemConstants.ItemType.BOOTS,
+#			ItemConstants.ItemType.CHEST,
+			#ItemConstants.ItemType.HELM,
+#			ItemConstants.ItemType.RING,
+#			ItemConstants.ItemType.NECKLACE,
+#			ItemConstants.ItemType.SHIELD,
+#			ItemConstants.ItemType.FOCUS,
+			ItemConstants.ItemType.WEAPON_SWORD
 		]
 		var weapon_types = Party.get_weapon_types()
-		item_set.append_array(weapon_types)
-		var weapon = ItemGenerator.generate_item_of_set(20, item_set)
+#		item_set.append_array(weapon_types)
+		var weapon = ItemGenerator.generate_unique(10, ItemConstants.ItemType.FOCUS)
 		var item_pickup = pickup.instantiate() as ItemPickup
 		item_pickup.item_def = weapon
 		item_pickup.position = RandUtil.rand_vector2() * Vector2(300, 200)

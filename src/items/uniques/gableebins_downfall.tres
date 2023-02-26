@@ -1,0 +1,158 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=19 format=3 uid="uid://xsc830bsaxwm"]
+
+[ext_resource type="Script" path="res://src/items/item_definition.gd" id="1_exlhe"]
+[ext_resource type="Texture2D" uid="uid://o12flrxjvxle" path="res://assets/textures/items/oba_doba.png" id="1_xwy6n"]
+[ext_resource type="Script" path="res://src/items/bases/offhand/offhand_base.gd" id="2_udwyn"]
+[ext_resource type="Resource" uid="uid://c7texdlo51asi" path="res://src/items/rarity/unique.tres" id="3_h8mkb"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="5_fci47"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="6_cdcpt"]
+[ext_resource type="Script" path="res://src/modifiers/on_hit_modifier.gd" id="7_ktsrq"]
+
+[sub_resource type="Resource" id="Resource_mbetc"]
+script = ExtResource("2_udwyn")
+base_name = "Orb"
+base_type = 8192
+icon = ExtResource("1_xwy6n")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+
+[sub_resource type="Resource" id="Resource_kk1bj"]
+script = ExtResource("5_fci47")
+stat_type = 7
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 15.0
+max_value = 15.0
+rounded = true
+level_scaled = false
+modifier_name = "Increased Critical Strike"
+description_template = "Crit Chance {op}{value}"
+modifier_property = "critical_chance"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_1fmno"]
+script = ExtResource("6_cdcpt")
+tier_name = "of Stinging"
+tier_group = "IncreasedCriticalStrikeChance"
+affix_type = 1
+display_priority = 3
+item_type = 11391
+item_level_min = 5
+modifier = SubResource("Resource_kk1bj")
+
+[sub_resource type="Resource" id="Resource_8bov6"]
+script = ExtResource("5_fci47")
+stat_type = 14
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 10.0
+max_value = 10.0
+rounded = true
+level_scaled = false
+modifier_name = "Spell Power"
+description_template = "Spell Power {op}{value}%"
+modifier_property = "spell_power"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_pg2iv"]
+script = ExtResource("6_cdcpt")
+tier_name = "Invoker's"
+tier_group = "SpellPower"
+affix_type = 0
+display_priority = 2
+item_type = 11352
+item_level_min = 1
+modifier = SubResource("Resource_8bov6")
+
+[sub_resource type="Resource" id="Resource_y7isc"]
+script = ExtResource("7_ktsrq")
+on_hit_tyoe = 5
+on_hit_chance = 0.5
+on_hit_value = 30.0
+on_hit_duration = 5.0
+on_hit_application = 1
+on_hit_stacks = 0
+stat_type = 20
+value_type = 0
+modifier_type = 0
+stat_category = 0
+min_value = 0.0
+max_value = 0.0
+rounded = true
+level_scaled = false
+modifier_name = "Chill"
+description_template = "Chill {op}{value}%"
+modifier_property = "chill"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+
+[sub_resource type="Resource" id="Resource_7aqai"]
+script = ExtResource("6_cdcpt")
+tier_name = "of Freezing"
+tier_group = "Chill"
+affix_type = 1
+display_priority = 8
+item_type = 11383
+item_level_min = 20
+modifier = SubResource("Resource_y7isc")
+
+[sub_resource type="Resource" id="Resource_4j2px"]
+script = ExtResource("5_fci47")
+stat_type = 0
+value_type = 0
+modifier_type = 0
+stat_category = 0
+min_value = 15.0
+max_value = 15.0
+rounded = true
+level_scaled = false
+modifier_name = "Maximum Health"
+description_template = "HP {op}{value}"
+modifier_property = "health_max"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_p21d7"]
+script = ExtResource("6_cdcpt")
+tier_name = "Healthy"
+tier_group = "HealthMax"
+affix_type = 0
+display_priority = 1
+item_type = 16256
+item_level_min = 1
+modifier = SubResource("Resource_4j2px")
+
+[sub_resource type="Resource" id="Resource_ent26"]
+script = ExtResource("5_fci47")
+stat_type = 21
+value_type = 0
+modifier_type = 0
+stat_category = 4
+min_value = 10.0
+max_value = 10.0
+rounded = true
+level_scaled = false
+modifier_name = "Maximum Mana"
+description_template = "Mana {op}{value}"
+modifier_property = "mana_max"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_ht17s"]
+script = ExtResource("6_cdcpt")
+tier_name = "Cobalt"
+tier_group = "ManaMax"
+affix_type = 0
+display_priority = 2
+item_type = 11856
+item_level_min = 5
+modifier = SubResource("Resource_ent26")
+
+[resource]
+script = ExtResource("1_exlhe")
+item_name = "Gableebin's Downfall"
+description_lines = Array[Resource("res://src/items/item_description_line.gd")]([])
+item_level = 1
+item_type = 8192
+item_base = SubResource("Resource_mbetc")
+rarity = ExtResource("3_h8mkb")
+tiers = Array[ExtResource("6_cdcpt")]([SubResource("Resource_1fmno"), SubResource("Resource_pg2iv"), SubResource("Resource_7aqai"), SubResource("Resource_p21d7"), SubResource("Resource_ht17s")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

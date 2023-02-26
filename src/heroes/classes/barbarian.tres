@@ -65,6 +65,6 @@ attack = ExtResource("1_qga1q")
 passive = ExtResource("2_miisi")
 can_dual_wield = true
 sprite_frames = ExtResource("2_60ie4")
-weapon_type = 1
+weapon_type = 33
 equipment = Array[Resource("res://src/items/item_base.gd")]([ExtResource("2_sahc6"), ExtResource("3_0ubql"), ExtResource("4_2unb6"), ExtResource("5_6ioxv")])
 modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_gopu3"), SubResource("Resource_sjebp"), SubResource("Resource_sc0sq")])

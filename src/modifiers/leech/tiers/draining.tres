@@ -33,6 +33,7 @@ stat_category = 3
 min_value = 0.0
 max_value = 0.0
 rounded = true
+level_scaled = false
 modifier_name = "Leech"
 description_template = "Leech {op}{value}%"
 modifier_property = "leech"

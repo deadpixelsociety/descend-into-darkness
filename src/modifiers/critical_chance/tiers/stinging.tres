@@ -12,6 +12,7 @@ stat_category = 1
 min_value = 15.0
 max_value = 19.0
 rounded = true
+level_scaled = false
 modifier_name = "Increased Critical Strike"
 description_template = "Crit Chance {op}{value}"
 modifier_property = "critical_chance"

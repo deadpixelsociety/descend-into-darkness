@@ -12,6 +12,7 @@ stat_category = 2
 min_value = 23.0
 max_value = 28.0
 rounded = true
+level_scaled = false
 modifier_name = "Increased Block"
 description_template = "Block {op}{value}"
 modifier_property = "block"

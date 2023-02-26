@@ -1,0 +1,214 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=24 format=3 uid="uid://cfxgqvmnpu00h"]
+
+[ext_resource type="Texture2D" uid="uid://ckq8jpmp887fl" path="res://assets/textures/items/weapon_magic_sword_vorpal.png" id="1_0ek27"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_fiqg8"]
+[ext_resource type="Script" path="res://src/items/item_definition.gd" id="1_g5c8b"]
+[ext_resource type="Script" path="res://src/modifiers/damage/added_damage_modifier.gd" id="2_22c15"]
+[ext_resource type="Script" path="res://src/items/bases/weapon/weapon_base.gd" id="3_y6c3u"]
+[ext_resource type="Resource" uid="uid://c7texdlo51asi" path="res://src/items/rarity/unique.tres" id="4_slhb8"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="6_o2pc4"]
+[ext_resource type="Script" path="res://src/modifiers/on_hit_modifier.gd" id="7_pbe5w"]
+
+[sub_resource type="Resource" id="Resource_0l0u2"]
+script = ExtResource("1_fiqg8")
+stat_type = 3
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 1.5
+max_value = 1.5
+rounded = false
+level_scaled = false
+modifier_name = "Attack Speed"
+description_template = "{op}{value} attacks per second"
+modifier_property = "attack_speed"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_8q20f"]
+script = ExtResource("1_fiqg8")
+stat_type = 5
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 40.0
+max_value = 60.0
+rounded = true
+level_scaled = true
+modifier_name = "Minimum Damage"
+description_template = "Min Damage {op}{value}"
+modifier_property = "damage_min"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_sioyq"]
+script = ExtResource("1_fiqg8")
+stat_type = 6
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 80.0
+max_value = 100.0
+rounded = true
+level_scaled = true
+modifier_name = "Maximum Damage"
+description_template = "Max Damage {op}{value}"
+modifier_property = "damage_max"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_6ymvm"]
+script = ExtResource("2_22c15")
+stat_type = 4
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 0.0
+max_value = 0.0
+rounded = true
+level_scaled = false
+modifier_name = "Added Damage"
+description_template = "Damage {op1}{value1} - {op2}{value2}"
+modifier_property = ""
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_8q20f"), SubResource("Resource_sioyq")])
+
+[sub_resource type="Resource" id="Resource_kicyw"]
+script = ExtResource("1_fiqg8")
+stat_type = 7
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 8.0
+max_value = 8.0
+rounded = true
+level_scaled = false
+modifier_name = "Critical Chance"
+description_template = "Crit Chance {op}{value}%"
+modifier_property = "critical_chance"
+submodifiers = null
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kqvv4"]
+load_path = "res://.godot/imported/longsword.png-52f1f4dff0d1130cda8333be6c405125.ctex"
+
+[sub_resource type="Resource" id="Resource_164fe"]
+script = ExtResource("3_y6c3u")
+two_handed = false
+projectile_texture = SubResource("CompressedTexture2D_kqvv4")
+base_name = "Longsword"
+base_type = 32
+icon = ExtResource("1_0ek27")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_0l0u2"), SubResource("Resource_6ymvm"), SubResource("Resource_kicyw")])
+
+[sub_resource type="Resource" id="Resource_dg8k6"]
+script = ExtResource("1_fiqg8")
+stat_type = 3
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 12.0
+max_value = 12.0
+rounded = false
+level_scaled = false
+modifier_name = "Increased Attack Speed"
+description_template = "Attack Speed {op}{value}"
+modifier_property = "attack_speed"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+
+[sub_resource type="Resource" id="Resource_d5wv5"]
+script = ExtResource("6_o2pc4")
+tier_name = "of Ease"
+tier_group = "IncreasedAttackSpeed"
+affix_type = 1
+display_priority = 2
+item_type = 3199
+item_level_min = 5
+modifier = SubResource("Resource_dg8k6")
+
+[sub_resource type="Resource" id="Resource_m76up"]
+script = ExtResource("1_fiqg8")
+stat_type = 8
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 50.0
+max_value = 50.0
+rounded = true
+level_scaled = false
+modifier_name = "Increased Critical Bonus"
+description_template = "Crit Bonus {op}{value}%"
+modifier_property = "critical_bonus"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_2pib1"]
+script = ExtResource("6_o2pc4")
+tier_name = "Explosive"
+tier_group = "IncreasedCritBonus"
+affix_type = 1
+display_priority = 0
+item_type = 0
+item_level_min = 0
+modifier = SubResource("Resource_m76up")
+
+[sub_resource type="Resource" id="Resource_dlgap"]
+script = ExtResource("1_fiqg8")
+stat_type = 4
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 50.0
+max_value = 50.0
+rounded = true
+level_scaled = false
+modifier_name = "Increased Damage"
+description_template = "Damage {op}{value}"
+modifier_property = ""
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_5oihj"]
+script = ExtResource("6_o2pc4")
+tier_name = "Serrated"
+tier_group = "IncreasedDamage"
+affix_type = 0
+display_priority = 1
+item_type = 8319
+item_level_min = 5
+modifier = SubResource("Resource_dlgap")
+
+[sub_resource type="Resource" id="Resource_ryyh7"]
+script = ExtResource("7_pbe5w")
+on_hit_tyoe = 2
+on_hit_chance = 0.25
+on_hit_value = 8.0
+on_hit_duration = 8.0
+on_hit_application = 1
+on_hit_stacks = 0
+stat_type = 17
+value_type = 0
+modifier_type = 0
+stat_category = 3
+min_value = 0.0
+max_value = 0.0
+rounded = true
+level_scaled = false
+modifier_name = "Bleed"
+description_template = "Bleed {op}{value}/s"
+modifier_property = "bleed"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+
+[sub_resource type="Resource" id="Resource_0m2te"]
+script = ExtResource("6_o2pc4")
+tier_name = "Hemorrhaging"
+tier_group = "Bleed"
+affix_type = 0
+display_priority = 7
+item_type = 47
+item_level_min = 5
+modifier = SubResource("Resource_ryyh7")
+
+[resource]
+script = ExtResource("1_g5c8b")
+item_name = "The Sight Blade"
+description_lines = Array[Resource("res://src/items/item_description_line.gd")]([])
+item_level = 5
+item_type = 32
+item_base = SubResource("Resource_164fe")
+rarity = ExtResource("4_slhb8")
+tiers = Array[ExtResource("6_o2pc4")]([SubResource("Resource_d5wv5"), SubResource("Resource_2pib1"), SubResource("Resource_5oihj"), SubResource("Resource_0m2te")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

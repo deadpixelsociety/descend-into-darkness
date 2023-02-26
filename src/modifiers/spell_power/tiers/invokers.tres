@@ -12,6 +12,7 @@ stat_category = 1
 min_value = 5.0
 max_value = 10.0
 rounded = true
+level_scaled = false
 modifier_name = "Spell Power"
 description_template = "Spell Power {op}{value}%"
 modifier_property = "spell_power"

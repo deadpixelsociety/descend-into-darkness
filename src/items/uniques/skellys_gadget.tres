@@ -1,0 +1,124 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=16 format=3 uid="uid://cbmwmh13iof7a"]
+
+[ext_resource type="Script" path="res://src/items/item_definition.gd" id="1_8r2d2"]
+[ext_resource type="Texture2D" uid="uid://kcs2obw3f142" path="res://assets/textures/items/skellys_lament.png" id="1_udhcf"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="2_r7qvt"]
+[ext_resource type="Script" path="res://src/items/bases/armour/armour_base.gd" id="3_uj2i1"]
+[ext_resource type="Resource" uid="uid://c7texdlo51asi" path="res://src/items/rarity/unique.tres" id="4_ktg4s"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="6_r5yf5"]
+[ext_resource type="Script" path="res://src/modifiers/on_hit_modifier.gd" id="8_p43sg"]
+
+[sub_resource type="Resource" id="Resource_0p4y6"]
+script = ExtResource("2_r7qvt")
+stat_type = 10
+value_type = 0
+modifier_type = 0
+stat_category = 2
+min_value = 10.0
+max_value = 10.0
+rounded = true
+level_scaled = false
+modifier_name = "Defense"
+description_template = "Defense {op}{value}%"
+modifier_property = "defense"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_rlbw7"]
+script = ExtResource("3_uj2i1")
+armour_type = 3
+base_name = "Plate Helm"
+base_type = 512
+icon = ExtResource("1_udhcf")
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_0p4y6")])
+
+[sub_resource type="Resource" id="Resource_3kq61"]
+script = ExtResource("2_r7qvt")
+stat_type = 4
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 69.0
+max_value = 69.0
+rounded = true
+level_scaled = false
+modifier_name = "Increased Damage"
+description_template = "Damage {op}{value}"
+modifier_property = ""
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_ttw17"]
+script = ExtResource("6_r5yf5")
+tier_name = "Wicked"
+tier_group = "IncreasedDamage"
+affix_type = 0
+display_priority = 1
+item_type = 8319
+item_level_min = 10
+modifier = SubResource("Resource_3kq61")
+
+[sub_resource type="Resource" id="Resource_28ke3"]
+script = ExtResource("2_r7qvt")
+stat_type = 7
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = 20.0
+max_value = 20.0
+rounded = true
+level_scaled = false
+modifier_name = "Increased Critical Strike"
+description_template = "Crit Chance {op}{value}"
+modifier_property = "critical_chance"
+submodifiers = null
+
+[sub_resource type="Resource" id="Resource_58hsx"]
+script = ExtResource("6_r5yf5")
+tier_name = "of Piercing"
+tier_group = "IncreasedCriticalStrikeChance"
+affix_type = 1
+display_priority = 3
+item_type = 11391
+item_level_min = 10
+modifier = SubResource("Resource_28ke3")
+
+[sub_resource type="Resource" id="Resource_uyduo"]
+script = ExtResource("8_p43sg")
+on_hit_tyoe = 3
+on_hit_chance = 0.5
+on_hit_value = 6.0
+on_hit_duration = 10.0
+on_hit_application = 1
+on_hit_stacks = 0
+stat_type = 18
+value_type = 0
+modifier_type = 0
+stat_category = 0
+min_value = 0.0
+max_value = 0.0
+rounded = true
+level_scaled = false
+modifier_name = "Poison"
+description_template = "Poison {op}{value}/s per stack"
+modifier_property = "poison"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+
+[sub_resource type="Resource" id="Resource_c1dq3"]
+script = ExtResource("6_r5yf5")
+tier_name = "Spiked"
+tier_group = "Poison"
+affix_type = 0
+display_priority = 8
+item_type = 6
+item_level_min = 10
+modifier = SubResource("Resource_uyduo")
+
+[resource]
+script = ExtResource("1_8r2d2")
+item_name = "Skelly's Gadget"
+description_lines = Array[Resource("res://src/items/item_description_line.gd")]([])
+item_level = 10
+item_type = 512
+item_base = SubResource("Resource_rlbw7")
+rarity = ExtResource("4_ktg4s")
+tiers = Array[ExtResource("6_r5yf5")]([SubResource("Resource_ttw17"), SubResource("Resource_58hsx"), SubResource("Resource_c1dq3")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

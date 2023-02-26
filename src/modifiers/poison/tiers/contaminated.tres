@@ -18,6 +18,7 @@ stat_category = 0
 min_value = 0.0
 max_value = 0.0
 rounded = true
+level_scaled = false
 modifier_name = "Poison"
 description_template = "Poison {op}{value}/s per stack"
 modifier_property = "poison"
