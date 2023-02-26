@@ -1,8 +1,12 @@
-[gd_resource type="Resource" script_class="HeroClass" load_steps=7 format=3 uid="uid://42wj3yu2hltu"]
+[gd_resource type="Resource" script_class="HeroClass" load_steps=11 format=3 uid="uid://42wj3yu2hltu"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_1st7t"]
 [ext_resource type="Script" path="res://src/heroes/classes/hero_class.gd" id="1_h1fqf"]
+[ext_resource type="Resource" uid="uid://c40tlilwh7ur8" path="res://src/items/bases/armour/cloth/cloth_boots.tres" id="1_myyuq"]
 [ext_resource type="SpriteFrames" uid="uid://yib6e20ffecs" path="res://assets/animations/wizard.tres" id="2_8eq4v"]
+[ext_resource type="Resource" uid="uid://0k5ph63m7ej5" path="res://src/items/bases/armour/cloth/cloth_chest.tres" id="2_ny8bo"]
+[ext_resource type="Resource" uid="uid://c668fjgys7hl2" path="res://src/items/bases/armour/cloth/cloth_helm.tres" id="3_6whmx"]
+[ext_resource type="Resource" uid="uid://dl3v0jh5krs5n" path="res://src/items/bases/weapon/staff/staff.tres" id="4_pja8i"]
 
 [sub_resource type="Resource" id="Resource_brp4r"]
 script = ExtResource("1_1st7t")
@@ -13,6 +17,7 @@ stat_category = 0
 min_value = 4.0
 max_value = 4.0
 rounded = true
+level_scaled = false
 modifier_name = "Maximum Health"
 description_template = "HP {op}{value}"
 modifier_property = "health_max"
@@ -27,6 +32,7 @@ stat_category = 3
 min_value = 80.0
 max_value = 80.0
 rounded = true
+level_scaled = false
 modifier_name = "Movement Speed"
 description_template = "Movement Speed {op}{value}%%"
 modifier_property = "movement_speed"
@@ -41,6 +47,7 @@ stat_category = 4
 min_value = 12.0
 max_value = 12.0
 rounded = true
+level_scaled = false
 modifier_name = "Maximum Mana"
 description_template = "Mana {op}{value}"
 modifier_property = "mana_max"
@@ -54,4 +61,5 @@ hero_tag = "WIZ"
 hero_color = Color(0.0705882, 0.65098, 0.482353, 1)
 sprite_frames = ExtResource("2_8eq4v")
 weapon_type = 80
+equipment = Array[Resource("res://src/items/item_base.gd")]([ExtResource("1_myyuq"), ExtResource("2_ny8bo"), ExtResource("3_6whmx"), ExtResource("4_pja8i")])
 modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_brp4r"), SubResource("Resource_wmq6i"), SubResource("Resource_mbvds")])

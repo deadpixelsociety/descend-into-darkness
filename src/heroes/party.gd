@@ -3,14 +3,19 @@ extends Node
 signal hero_data_changed(index, hero)
 signal hero_health_changed(hero, value_max, value_current)
 signal hero_mana_changed(hero, value_max, value_current)
+signal hero_equipment_changed(hero)
 
 const MAX_LEVEL = 20
 const MIN_LEVEL = 1
 
 var _heroes: Array[Hero] = []
-var _level: int = MAX_LEVEL
+var _level: int = MIN_LEVEL
 var _portraits: Dictionary = {}
 var _names: Dictionary = {}
+
+
+func get_party_size() -> int:
+	return _heroes.size()
 
 
 func add_hero(hero: Hero):

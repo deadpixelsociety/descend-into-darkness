@@ -1,8 +1,12 @@
-[gd_resource type="Resource" script_class="HeroClass" load_steps=7 format=3 uid="uid://ba3u14s18hlnt"]
+[gd_resource type="Resource" script_class="HeroClass" load_steps=11 format=3 uid="uid://ba3u14s18hlnt"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_67a7s"]
 [ext_resource type="Script" path="res://src/heroes/classes/hero_class.gd" id="1_cc610"]
+[ext_resource type="Resource" uid="uid://bfyyuap7a1sqi" path="res://src/items/bases/armour/leather/leather_boots.tres" id="1_jpofq"]
 [ext_resource type="SpriteFrames" uid="uid://c5p0cy3shuf54" path="res://assets/animations/thief.tres" id="2_6ruhx"]
+[ext_resource type="Resource" uid="uid://dw653geva1lg2" path="res://src/items/bases/armour/leather/leather_chest.tres" id="2_8kagp"]
+[ext_resource type="Resource" uid="uid://cgtl2475rvj6m" path="res://src/items/bases/armour/leather/leather_helm.tres" id="3_kuyv5"]
+[ext_resource type="Resource" uid="uid://de5fvwmmeg4r0" path="res://src/items/bases/weapon/dagger/dagger.tres" id="4_2ddhs"]
 
 [sub_resource type="Resource" id="Resource_d07uo"]
 script = ExtResource("1_67a7s")
@@ -13,6 +17,7 @@ stat_category = 0
 min_value = 6.0
 max_value = 6.0
 rounded = true
+level_scaled = false
 modifier_name = "Maximum Health"
 description_template = "HP {op}{value}"
 modifier_property = "health_max"
@@ -27,6 +32,7 @@ stat_category = 3
 min_value = 120.0
 max_value = 120.0
 rounded = true
+level_scaled = false
 modifier_name = "Movement Speed"
 description_template = "Movement Speed {op}{value}%%"
 modifier_property = "movement_speed"
@@ -41,6 +47,7 @@ stat_category = 4
 min_value = 4.0
 max_value = 4.0
 rounded = true
+level_scaled = false
 modifier_name = "Maximum Mana"
 description_template = "Mana {op}{value}"
 modifier_property = "mana_max"
@@ -52,6 +59,8 @@ hero_name = "Thief"
 description = "The thief lurks in the shadows ready to strike with deadly precision."
 hero_tag = "THF"
 hero_color = Color(0.568627, 0.168627, 0.666667, 1)
+can_dual_wield = true
 sprite_frames = ExtResource("2_6ruhx")
 weapon_type = 4
+equipment = Array[Resource("res://src/items/item_base.gd")]([ExtResource("1_jpofq"), ExtResource("2_8kagp"), ExtResource("3_kuyv5"), ExtResource("4_2ddhs")])
 modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_d07uo"), SubResource("Resource_2spos"), SubResource("Resource_usojy")])

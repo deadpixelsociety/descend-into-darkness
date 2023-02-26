@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b5mdlik4jf7sq"]
+
+[ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="1_aqlrk"]
+
+[resource]
+resource_local_to_scene = true
+font = ExtResource("1_aqlrk")
+font_size = 12
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.901961, 0.317647, 0, 1)
+shadow_size = 2
+shadow_color = Color(0.901961, 0.317647, 0, 0.25098)

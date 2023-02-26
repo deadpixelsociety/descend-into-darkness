@@ -23,13 +23,18 @@ func set_portrait_data(data: Dictionary):
 	_data = data
 	if not portrait_repository:
 		return
-	for piece_type in data.keys():
-		var index = data[piece_type]
-		var control = _get_piece_control(piece_type)
+	for piece_type in PortraitConstants.Piece:
+		var index = PortraitConstants.Piece[piece_type]
+		var control = _get_piece_control(index)
 		if not control:
 			continue
-		control.texture = portrait_repository.get_textures(piece_type)[index]
-		control.set_meta("index", index)
+		if data.has(index):
+			var piece_index = data[index]
+			control.texture = portrait_repository.get_textures(index)[piece_index]
+			control.set_meta("index", piece_index)
+		else:
+			control.texture = null
+			control.set_meta("index", 0)
 	_apply_rules()
 	_background.visible = show_background
 	_background_border.visible = show_background

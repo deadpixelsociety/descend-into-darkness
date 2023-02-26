@@ -64,9 +64,8 @@ shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
 
 [node name="ItemInfoPanel" type="Container"]
 top_level = true
-z_index = 900
-offset_right = 130.0
-offset_bottom = 153.0
+z_index = 100
+mouse_filter = 2
 script = ExtResource("1_lb2gu")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

@@ -1,5 +1,58 @@
 class_name ItemConstants
 
+enum EquipmentType {
+	WEAPON,
+	OFFHAND,
+	HELM,
+	CHEST,
+	BOOTS,
+	NECKLACE,
+	RING
+}
+
+const EQUIPMENT_MAP = {
+	EquipmentType.WEAPON: [
+		ItemType.WEAPON_AXE,
+		ItemType.WEAPON_BOW,
+		ItemType.WEAPON_DAGGER,
+		ItemType.WEAPON_MACE,
+		ItemType.WEAPON_STAFF,
+		ItemType.WEAPON_SWORD,
+		ItemType.WEAPON_WAND,
+	],
+	EquipmentType.OFFHAND: [
+		ItemType.FOCUS,
+		ItemType.SHIELD
+	],
+	EquipmentType.HELM: [
+		ItemType.HELM
+	],
+	EquipmentType.CHEST: [
+		ItemType.CHEST
+	],
+	EquipmentType.BOOTS: [
+		ItemType.BOOTS
+	],
+	EquipmentType.NECKLACE: [
+		ItemType.NECKLACE
+	],
+	EquipmentType.RING: [
+		ItemType.RING
+	]
+}
+
+const DUAL_WIELD_TYPES = [
+	EquipmentType.WEAPON,
+	EquipmentType.OFFHAND
+]
+
+static func get_equipment_type(item_type: ItemType) -> EquipmentType:
+	for equipment_type in EQUIPMENT_MAP.keys():
+		if EQUIPMENT_MAP[equipment_type].has(item_type):
+			return equipment_type
+	return EquipmentType.WEAPON
+
+
 enum ItemType {
 	WEAPON_AXE = 1,
 	WEAPON_BOW = 2,
@@ -25,6 +78,11 @@ const WEAPON_TYPES = [
 	ItemType.WEAPON_STAFF,
 	ItemType.WEAPON_SWORD,
 	ItemType.WEAPON_WAND
+]
+
+const OFFHAND_TYPES = [
+	ItemType.SHIELD,
+	ItemType.FOCUS
 ]
 
 const ARMOUR_TYPES = [

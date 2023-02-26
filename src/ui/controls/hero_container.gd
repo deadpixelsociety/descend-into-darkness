@@ -31,6 +31,27 @@ func _ready():
 	_setup_hero()
 
 
+func _can_drop_data(at_position: Vector2, data) -> bool:
+	if data is Dictionary and data.has("item_def"):
+		return _hero.can_equip_item(data["item_def"])
+	return false
+
+
+func _drop_data(at_position: Vector2, data):
+	var sender = data["sender"]
+	var item_def = data["item_def"] as ItemDefinition
+	var slot = ItemConstants.get_equipment_type(item_def.item_type)
+	var equipped = _hero.get_equipped_item(slot)
+	if ItemConstants.WEAPON_TYPES.has(item_def.item_type):
+		if equipped != null and _hero.hero_class.can_dual_wield:
+			var weapon_base = item_def.item_base as WeaponBase
+			if weapon_base and not weapon_base.two_handed:
+				slot = ItemConstants.EquipmentType.OFFHAND
+				equipped = _hero.get_equipped_item(slot)
+	_hero.equip_item(slot, item_def)
+	sender.item_def = equipped
+
+
 func _setup_hero():
 	if not _hero:
 		return
@@ -83,3 +104,9 @@ func _on_hero_mana_changed(hero: Hero, value_max: float, value_current: float):
 	if hero != Party.get_hero(hero_index):
 		return
 	_update_mana(value_max, value_current)
+
+
+func _on_portrait_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+			EventBus.hero_clicked.emit(hero_index)

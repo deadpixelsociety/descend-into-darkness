@@ -18,6 +18,6 @@ min_value = 0.0
 max_value = 0.0
 rounded = true
 modifier_name = "Poison"
-description_template = "Poison {op}{value}/s"
+description_template = "Poison {op}{value}/s per stack"
 modifier_property = "poison"
 submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

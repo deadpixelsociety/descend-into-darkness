@@ -4,6 +4,7 @@ extends Node
 signal ui_ready()
 signal item_hovered(item_def)
 signal item_unhovered(item_def)
+signal hero_clicked(hero_index)
 
 # Portraits
 signal portrait_changed(data)

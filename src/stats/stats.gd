@@ -21,7 +21,7 @@ class_name Stats
 @export_category("Misc")
 @export var movement_speed: float = 0.0
 @export_category("On Hit")
-@export var leach: float = 0.0
+@export var leech: float = 0.0
 @export var burn: float = 0.0
 @export var bleed: float = 0.0
 @export var poison: float = 0.0
@@ -29,38 +29,119 @@ class_name Stats
 @export var chill: float = 0.0
 
 
+func calculate_dps() -> float:
+	var avg_hit = (damage_min + damage_max) / 2.0
+	var crit_chance = min(max(0.0, critical_chance / 100.0), 1.0)
+	var crit_bonus = max(0.0, critical_bonus / 100.0)
+	var non_crit_damage = (1.0 - crit_chance) * avg_hit
+	var crit_damage = (crit_chance * avg_hit) * crit_bonus
+	return (non_crit_damage + crit_damage) * attack_speed
+
+
+static func get_dps_description(value: float) -> String:
+	return Formatter.format_float(value, 2) + "/s"
+
+
+static func get_health_max_description(value: float) -> String:
+	return Formatter.format_float(value)
+
+
+static func get_health_regen_description(value: float) -> String:
+	return Formatter.format_float(value, 2) + "%"
+
+
+static func get_mana_max_description(value: float) -> String:
+	return Formatter.format_float(value)
+
+
+static func get_attack_speed_description(value: float) -> String:
+	return Formatter.format_float(value, 2) + "/s"
+
+
+static func get_damage_range_description(min_value: float, max_value: float) -> String:
+	return "%s - %s" % [ 
+		Formatter.format_float(min_value), 
+		Formatter.format_float(max_value) 
+	]
+
+
+static func get_spell_power_description(value: float) -> String:
+	return Formatter.format_float(value) + "%"
+
+
+static func get_critical_chance_description(value: float) -> String:
+	return Formatter.format_float(value, 2) + "%"
+
+
+static func get_critical_bonus_description(value: float) -> String:
+	return Formatter.format_float(value) + "%"
+
+
+static func get_area_of_effect_description(value: float) -> String:
+	return Formatter.format_float(value) + "%"
+
+
+static func get_block_description(value: float) -> String:
+	return Formatter.format_float(value)
+
+
+static func get_defense_description(value: float) -> String:
+	return Formatter.format_float(value) + "%"
+
+
+static func get_evasion_description(value: float) -> String:
+	return Formatter.format_float(value) + "%"
+
+
+static func get_movement_speed_description(value: float) -> String:
+	return Formatter.format_float(value) + "%"
+
+
+static func get_leech_description(value: float) -> String:
+	return Formatter.format_float(value, 2) + "%"
+
+
+static func get_burn_description(value: float) -> String:
+	return Formatter.format_float(value) + "/s per stack"
+
+
+static func get_bleed_description(value: float) -> String:
+	return Formatter.format_float(value) + "/s"
+
+
+static func get_poison_description(value: float) -> String:
+	return Formatter.format_float(value) + "/s per stack"
+
+
+static func get_shock_description(value: float) -> String:
+	return Formatter.format_float(value) + "%"
+
+
+static func get_chill_description(value: float) -> String:
+	return Formatter.format_float(value) + "%"
+
+
 func calculate(modifiers: Array[Modifier]):
-	var _modifier_map = _create_modifier_map(modifiers)
-	for property in _modifier_map.keys():
-		var list = Collections.get_dict_array(_modifier_map, property)
-		var value = 0.0
-		var data = {
-			"base": 0.0,
-			"increased": 0.0,
-			"multiplier": 0.0
-		}
-		
-		for modifier in list:
-			if modifier.has_method("accumulate"):
-				modifier.accumulate(data)
-		
-		value += data["base"]
-		value += data["base"] * data["increased"]
-		if data["multiplier"] != 0.0:
-			value *= data["multiplier"]
-		
-		set(property, value)
-
-
-func _create_modifier_map(modifiers: Array[Modifier]) -> Dictionary:
-	var map: Dictionary = {}
-	for modifier in modifiers:
-		if Strings.is_null_or_empty(modifier.modifier_property):
-			continue
-		assert(get(modifier.modifier_property) != null)
-		var list = Collections.get_dict_array(map, modifier.modifier_property)
-		list.append(modifier)
-	return map
+	health_max = StatCalculator.calculate_health_max(modifiers)
+	health_regen = StatCalculator.calculate_health_regen(modifiers)
+	mana_max = StatCalculator.calculate_mana_max(modifiers)
+	attack_speed = StatCalculator.calculate_attack_speed(modifiers)
+	damage_min = StatCalculator.calculate_min_damage(modifiers)
+	damage_max = StatCalculator.calculate_max_damage(modifiers)
+	spell_power = StatCalculator.calculate_spell_power(modifiers)
+	critical_chance = StatCalculator.calculate_critical_chance(modifiers)
+	critical_bonus = StatCalculator.calculate_critical_bonus(modifiers)
+	area_of_effect = StatCalculator.calculate_area_of_effect(modifiers)
+	block = StatCalculator.calculate_block(modifiers)
+	defense = StatCalculator.calculate_defense(modifiers)
+	evasion = StatCalculator.calculate_evasion(modifiers)
+	movement_speed = StatCalculator.calculate_movement_speed(modifiers)
+	leech = StatCalculator.calculate_leech(modifiers)
+	burn = StatCalculator.calculate_burn(modifiers)
+	bleed = StatCalculator.calculate_bleed(modifiers)
+	poison = StatCalculator.calculate_poison(modifiers)
+	shock = StatCalculator.calculate_shock(modifiers)
+	chill = StatCalculator.calculate_chill(modifiers)
 
 
 func print_stats():

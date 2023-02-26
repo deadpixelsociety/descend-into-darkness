@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dt680lbhp4fnb"]
+[gd_scene load_steps=21 format=3 uid="uid://dt680lbhp4fnb"]
 
 [ext_resource type="PackedScene" uid="uid://kvub8mmo2o40" path="res://src/monsters/monster.tscn" id="1_0ph50"]
 [ext_resource type="SpriteFrames" uid="uid://ow7vc5eggd3s" path="res://assets/animations/bat.tres" id="2_0cijn"]
 [ext_resource type="Script" path="res://src/monsters/bat/bat.gd" id="2_jpd17"]
+[ext_resource type="Script" path="res://addons/yet_another_behavior_tree/src/Nodes/BTRoot.gd" id="4_75ynm"]
 [ext_resource type="Script" path="res://addons/yet_another_behavior_tree/src/Nodes/Composite/BTSelector.gd" id="5_sqx73"]
 [ext_resource type="Script" path="res://addons/yet_another_behavior_tree/src/Nodes/Composite/BTSequence.gd" id="6_0pmqd"]
 [ext_resource type="Script" path="res://src/behaviors/condition_party_nearby.gd" id="7_etdjp"]
@@ -142,37 +143,43 @@ shape = SubResource("CircleShape2D_7gpnf")
 shape = SubResource("CircleShape2D_ffcye")
 debug_color = Color(0, 0.647059, 0.172549, 0.419608)
 
-[node name="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" parent="." index="6"]
 playback_process_mode = 0
 libraries = {
 "": SubResource("AnimationLibrary_j825l")
 }
 
-[node name="BehaviorTree" parent="." index="6"]
+[node name="BehaviorTree" parent="." index="7"]
+script = ExtResource("4_75ynm")
+ = null
 enabled = true
+root_process_mode = 1
 
 [node name="One Of" type="Node" parent="BehaviorTree" index="0"]
 script = ExtResource("5_sqx73")
+ = null
 
 [node name="Attack" type="Node" parent="BehaviorTree/One Of" index="0"]
 script = ExtResource("6_0pmqd")
+ = null
 
-[node name="Is Party Nearby" type="Node" parent="BehaviorTree/One Of/Attack" index="0"]
+[node name="Can Attack Hero" type="Node" parent="BehaviorTree/One Of/Attack" index="0"]
+script = ExtResource("8_vclp3")
+
+[node name="Stop Moving" type="Node" parent="BehaviorTree/One Of/Attack" index="1"]
+script = ExtResource("9_wghvd")
+
+[node name="Attack Hero" type="Node" parent="BehaviorTree/One Of/Attack" index="2"]
+script = ExtResource("9_1us0g")
+
+[node name="Is Party Nearby" type="Node" parent="BehaviorTree/One Of/Attack" index="3"]
 script = ExtResource("7_etdjp")
 search_range_min = 0.0
 search_range_max = 128.0
 
-[node name="Can Attack Hero" type="Node" parent="BehaviorTree/One Of/Attack" index="1"]
-script = ExtResource("8_vclp3")
-
-[node name="Stop Moving" type="Node" parent="BehaviorTree/One Of/Attack" index="2"]
-script = ExtResource("9_wghvd")
-
-[node name="Attack Hero" type="Node" parent="BehaviorTree/One Of/Attack" index="3"]
-script = ExtResource("9_1us0g")
-
 [node name="Chase" type="Node" parent="BehaviorTree/One Of" index="1"]
 script = ExtResource("6_0pmqd")
+ = null
 
 [node name="Is Party Nearby" type="Node" parent="BehaviorTree/One Of/Chase" index="0"]
 script = ExtResource("7_etdjp")

@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="HeroClass" load_steps=9 format=3 uid="uid://wn8k7of0bhb3"]
+[gd_resource type="Resource" script_class="HeroClass" load_steps=13 format=3 uid="uid://wn8k7of0bhb3"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_dilvr"]
 [ext_resource type="Resource" uid="uid://bi2b3v2cbjpf" path="res://src/attacks/axe_toss/axe_toss.tres" id="1_qga1q"]
 [ext_resource type="Script" path="res://src/heroes/classes/hero_class.gd" id="1_tcgt1"]
 [ext_resource type="SpriteFrames" uid="uid://bxtkn2ffe5frl" path="res://assets/animations/barbarian.tres" id="2_60ie4"]
 [ext_resource type="Resource" uid="uid://bw2b25sg47tkm" path="res://src/passives/fervor/fervor.tres" id="2_miisi"]
+[ext_resource type="Resource" uid="uid://bfyyuap7a1sqi" path="res://src/items/bases/armour/leather/leather_boots.tres" id="2_sahc6"]
+[ext_resource type="Resource" uid="uid://dw653geva1lg2" path="res://src/items/bases/armour/leather/leather_chest.tres" id="3_0ubql"]
+[ext_resource type="Resource" uid="uid://cgtl2475rvj6m" path="res://src/items/bases/armour/leather/leather_helm.tres" id="4_2unb6"]
+[ext_resource type="Resource" uid="uid://yy5qowtv3o31" path="res://src/items/bases/weapon/axe/axe.tres" id="5_6ioxv"]
 
 [sub_resource type="Resource" id="Resource_gopu3"]
 script = ExtResource("1_dilvr")
@@ -15,6 +19,7 @@ stat_category = 0
 min_value = 10.0
 max_value = 10.0
 rounded = true
+level_scaled = false
 modifier_name = "Maximum Health"
 description_template = "HP {op}{value}"
 modifier_property = "health_max"
@@ -29,6 +34,7 @@ stat_category = 3
 min_value = 100.0
 max_value = 100.0
 rounded = true
+level_scaled = false
 modifier_name = "Movement Speed"
 description_template = "Movement Speed {op}{value}%%"
 modifier_property = "movement_speed"
@@ -43,6 +49,7 @@ stat_category = 4
 min_value = 4.0
 max_value = 4.0
 rounded = true
+level_scaled = false
 modifier_name = "Maximum Mana"
 description_template = "Mana {op}{value}"
 modifier_property = "mana_max"
@@ -56,6 +63,8 @@ hero_tag = "BARB"
 hero_color = Color(0.811765, 0.337255, 0.219608, 1)
 attack = ExtResource("1_qga1q")
 passive = ExtResource("2_miisi")
+can_dual_wield = true
 sprite_frames = ExtResource("2_60ie4")
 weapon_type = 1
+equipment = Array[Resource("res://src/items/item_base.gd")]([ExtResource("2_sahc6"), ExtResource("3_0ubql"), ExtResource("4_2unb6"), ExtResource("5_6ioxv")])
 modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_gopu3"), SubResource("Resource_sjebp"), SubResource("Resource_sc0sq")])

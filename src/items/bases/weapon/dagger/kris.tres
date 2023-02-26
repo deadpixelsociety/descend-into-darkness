@@ -14,13 +14,14 @@ modifier_type = 0
 stat_category = 1
 min_value = 1.4
 max_value = 1.4
-rounded = true
+rounded = false
+level_scaled = false
 modifier_name = "Attack Speed"
 description_template = "{op}{value} attacks per second"
 modifier_property = "attack_speed"
 submodifiers = null
 
-[sub_resource type="Resource" id="Resource_vocps"]
+[sub_resource type="Resource" id="Resource_i8n7j"]
 script = ExtResource("2_6lxd2")
 stat_type = 5
 value_type = 0
@@ -29,12 +30,13 @@ stat_category = 1
 min_value = 8.0
 max_value = 12.0
 rounded = true
+level_scaled = true
 modifier_name = "Minimum Damage"
 description_template = "Min Damage {op}{value}"
-modifier_property = ""
+modifier_property = "damage_min"
 submodifiers = null
 
-[sub_resource type="Resource" id="Resource_v4l1l"]
+[sub_resource type="Resource" id="Resource_2ckdo"]
 script = ExtResource("2_6lxd2")
 stat_type = 6
 value_type = 0
@@ -43,12 +45,13 @@ stat_category = 1
 min_value = 13.0
 max_value = 17.0
 rounded = true
+level_scaled = true
 modifier_name = "Maximum Damage"
 description_template = "Max Damage {op}{value}"
-modifier_property = ""
+modifier_property = "damage_max"
 submodifiers = null
 
-[sub_resource type="Resource" id="Resource_x770t"]
+[sub_resource type="Resource" id="Resource_yw2wi"]
 script = ExtResource("3_wqphk")
 stat_type = 4
 value_type = 0
@@ -57,10 +60,11 @@ stat_category = 1
 min_value = 0.0
 max_value = 0.0
 rounded = true
+level_scaled = false
 modifier_name = "Added Damage"
 description_template = "Damage {op1}{value1} - {op2}{value2}"
 modifier_property = ""
-submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_vocps"), SubResource("Resource_v4l1l")])
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_i8n7j"), SubResource("Resource_2ckdo")])
 
 [sub_resource type="Resource" id="Resource_dhwbv"]
 script = ExtResource("2_6lxd2")
@@ -71,6 +75,7 @@ stat_category = 1
 min_value = 12.0
 max_value = 12.0
 rounded = true
+level_scaled = false
 modifier_name = "Critical Chance"
 description_template = "Crit Chance {op}{value}%"
 modifier_property = "critical_chance"
@@ -83,4 +88,4 @@ projectile_texture = ExtResource("2_6fldj")
 base_name = "Kris"
 base_type = 4
 icon = ExtResource("1_4vdtu")
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_sk0hc"), SubResource("Resource_x770t"), SubResource("Resource_dhwbv")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_sk0hc"), SubResource("Resource_yw2wi"), SubResource("Resource_dhwbv")])

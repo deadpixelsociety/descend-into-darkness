@@ -9,11 +9,13 @@ class_name HeroClass
 @export_category("Abilities")
 @export var attack: Attack
 @export var passive: Passive
+@export var can_dual_wield: bool = false
 @export_category("Animation")
 @export var sprite_frames: SpriteFrames
 @export_category("Items")
 @export_flags("Axe", "Bow", "Dagger", "Mace", "Staff", "Sword", "Wand")
 var weapon_type: int
+@export var equipment: Array[ItemBase] = []
 @export_category("Modifiers")
 @export var modifiers: Array[Modifier] = []
 

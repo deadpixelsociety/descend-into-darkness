@@ -1,29 +1,84 @@
-[gd_scene load_steps=12 format=3 uid="uid://dp0hn1j4mwlsp"]
+[gd_scene load_steps=60 format=3 uid="uid://dp0hn1j4mwlsp"]
 
 [ext_resource type="Texture2D" uid="uid://ytm6q0nwjm4q" path="res://assets/textures/ui/box_paper.png" id="1_gt4dv"]
-[ext_resource type="Texture2D" uid="uid://n8qe41ytljl5" path="res://assets/textures/ui/paper_doll.png" id="2_r35su"]
+[ext_resource type="Script" path="res://src/ui/controls/hero_info_panel.gd" id="2_ehsj5"]
+[ext_resource type="Texture2D" uid="uid://ibmmhoxgbvdy" path="res://assets/textures/ui/block_label_background.png" id="2_geimp"]
+[ext_resource type="Script" path="res://src/heroes/portraits/portrait_repository.gd" id="3_ijjdj"]
 [ext_resource type="Texture2D" uid="uid://dkoyttvqwqsf3" path="res://assets/textures/ui/item_slot.png" id="3_jwc7p"]
 [ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="4_0m56n"]
 [ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="4_bkmew"]
-[ext_resource type="Texture2D" uid="uid://fig1sun7b6rb" path="res://assets/textures/ui/paper_label_background.png" id="4_wksky"]
+[ext_resource type="Texture2D" uid="uid://dndmfoqucwcev" path="res://assets/textures/ui/button_arrow.png" id="4_juyy6"]
+[ext_resource type="Texture2D" uid="uid://m0q36if1o6jm" path="res://assets/textures/ui/button_arrow_down.png" id="5_gjfh4"]
+[ext_resource type="PackedScene" uid="uid://cjvsxk4maf0qq" path="res://src/heroes/portraits/portrait_container.tscn" id="6_t1lbd"]
+[ext_resource type="Texture2D" uid="uid://cpaj2b6hi85t4" path="res://assets/textures/ui/button_stone.png" id="8_4vony"]
+[ext_resource type="Texture2D" uid="uid://b3nyak6vr7peu" path="res://assets/textures/ui/button_stone_down.png" id="9_1lmng"]
+[ext_resource type="Texture2D" uid="uid://d1pnpvfcmhmsg" path="res://assets/textures/ui/hero_divider.png" id="10_7ew7t"]
+[ext_resource type="Texture2D" uid="uid://4b6p8t7n37rn" path="res://assets/textures/stats/damage.png" id="10_slq6u"]
+[ext_resource type="Texture2D" uid="uid://bd4dqllf6p1c5" path="res://assets/textures/stats/spell_power.png" id="11_3v38e"]
+[ext_resource type="PackedScene" uid="uid://dsnuul0md11xj" path="res://src/ui/controls/equipment_container.tscn" id="11_if7e3"]
+[ext_resource type="Texture2D" uid="uid://b4i5uklaqqt4h" path="res://assets/textures/stats/attack_speed.png" id="12_02uy4"]
+[ext_resource type="Texture2D" uid="uid://cxtotiuy2c2mb" path="res://assets/textures/stats/critical_strike_chance.png" id="13_fqof4"]
+[ext_resource type="Texture2D" uid="uid://b032bxc5ts02v" path="res://assets/textures/stats/area_of_effect.png" id="14_hiqtb"]
+[ext_resource type="Texture2D" uid="uid://d3vpc5vam2w5w" path="res://assets/textures/stats/health_max.png" id="15_j7e4b"]
+[ext_resource type="LabelSettings" uid="uid://bi1uotdfnxbyx" path="res://assets/styles/damage.tres" id="16_0se0y"]
+[ext_resource type="Texture2D" uid="uid://co3onjqprhpsn" path="res://assets/textures/stats/health_regen.png" id="16_veokf"]
+[ext_resource type="Texture2D" uid="uid://cp7g7atats7wd" path="res://assets/textures/stats/mana_max.png" id="17_uatyf"]
+[ext_resource type="LabelSettings" uid="uid://d0prcfyjt8y4m" path="res://assets/styles/spell_power.tres" id="18_3tdcw"]
+[ext_resource type="Texture2D" uid="uid://txupvwxqmet7" path="res://assets/textures/stats/defense.png" id="18_i34je"]
+[ext_resource type="Texture2D" uid="uid://bskyulrt3iih0" path="res://assets/textures/stats/block.png" id="19_k1vq3"]
+[ext_resource type="Texture2D" uid="uid://cg1oiknegllxr" path="res://assets/textures/stats/evasion.png" id="20_d33uy"]
+[ext_resource type="LabelSettings" uid="uid://cvekvcusngla1" path="res://assets/styles/attack_speed.tres" id="20_m5t0f"]
+[ext_resource type="Texture2D" uid="uid://bxdktmgagiepq" path="res://assets/textures/stats/movement_speed.png" id="22_isfxw"]
+[ext_resource type="LabelSettings" uid="uid://bx6dhvhlavjyt" path="res://assets/styles/critical.tres" id="22_lv3nt"]
+[ext_resource type="Texture2D" uid="uid://b53jfocwk2jcn" path="res://assets/textures/stats/leech.png" id="23_rl3mg"]
+[ext_resource type="Texture2D" uid="uid://cnulkn454jbwf" path="res://assets/textures/stats/burn.png" id="24_d8y7x"]
+[ext_resource type="LabelSettings" uid="uid://dni3n8bmiq8ti" path="res://assets/styles/area_of_effect.tres" id="24_xaclk"]
+[ext_resource type="Texture2D" uid="uid://cj1v1d71gtgib" path="res://assets/textures/stats/bleed.png" id="25_vlbbu"]
+[ext_resource type="LabelSettings" uid="uid://blqlnaa2s44fb" path="res://assets/styles/health_max.tres" id="26_6gsq4"]
+[ext_resource type="Texture2D" uid="uid://lx0e0nyibxlt" path="res://assets/textures/stats/poison.png" id="26_nvc1y"]
+[ext_resource type="Texture2D" uid="uid://bpsrfdb75dt64" path="res://assets/textures/stats/shock.png" id="27_ngk8f"]
+[ext_resource type="LabelSettings" uid="uid://cw13dsov7nv1i" path="res://assets/styles/health_regen.tres" id="28_dg6ss"]
+[ext_resource type="Texture2D" uid="uid://dj1s3r4kholbr" path="res://assets/textures/stats/chill.png" id="28_gpg4s"]
+[ext_resource type="LabelSettings" uid="uid://dquuloaok3c1u" path="res://assets/styles/mana_max.tres" id="30_bko68"]
+[ext_resource type="LabelSettings" uid="uid://jsqff52hps6u" path="res://assets/styles/defense.tres" id="32_8sox1"]
+[ext_resource type="LabelSettings" uid="uid://dmm4wbo3sokb" path="res://assets/styles/block.tres" id="34_r3wkc"]
+[ext_resource type="LabelSettings" uid="uid://ftaxmvm63fgi" path="res://assets/styles/evasion.tres" id="36_x85ip"]
+[ext_resource type="LabelSettings" uid="uid://dbubjktnp8sj2" path="res://assets/styles/movement_speed.tres" id="38_rrcma"]
+[ext_resource type="LabelSettings" uid="uid://cm5tc8gs0vvu0" path="res://assets/styles/leech.tres" id="40_ads76"]
+[ext_resource type="LabelSettings" uid="uid://b5mdlik4jf7sq" path="res://assets/styles/burn.tres" id="42_mcr83"]
+[ext_resource type="LabelSettings" uid="uid://ctedl6povvo3t" path="res://assets/styles/bleed.tres" id="44_emgjn"]
+[ext_resource type="LabelSettings" uid="uid://dsgxfx77hacj" path="res://assets/styles/poison.tres" id="46_7mm8b"]
+[ext_resource type="LabelSettings" uid="uid://bfbxvjh8ppudj" path="res://assets/styles/shock.tres" id="48_icglc"]
+[ext_resource type="LabelSettings" uid="uid://cdpbfmr2fn0ji" path="res://assets/styles/chill.tres" id="50_nqnt6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bkua4"]
-content_margin_left = 16.0
-content_margin_top = 16.0
-content_margin_right = 16.0
-content_margin_bottom = 16.0
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
 texture = ExtResource("1_gt4dv")
 texture_margin_left = 24.0
 texture_margin_top = 22.0
 texture_margin_right = 24.0
 texture_margin_bottom = 22.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xnhy"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+texture = ExtResource("3_jwc7p")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mox2v"]
 content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
 content_margin_bottom = 4.0
-texture = ExtResource("4_wksky")
+texture = ExtResource("2_geimp")
 texture_margin_left = 5.0
 texture_margin_top = 4.0
 texture_margin_right = 5.0
@@ -51,26 +106,64 @@ shadow_color = Color(0.811765, 0.337255, 0.219608, 0.25098)
 [sub_resource type="LabelSettings" id="LabelSettings_g3tdo"]
 font = ExtResource("4_bkmew")
 font_size = 18
-font_color = Color(0.883075, 0.860466, 0.793451, 1)
+font_color = Color(0.882353, 0.858824, 0.792157, 1)
 outline_size = 2
 outline_color = Color(0.44, 0.429, 0.396, 1)
 shadow_size = 2
 shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h3gjn"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("2_geimp")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3knan"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 7.0
+texture = ExtResource("8_4vony")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fogm8"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 7.0
+texture = ExtResource("9_1lmng")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
 [node name="HeroInfoPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(423, 532)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -240.0
-offset_right = 91.0
-offset_bottom = -8.0
+offset_left = -203.5
+offset_top = -266.0
+offset_right = 203.5
+offset_bottom = 266.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_bkua4")
+script = ExtResource("2_ehsj5")
+
+[node name="PortraitRepository" type="Node" parent="."]
+script = ExtResource("3_ijjdj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -78,9 +171,50 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
+alignment = 1
 
 [node name="HeroDataContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/HeroDataContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="HeroPrev" type="TextureButton" parent="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer1"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("4_juyy6")
+texture_pressed = ExtResource("5_gjfh4")
+texture_hover = ExtResource("4_juyy6")
+stretch_mode = 5
+
+[node name="PortraitFrame" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(98, 98)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_2xnhy")
+
+[node name="Portrait" parent="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer1/PortraitFrame" node_paths=PackedStringArray("portrait_repository") instance=ExtResource("6_t1lbd")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+portrait_repository = NodePath("../../../../../../PortraitRepository")
+
+[node name="HeroNext" type="TextureButton" parent="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer1"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("4_juyy6")
+texture_pressed = ExtResource("5_gjfh4")
+texture_hover = ExtResource("4_juyy6")
+stretch_mode = 5
+flip_h = true
 
 [node name="HeroName" type="Label" parent="VBoxContainer/HBoxContainer/HeroDataContainer"]
 unique_name_in_owner = true
@@ -92,10 +226,11 @@ label_settings = SubResource("LabelSettings_rtjua")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/HeroDataContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/HeroDataContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="ClassName" type="Label" parent="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer"]
+[node name="HeroClassName" type="Label" parent="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_mox2v")
@@ -103,7 +238,7 @@ text = "Barbarian"
 label_settings = SubResource("LabelSettings_ty8ob")
 vertical_alignment = 2
 
-[node name="Level" type="Label" parent="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer"]
+[node name="Level" type="Label" parent="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_mox2v")
@@ -111,116 +246,469 @@ text = "Lv. 20"
 label_settings = SubResource("LabelSettings_g3tdo")
 vertical_alignment = 2
 
-[node name="EquipmentContainer" type="Control" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(155, 200)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="PaperDoll" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer"]
-custom_minimum_size = Vector2(123, 168)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -61.5
-offset_top = -84.0
-offset_right = 61.5
-offset_bottom = 84.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_r35su")
-stretch_mode = 5
-
-[node name="Helm" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+[node name="EquipmentContainer" parent="VBoxContainer/HBoxContainer" instance=ExtResource("11_if7e3")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.752941)
-custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-offset_left = 36.0
-offset_top = -8.0
-offset_right = 84.0
-offset_bottom = 40.0
-texture = ExtResource("3_jwc7p")
+
+[node name="StatsPanel" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_h3gjn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/StatsPanel"]
+layout_mode = 2
+
+[node name="CategoryButtons" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Offense" type="Button" parent="VBoxContainer/StatsPanel/VBoxContainer/CategoryButtons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.883075, 0.860466, 0.793451, 1)
+theme_override_colors/font_outline_color = Color(0.44, 0.429, 0.396, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_0m56n")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_3knan")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3knan")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fogm8")
+text = "Offense"
+
+[node name="Defense" type="Button" parent="VBoxContainer/StatsPanel/VBoxContainer/CategoryButtons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.883075, 0.860466, 0.793451, 1)
+theme_override_colors/font_outline_color = Color(0.44, 0.429, 0.396, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_0m56n")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_3knan")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3knan")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fogm8")
+text = "Defense"
+
+[node name="Misc" type="Button" parent="VBoxContainer/StatsPanel/VBoxContainer/CategoryButtons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.883075, 0.860466, 0.793451, 1)
+theme_override_colors/font_outline_color = Color(0.44, 0.429, 0.396, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_0m56n")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_3knan")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3knan")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fogm8")
+text = "Misc"
+
+[node name="Divider" type="NinePatchRect" parent="VBoxContainer/StatsPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+texture = ExtResource("10_7ew7t")
+patch_margin_left = 46
+patch_margin_top = 4
+patch_margin_right = 46
+patch_margin_bottom = 4
+
+[node name="OffenseStats" type="VBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DPSContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats"]
+layout_mode = 2
+tooltip_text = "Damage range and DPS (damage per second) dealt to enemies with attacks."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/DPSContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("10_slq6u")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Chest" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+[node name="DPS" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/DPSContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.752941)
-custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-offset_left = 36.0
-offset_top = 48.0
-offset_right = 84.0
-offset_bottom = 96.0
-texture = ExtResource("3_jwc7p")
+text = "Damage: 20 - 50 (420.69/s)"
+label_settings = ExtResource("16_0se0y")
+vertical_alignment = 2
+
+[node name="DamageContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats"]
+layout_mode = 2
+tooltip_text = "Damage range and DPS (damage per second) dealt to enemies with attacks."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/DamageContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("10_slq6u")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Weapon" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+[node name="Damage" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/DamageContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.752941)
-custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-offset_left = -17.0
-offset_top = 16.0
-offset_right = 31.0
-offset_bottom = 64.0
-texture = ExtResource("3_jwc7p")
+text = "Damage: 20 - 50 (420.69/s)"
+label_settings = ExtResource("16_0se0y")
+vertical_alignment = 2
+
+[node name="SpellPowerContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats"]
+layout_mode = 2
+tooltip_text = "Increased ability damage and healing."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/SpellPowerContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("11_3v38e")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Offhand" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+[node name="SpellPower" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/SpellPowerContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.752941)
-custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-offset_left = 91.0
-offset_top = 16.0
-offset_right = 139.0
-offset_bottom = 64.0
-texture = ExtResource("3_jwc7p")
+text = "Spell Power: 50%"
+label_settings = ExtResource("18_3tdcw")
+vertical_alignment = 2
+
+[node name="AttackSpeedContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats"]
+layout_mode = 2
+tooltip_text = "Attacks per second."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/AttackSpeedContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("12_02uy4")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Boots" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+[node name="AttackSpeed" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/AttackSpeedContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.752941)
-custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-offset_left = 36.0
-offset_top = 128.0
-offset_right = 84.0
-offset_bottom = 176.0
-texture = ExtResource("3_jwc7p")
+text = "Attack Speed: 4.00/s"
+label_settings = ExtResource("20_m5t0f")
+vertical_alignment = 2
+
+[node name="CriticalChanceContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats"]
+layout_mode = 2
+tooltip_text = "Chance to deal a critical strike with attacks."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/CriticalChanceContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("13_fqof4")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Necklace" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+[node name="CriticalChance" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/CriticalChanceContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.752941)
-custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-offset_left = -17.0
-offset_top = 72.0
-offset_right = 31.0
-offset_bottom = 120.0
-texture = ExtResource("3_jwc7p")
+text = "Critical Strike Chance: 20%"
+label_settings = ExtResource("22_lv3nt")
+vertical_alignment = 2
+
+[node name="CriticalBonusContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats"]
+layout_mode = 2
+tooltip_text = "Damage multiplier for critical strikes."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/CriticalBonusContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("13_fqof4")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Ring" type="TextureRect" parent="VBoxContainer/HBoxContainer/EquipmentContainer/PaperDoll"]
+[node name="CriticalBonus" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/CriticalBonusContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.752941)
-custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-offset_left = 92.0
-offset_top = 72.0
-offset_right = 140.0
-offset_bottom = 120.0
-texture = ExtResource("3_jwc7p")
+text = "Critical Strike Bonus: 150%"
+label_settings = ExtResource("22_lv3nt")
+vertical_alignment = 2
+
+[node name="AroEContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats"]
+layout_mode = 2
+tooltip_text = "Increased area of effect for attacks and abilities."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/AroEContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("14_hiqtb")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="AoE" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/OffenseStats/AroEContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Area of Effect: 69%"
+label_settings = ExtResource("24_xaclk")
+vertical_alignment = 2
+
+[node name="DefenseStats" type="VBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HealthMaxContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats"]
+layout_mode = 2
+tooltip_text = "Maximum health."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/HealthMaxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("15_j7e4b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HealthMax" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/HealthMaxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Health: 444"
+label_settings = ExtResource("26_6gsq4")
+vertical_alignment = 2
+
+[node name="HealthRegenContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats"]
+layout_mode = 2
+tooltip_text = "Percent of health regenerated per room entered."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/HealthRegenContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("16_veokf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HealthRegen" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/HealthRegenContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Health Regen: 2.00%"
+label_settings = ExtResource("28_dg6ss")
+vertical_alignment = 2
+
+[node name="ManaMaxContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats"]
+layout_mode = 2
+tooltip_text = "Maximum mana."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/ManaMaxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("17_uatyf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ManaMax" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/ManaMaxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mana: 20"
+label_settings = ExtResource("30_bko68")
+vertical_alignment = 2
+
+[node name="DefenseContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats"]
+layout_mode = 2
+tooltip_text = "Reduces incoming damage by a percentage. Applied after Block."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/DefenseContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("18_i34je")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Defense" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/DefenseContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Defense: 17%"
+label_settings = ExtResource("32_8sox1")
+vertical_alignment = 2
+
+[node name="BlockContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats"]
+layout_mode = 2
+tooltip_text = "Reduces incoming damage by a flat amount Applied before Defense."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/BlockContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("19_k1vq3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Block" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/BlockContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Block: 20"
+label_settings = ExtResource("34_r3wkc")
+vertical_alignment = 2
+
+[node name="EvasionContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats"]
+layout_mode = 2
+tooltip_text = "Chance to completely avoid incoming damage."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/EvasionContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("20_d33uy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Evasion" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/DefenseStats/EvasionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Evasion: 69%"
+label_settings = ExtResource("36_x85ip")
+vertical_alignment = 2
+
+[node name="MiscStats" type="VBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="MovementSpeedContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats"]
+layout_mode = 2
+tooltip_text = "Increases hero movement speed."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/MovementSpeedContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("22_isfxw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MovementSpeed" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/MovementSpeedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Movement Speed: 30%"
+label_settings = ExtResource("38_rrcma")
+vertical_alignment = 2
+
+[node name="LeechContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats"]
+layout_mode = 2
+tooltip_text = "Restores health by a percentage of damage dealt."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/LeechContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("23_rl3mg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Leech" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/LeechContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Leech: 5%"
+label_settings = ExtResource("40_ads76")
+vertical_alignment = 2
+
+[node name="BurnContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats"]
+layout_mode = 2
+tooltip_text = "Applies damage over time per stack over 4 seconds."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/BurnContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("24_d8y7x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Burn" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/BurnContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Burn: 6/s per stack"
+label_settings = ExtResource("42_mcr83")
+vertical_alignment = 2
+
+[node name="BleedContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats"]
+layout_mode = 2
+tooltip_text = "Applies damage over time over 10 seconds."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/BleedContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("25_vlbbu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Bleed" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/BleedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bleed: 10/s"
+label_settings = ExtResource("44_emgjn")
+vertical_alignment = 2
+
+[node name="PoisonContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats"]
+layout_mode = 2
+tooltip_text = "Applies damage over time per stack over 6 seconds.
+Affected enemies deal 20% reduced damage."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/PoisonContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("26_nvc1y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Poison" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/PoisonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Poison: 4/s per stack"
+label_settings = ExtResource("46_7mm8b")
+vertical_alignment = 2
+
+[node name="ShockContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats"]
+layout_mode = 2
+tooltip_text = "Shocked enemies receive increased damage per stack."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/ShockContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("27_ngk8f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Shock" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/ShockContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Shock: 5% per stack"
+label_settings = ExtResource("48_icglc")
+vertical_alignment = 2
+
+[node name="ChillContainer" type="HBoxContainer" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats"]
+layout_mode = 2
+tooltip_text = "Chilled enemies move and attack slower."
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/ChillContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("28_gpg4s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Chill" type="Label" parent="VBoxContainer/StatsPanel/VBoxContainer/MiscStats/ChillContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Chill: 20%"
+label_settings = ExtResource("50_nqnt6")
+vertical_alignment = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer1/HeroPrev" to="." method="_on_hero_prev_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HeroDataContainer/HBoxContainer1/HeroNext" to="." method="_on_hero_next_pressed"]
+[connection signal="pressed" from="VBoxContainer/StatsPanel/VBoxContainer/CategoryButtons/Offense" to="." method="_on_offense_pressed"]
+[connection signal="pressed" from="VBoxContainer/StatsPanel/VBoxContainer/CategoryButtons/Defense" to="." method="_on_defense_pressed"]
+[connection signal="pressed" from="VBoxContainer/StatsPanel/VBoxContainer/CategoryButtons/Misc" to="." method="_on_misc_pressed"]

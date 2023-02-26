@@ -19,7 +19,7 @@ min_value = 0.0
 max_value = 0.0
 rounded = true
 modifier_name = "Burn"
-description_template = "Burn {op}{value}/s"
+description_template = "Burn {op}{value}/s per stack"
 modifier_property = "burn"
 submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
 

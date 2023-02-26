@@ -105,6 +105,7 @@ texture_margin_right = 2.0
 texture_margin_bottom = 2.0
 
 [node name="HeroContainer" type="HBoxContainer"]
+mouse_filter = 0
 theme_override_constants/separation = 2
 script = ExtResource("1_umtnh")
 
@@ -112,11 +113,13 @@ script = ExtResource("1_umtnh")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_vp378")
 
 [node name="Portrait" parent="PortraitFrame" instance=ExtResource("1_re4i1")]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 1
 
 [node name="ResourceContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -283,3 +286,5 @@ size_flags_vertical = 4
 texture = ExtResource("14_6y4ti")
 expand_mode = 1
 stretch_mode = 5
+
+[connection signal="gui_input" from="PortraitFrame/Portrait" to="." method="_on_portrait_gui_input"]

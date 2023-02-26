@@ -2,7 +2,7 @@
 extends FitContainer
 class_name ItemInfoPanel
 
-const INFO_MARGIN = 16.0
+const INFO_MARGIN = 32.0
 
 var item_def: ItemDefinition:
 	set(value):
@@ -23,6 +23,7 @@ var ITEM_DESCRIPTION: PackedScene = load("res://src/ui/controls/item_info_descri
 @onready var _divider: NinePatchRect = %Divider
 @onready var _description_lines: VBoxContainer = %DescriptionLines
 
+
 func set_item_info_position(pos: Vector2):
 	global_position = _get_item_info_position(pos)
 
@@ -40,13 +41,19 @@ func _setup_control():
 	_weapon_info.visible = ItemConstants.WEAPON_TYPES.has(item_def.item_type)
 	_armour_info.visible = ItemConstants.ARMOUR_TYPES.has(item_def.item_type)
 	if _weapon_info.visible:
-		_damage_range.text = "Damage: %s" % item_def.get_damage_range_description()
-		_attack_speed.text = "Attack Speed: %s/s" % item_def.get_attack_speed_description()
-		_crit_chance.text = "Critical Chance: %s%%" % item_def.get_critical_chance_description()
+		var min_damage = StatCalculator.calculate_min_damage(item_def.modifiers)
+		var max_damage = StatCalculator.calculate_max_damage(item_def.modifiers)
+		var attack_speed = StatCalculator.calculate_attack_speed(item_def.modifiers)
+		var crit_chance = StatCalculator.calculate_critical_chance(item_def.modifiers)
+		_damage_range.text = "Damage: %s" % Stats.get_damage_range_description(min_damage, max_damage)
+		_attack_speed.text = "Attack Speed: %s" % Stats.get_attack_speed_description(attack_speed)
+		_crit_chance.text = "Critical Chance: %s" % Stats.get_critical_chance_description(crit_chance)
 	if _armour_info.visible:
-		_defense.text = "Defense: %s%%" % item_def.get_defense_description()
-		_block.visible = item_def.calculate_block() > 0.0
-		_block.text = "Block: %s" % item_def.get_block_description()
+		var defense = StatCalculator.calculate_defense(item_def.modifiers)
+		var block = StatCalculator.calculate_block(item_def.modifiers)
+		_defense.text = "Defense: %s" % Stats.get_defense_description(defense)
+		_block.text = "Block: %s" % Stats.get_block_description(block)
+		_block.visible = block > 0.0
 	if item_def.description_lines.size() > 0:
 		_divider.visible = true
 		_description_lines.visible = true
@@ -68,9 +75,12 @@ func _get_item_info_position(pos: Vector2) -> Vector2:
 	item_pos += offset
 	var viewport_rect = get_viewport_rect()
 	var info_rect = Rect2(item_pos, info_size)
+	if info_rect.position.y < viewport_rect.position.y:
+		info_rect.position.y += (viewport_rect.position.y - info_rect.position.y)
+	if info_rect.position.x < viewport_rect.position.x:
+		info_rect.position.x += (viewport_rect.position.x - info_rect.position.x)
 	if info_rect.end.y > viewport_rect.end.y:
 		info_rect.position.y -= (info_rect.end.y - viewport_rect.end.y)
 	if info_rect.end.x > viewport_rect.end.x:
-		info_rect.position.x -= (info_rect.end.x - viewport_rect.end.x)
+		info_rect.position.x = item_pos.x - (offset.x * 2.0) - info_size.x
 	return info_rect.position
-

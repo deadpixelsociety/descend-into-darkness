@@ -6,7 +6,7 @@ var _slots: Array[InventorySlot] = []
 
 func _ready():
 	EventBus.item_picked_up.connect(_on_item_picked_up)
-	EventBus.item_dropped.connect(_on_item_dropped)
+	#EventBus.item_dropped.connect(_on_item_dropped)
 	_setup_slots()
 
 

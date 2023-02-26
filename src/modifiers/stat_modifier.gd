@@ -9,6 +9,7 @@ class_name StatModifier
 @export var min_value: float = 0.0
 @export var max_value: float = 0.0
 @export var rounded: bool = true
+@export var level_scaled: bool = false
 
 var value: float = 0.0
 
@@ -33,6 +34,10 @@ func get_adjusted_value() -> float:
 
 func calculate():
 	value = randf_range(min_value, max_value)
+	if rounded:
+		value = roundf(value)
+	if level_scaled:
+		value *= Party.get_level()
 	_calculate_submodifiers()
 
 

@@ -11,3 +11,7 @@ static func clear_children(node: Node):
 			continue
 		node.remove_child(child)
 		child.queue_free()
+
+
+static func is_mouse_inside(node: Control) -> bool:
+	return Rect2(Vector2.ZERO, node.size).has_point(node.get_local_mouse_position())

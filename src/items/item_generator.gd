@@ -1,4 +1,4 @@
-class_name ItemGenerator
+extends Node
 
 const ITEM_DEFINITION = preload("res://src/items/item_definition.gd")
 
@@ -15,6 +15,24 @@ func _init():
 	_load_rarities("res://src/items/rarity")
 	_load_bases("res://src/items/bases")
 	_load_modifier_icons()
+
+
+func generate_base_item(item_level: int, item_base: ItemBase) -> ItemDefinition:
+	var def: ItemDefinition = ITEM_DEFINITION.new()
+	
+	def.item_base = item_base
+	def.item_level = item_level
+	def.item_type = item_base.base_type
+	def.rarity = _rarities.back()
+	
+	def.modifiers.append_array(_get_item_base_modifiers(def.item_base))
+	
+	_tag_modifiers(def.id, def.modifiers)
+	
+	def.item_name = _generate_item_name(def.item_type, def.item_base, def.tiers)
+	def.description_lines = _generate_description(def.tiers)
+	
+	return def
 
 
 func generate_item(item_level: int) -> ItemDefinition:
@@ -48,10 +66,19 @@ func generate_item_of_type(item_level: int, item_type: ItemConstants.ItemType) -
 	def.modifiers.append_array(_get_item_base_modifiers(def.item_base))
 	def.modifiers.append_array(_generate_modifiers(def.tiers))
 	
+	_tag_modifiers(def.id, def.modifiers)
+	
 	def.item_name = _generate_item_name(item_type, def.item_base, def.tiers)
 	def.description_lines = _generate_description(def.tiers)
 
 	return def
+
+
+func _tag_modifiers(id: String, modifiers: Array[Modifier]):
+	for modifier in modifiers:
+		modifier.owner_id = id
+		if modifier.submodifiers != null:
+			_tag_modifiers(id, modifier.submodifiers)
 
 
 func _get_item_base_modifiers(item_base: ItemBase) -> Array[Modifier]:
@@ -189,7 +216,7 @@ func _append_modifier(modifier: Modifier, list: Array[Modifier]):
 		return
 	if modifier.submodifiers != null and modifier.submodifiers.size() > 0:
 		for submodifier in modifier.submodifiers:
-			_append_modifier(submodifier, list)
+			_append_modifier(submodifier.duplicate(true), list)
 	else:
 		if modifier.has_method("calculate"):
 			modifier.calculate()

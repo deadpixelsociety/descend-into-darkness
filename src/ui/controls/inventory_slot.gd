@@ -1,25 +1,36 @@
 extends Control
 class_name InventorySlot
 
-const INFO_MARGIN = 64.0
-
 @export var item_def: ItemDefinition:
 	set(value):
+		if raise_events:
+			_on_item_def_changing()
 		item_def = value
+		if raise_events:
+			_on_item_def_changed()
 		_setup_slot()
 
 var ITEM_PREVIEW: PackedScene = load("res://src/ui/controls/item_preview.tscn")
 
-@onready var _background: NinePatchRect = $Background
-@onready var _icon: TextureRect = $Icon
-@onready var _item_info: ItemInfoControl = $ItemInfoControl
+var raise_events: bool = true
+
+var _dragging: bool = false
+var _hovered: bool = false
+
+@onready var _icon: TextureRect = %Icon
 
 
 func _ready():
 	_setup_slot()
 
 
+func _process(delta: float):
+	if (_hovered or _dragging) and not NodeUtil.is_mouse_inside(self):
+		_on_icon_mouse_exited()
+
+
 func _get_drag_data(at_position: Vector2):
+	_dragging = true
 	if not item_def:
 		return null
 	var data = {}
@@ -32,13 +43,17 @@ func _get_drag_data(at_position: Vector2):
 
 
 func _can_drop_data(at_position: Vector2, data) -> bool:
+	_dragging = true
 	return data is Dictionary and data.has("item_def")
 
 
 func _drop_data(at_position: Vector2, data):
-	var sender = data["sender"] as InventorySlot
+	_dragging = false
+	var sender = data["sender"]
 	var b = data["item_def"] as ItemDefinition
 	var a = item_def
+	sender.item_def = null
+	item_def = null
 	item_def = b
 	sender.item_def = a
 
@@ -56,29 +71,17 @@ func _setup_slot():
 		)
 		tween.play()
 		await tween.finished
-		if item_def:
-			ShaderUtil.set_shader_param(_background, "color", item_def.rarity.color)
-		ShaderUtil.set_shader_param(_background, "enabled", item_def != null)
+		#if item_def:
+		#	ShaderUtil.set_shader_param(_background, "color", item_def.rarity.color)
+		#ShaderUtil.set_shader_param(_background, "enabled", item_def != null)
 
 
-func _get_item_info_position() -> Vector2:
-	var info_size = _item_info.get_combined_minimum_size()
-	var item_pos = global_position
-	var offset = Vector2(INFO_MARGIN, -info_size.y * 0.5)
-	item_pos += offset
-	return item_pos
+func _on_item_def_changing():
+	pass
 
 
-func _on_mouse_entered() -> void:
-	if not item_def or _item_info.visible:
-		return
-	_item_info.item_def = item_def
-	_item_info.global_position = _get_item_info_position()
-	_item_info.show()
-
-
-func _on_mouse_exited() -> void:
-	_item_info.hide()
+func _on_item_def_changed():
+	pass
 
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -87,3 +90,17 @@ func _on_gui_input(event: InputEvent) -> void:
 			if item_def:
 				var def = item_def
 				EventBus.item_dropped.emit(def)
+				item_def = null
+
+
+func _on_icon_mouse_entered():
+	if item_def:
+		_hovered = true
+		EventBus.item_hovered.emit(item_def)
+
+
+func _on_icon_mouse_exited():
+	if not NodeUtil.is_mouse_inside(_icon):
+		_dragging = false
+		_hovered = false
+		EventBus.item_unhovered.emit(item_def)

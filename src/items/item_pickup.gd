@@ -103,9 +103,9 @@ func _on_body_entered(body: Node2D) -> void:
 	_pickup(body)
 
 
-func _on_mouse_entered() -> void:
+func _on_mouse_entered():
 	EventBus.item_hovered.emit(item_def)
 
 
-func _on_mouse_exited() -> void:
+func _on_mouse_exited():
 	EventBus.item_unhovered.emit(item_def)
