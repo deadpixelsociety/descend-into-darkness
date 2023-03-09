@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1gx86xyxogpv"]
+
+[ext_resource type="PackedScene" uid="uid://v3rnjcedpdl4" path="res://src/heroes/hurtbox.tscn" id="1_08yhb"]
+
+[node name="MonsterHurtbox" instance=ExtResource("1_08yhb")]
+collision_layer = 16
+collision_mask = 32

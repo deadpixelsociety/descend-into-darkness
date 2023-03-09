@@ -5,6 +5,7 @@ class_name Attack
 @export var attack_name: String
 @export_multiline var description: String
 @export var applied_attack: PackedScene
+@export var persistent: bool = false
 @export_category("Modifiers")
 @export var modifiers: Array[Modifier] = []
 

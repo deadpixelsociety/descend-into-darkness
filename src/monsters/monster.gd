@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBase
 class_name Monster
 
 signal attack_finished(monster)
@@ -13,16 +13,23 @@ signal spawn_finished(monster)
 		if is_attacking():
 			_update_attack_animation()
 
+@export var knockback_time: float = 0.1
+@export var knockback_speed: float = 150.0
+
 var FLOATING_TEXT: PackedScene = load("res://src/fx/floating_text.tscn")
 
 var _attacking: bool = false
+var _knockbar_dir: Vector2 = Vector2.ZERO
+var _knockback_timer: float = 0.0
 var _spawning: bool = false
 
+
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
-@onready var _behavior_tree: BTRoot = $BehaviorTree
-@onready var _effects: Node2D = $Effects
-@onready var _hitbox: Area2D = $Hitbox
+#@onready var _behavior_tree: BTRoot = $BehaviorTree
+@onready var _effect_container: Node2D = $EffectContainer
+@onready var _hitbox: Area2D = $MonsterHitbox
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _stats: Stats = $Stats
 @onready var _terrain_ray: RayCast2D = $TerrainRay
 
 
@@ -37,28 +44,16 @@ func _ready():
 
 
 func _physics_process(delta: float):
+	if _knockback_timer > 0.0:
+		_knockback_timer -= delta
+		if _knockback_timer <= 0.0:
+			_knockback_timer = 0.0
+		velocity = _knockbar_dir * knockback_speed
 	move_and_slide()
 
 
 func get_hitbox() -> Area2D:
 	return _hitbox
-
-
-func add_effect(applicator: Node2D, modifier: OnHitModifier):
-	if not modifier.can_apply_effect(self) or not modifier.on_hit_effect:
-		return
-	var effect = modifier.on_hit_effect.instantiate() as OnHitEffect
-	_effects.add_child(effect)
-	effect.apply_effect(modifier, applicator, self)
-
-
-func get_effects() -> Array[OnHitEffect]:
-	var list: Array[OnHitEffect] = []
-	for child in _effects.get_children():
-		var effect = child as OnHitEffect
-		if effect:
-			list.append(effect)
-	return list
 
 
 func spawn(spawn_point: Vector2):
@@ -97,6 +92,11 @@ func stop():
 	velocity = Vector2.ZERO
 
 
+func knockback(hit_position: Vector2):
+	_knockback_timer = knockback_time
+	_knockbar_dir = hit_position.direction_to(global_position)
+
+
 func can_attack(target: Node2D) -> bool:
 	return true
 
@@ -117,6 +117,7 @@ func _setup_monster():
 
 
 func _on_hurtbox_area_entered(area: Area2D):
+	knockback(area.global_position)
 	var dmg = int(1 + randf() * 20)
 	TextSpawner.spawn_text(
 		global_position,
@@ -140,7 +141,7 @@ func _on_hurtbox_area_entered(area: Area2D):
 	)
 	tween.play()
 	await tween.finished
-	queue_free()
+	#queue_free()
 
 
 func _whiteout(amount: float):
@@ -163,8 +164,10 @@ func _on_hitbox_area_entered(area: Area2D):
 
 
 func _on_spawn_started(monster: Monster):
-	_behavior_tree.enabled = false
+	pass
+	#_behavior_tree.enabled = false
 
 
 func _on_spawn_finished(monster: Monster):
-	_behavior_tree.enabled = true
+	pass
+	#_behavior_tree.enabled = true

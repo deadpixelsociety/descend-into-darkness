@@ -1,6 +1,25 @@
 class_name StatCalculator
 
 
+static func calculate_dps(stats: Stats) -> float:
+	var avg_hit = (stats.damage_min + stats.damage_max) / 2.0
+	var crit_chance = min(max(0.0, stats.critical_chance / 100.0), 1.0)
+	var crit_bonus = max(0.0, stats.critical_bonus / 100.0)
+	var non_crit_damage = (1.0 - crit_chance) * avg_hit
+	var crit_damage = (crit_chance * avg_hit) * crit_bonus
+	return (non_crit_damage + crit_damage) * stats.attack_speed
+
+
+static func calculate_hit(stats: Stats) -> DamageCalcResult:
+	var result = DamageCalcResult.new()
+	result.is_crit = randf() <= (stats.critical_chance / 100.0)
+	var hit = randf_range(stats.damage_min, stats.damage_max)
+	if result.is_crit:
+		hit *= (stats.critical_bonus / 100.0)
+	result.damage = roundf(hit)
+	return result
+
+
 static func calculate_health_max(modifiers: Array[Modifier]) -> float:
 	return _calculate_stat(modifiers, StatConstants.StatType.HEALTH_MAX)
 

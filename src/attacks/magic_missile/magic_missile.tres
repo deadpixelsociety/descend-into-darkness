@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://c53ut47utyv6p"]
+
+[ext_resource type="PackedScene" uid="uid://df2nijlg0x02n" path="res://src/attacks/magic_missile/magic_missile.tscn" id="1_kw55s"]
+[ext_resource type="Script" path="res://src/attacks/attack.gd" id="2_vvl5g"]
+
+[resource]
+script = ExtResource("2_vvl5g")
+attack_name = "Magic Missile"
+description = "The caster fires a magic homing missle of arcane energy."
+applied_attack = ExtResource("1_kw55s")
+persistent = false
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

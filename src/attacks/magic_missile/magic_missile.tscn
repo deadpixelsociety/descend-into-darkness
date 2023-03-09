@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://df2nijlg0x02n"]
+
+[ext_resource type="Script" path="res://src/attacks/magic_missile/magic_missile.gd" id="1_v1dox"]
+[ext_resource type="Texture2D" uid="uid://bb33vr57smhdd" path="res://assets/textures/fx/magic_missle.png" id="2_w7uyv"]
+[ext_resource type="PackedScene" uid="uid://c2fatpvg50vgh" path="res://src/heroes/hero_hitbox.tscn" id="3_nqcyb"]
+[ext_resource type="Texture2D" uid="uid://dqmhpwqtvufbj" path="res://assets/textures/fx/cross_sparkle.png" id="4_qxus1"]
+[ext_resource type="Texture2D" uid="uid://cofc81iabck76" path="res://assets/textures/misc/shadow.png" id="5_b7g4i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpch4"]
+resource_local_to_scene = true
+radius = 5.0
+
+[sub_resource type="Gradient" id="Gradient_lc4ax"]
+offsets = PackedFloat32Array(0, 0.278027, 0.627803, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.27451, 0.713726, 0.854902, 1, 0.101961, 0.47451, 0.6, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f1lis"]
+gradient = SubResource("Gradient_lc4ax")
+
+[sub_resource type="Curve" id="Curve_kmsqq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y54j8"]
+curve = SubResource("Curve_kmsqq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_midyx"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 30.0
+angular_velocity_min = 90.0
+angular_velocity_max = 180.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_max = 10.0
+scale_min = 0.5
+scale_max = 0.75
+scale_curve = SubResource("CurveTexture_y54j8")
+color_ramp = SubResource("GradientTexture1D_f1lis")
+
+[node name="MagicMissile" type="Node2D"]
+top_level = true
+script = ExtResource("1_v1dox")
+
+[node name="Missile" type="Sprite2D" parent="."]
+texture = ExtResource("2_w7uyv")
+offset = Vector2(-7.5, 0.5)
+
+[node name="HeroHitbox" parent="Missile" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_nqcyb")]
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Missile/HeroHitbox"]
+position = Vector2(-6.99382e-07, 4)
+shape = SubResource("CircleShape2D_mpch4")
+debug_color = Color(0, 0.643137, 0.27451, 0.419608)
+
+[node name="SparkleTrail" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(0.5, 0.5)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_midyx")
+texture = ExtResource("4_qxus1")
+lifetime = 2.0
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_b7g4i")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="hitbox_entered" from="Missile/HeroHitbox" to="." method="_on_hero_hit_box_hitbox_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

@@ -92,6 +92,11 @@ const ARMOUR_TYPES = [
 	ItemType.SHIELD
 ]
 
+const JEWELRY_TYPES = [
+	ItemType.NECKLACE,
+	ItemType.RING
+]
+
 const ITEM_NAME_PREFIXES = [
 	"Agony",
 	"Apocalypse",

@@ -6,6 +6,7 @@
 script = ExtResource("1_2ciat")
 rarity_name = "Magical"
 color = Color(0.454902, 0.623529, 0.976471, 1)
+gold_base = 10
 rate = 30.0
 total_affixes = 2
 prefixes_min = 1

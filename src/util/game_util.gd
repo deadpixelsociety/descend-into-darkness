@@ -28,6 +28,13 @@ func find_nearest_group_member(from: Vector2, group: String) -> Node2D:
 	return min_member
 
 
+func find_random_group_member(group: String) -> Node2D:
+	var list = get_tree().get_nodes_in_group(group)
+	if list.size() == 0:
+		return null
+	return list[randi() % list.size()]
+
+
 func get_effects_of_type(target: Node2D, effect_type: OnHitModifier.OnHitType) -> Array[OnHitEffect]:
 	var list: Array[OnHitEffect] = []
 	if target and target.has_method("get_effects"):

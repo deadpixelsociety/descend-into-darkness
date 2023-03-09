@@ -22,6 +22,7 @@ var ITEM_DESCRIPTION: PackedScene = load("res://src/ui/controls/item_info_descri
 @onready var _block: Label = %Block
 @onready var _divider: NinePatchRect = %Divider
 @onready var _description_lines: VBoxContainer = %DescriptionLines
+@onready var _gold: Label = %Gold
 
 
 func set_item_info_position(pos: Vector2):
@@ -65,6 +66,7 @@ func _setup_control():
 	else:
 		_divider.visible = false
 		_description_lines.visible = false
+	_gold.text = Formatter.format_float(item_def.get_gold_value())
 	update_minimum_size()
 
 

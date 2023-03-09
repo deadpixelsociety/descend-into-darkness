@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjxcov7wvkaw7"]
+
+[ext_resource type="PackedScene" uid="uid://v3rnjcedpdl4" path="res://src/heroes/hurtbox.tscn" id="1_6yrhe"]
+
+[node name="HeroHurtbox" instance=ExtResource("1_6yrhe")]

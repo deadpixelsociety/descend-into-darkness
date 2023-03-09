@@ -6,6 +6,7 @@
 script = ExtResource("1_hfreu")
 rarity_name = "Epic"
 color = Color(0.760784, 0.380392, 0.929412, 1)
+gold_base = 35
 rate = 9.9
 total_affixes = 4
 prefixes_min = 2

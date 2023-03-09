@@ -1,33 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://cve6wyy5jhf6k"]
+[gd_scene load_steps=8 format=3 uid="uid://cve6wyy5jhf6k"]
 
 [ext_resource type="Script" path="res://src/attacks/axe_toss/axe_toss.gd" id="1_m7rne"]
 [ext_resource type="Texture2D" uid="uid://cixakwh6erj1i" path="res://assets/textures/abilities/axe_toss.png" id="2_gb7vl"]
+[ext_resource type="Script" path="res://src/fx/after_image_spawner.gd" id="2_obreo"]
 [ext_resource type="Texture2D" uid="uid://cofc81iabck76" path="res://assets/textures/misc/shadow.png" id="3_3jgkg"]
+[ext_resource type="PackedScene" uid="uid://c2fatpvg50vgh" path="res://src/heroes/hero_hitbox.tscn" id="3_ei4b5"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yrgv3"]
+[sub_resource type="Gradient" id="Gradient_gvk14"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbqy2"]
+resource_local_to_scene = true
 radius = 8.0
 
 [node name="AxeToss" type="Node2D"]
 top_level = true
 script = ExtResource("1_m7rne")
 
+[node name="AfterImageSpawner" type="Node2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("2_obreo")
+target = NodePath("../Axe")
+spawn_time = 0.15
+image_duration = 0.2
+gradient = SubResource("Gradient_gvk14")
+
 [node name="Axe" type="Sprite2D" parent="."]
 position = Vector2(0, 4)
 texture = ExtResource("2_gb7vl")
 
-[node name="Hitbox" type="Area2D" parent="Axe"]
-position = Vector2(6.99382e-07, -4)
-collision_layer = 32
-collision_mask = 20
+[node name="HeroHitbox" parent="Axe" node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_ei4b5")]
+collision_shape = NodePath("CollisionShape2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Axe/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Axe/HeroHitbox"]
 position = Vector2(0, -5)
-shape = SubResource("CircleShape2D_yrgv3")
+shape = SubResource("CircleShape2D_pbqy2")
 debug_color = Color(0, 0.643137, 0.27451, 0.419608)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 21)
 texture = ExtResource("3_3jgkg")
 
-[connection signal="area_entered" from="Axe/Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="body_entered" from="Axe/Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="hitbox_entered" from="Axe/HeroHitbox" to="." method="_on_hero_hitbox_hitbox_entered"]

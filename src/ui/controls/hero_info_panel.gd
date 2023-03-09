@@ -62,7 +62,7 @@ func _update_info(hero: Hero):
 	_equipment_container.equip_items(hero.get_equipment())
 	var stats = hero.get_stats()
 	stats.calculate(hero.get_modifiers())
-	_dps.text = "DPS: %s" % Stats.get_dps_description(stats.calculate_dps())
+	_dps.text = "DPS: %s" % Stats.get_dps_description(StatCalculator.calculate_dps(stats))
 	_damage.text = "Damage: %s" % Stats.get_damage_range_description(stats.damage_min, stats.damage_max)
 	_spell_power.text = "Spell Power: %s" % Stats.get_spell_power_description(stats.spell_power)
 	_attack_speed.text = "Attack Speed: %s" % Stats.get_attack_speed_description(stats.attack_speed)

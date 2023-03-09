@@ -1,8 +1,14 @@
+@tool
 extends Area2D
 class_name SpawnArea
 
 const CELL_SIZE = 96.0
 const MIN_SPAWN_DISTANCE = 192.0
+
+@export var size: Vector2:
+	set(value):
+		size = value
+		_setup_area()
 
 var _cells: Array[Rect2] = []
 var _available_cells: Array[Rect2] = []
@@ -11,6 +17,7 @@ var _available_cells: Array[Rect2] = []
 
 
 func _ready():
+	_setup_area()
 	_create_cells()
 
 
@@ -18,6 +25,15 @@ func get_spawn_point() -> Vector2:
 	var extents = _get_available_cell()
 	var v = Vector2(randfn(0.5, 0.2), randfn(0.5, 0.2))
 	return extents.position + (v * extents.size)
+
+
+func _setup_area():
+	if not _collision_shape:
+		return
+	var rect = _collision_shape.shape as RectangleShape2D
+	if not rect:
+		return
+	rect.size = size
 
 
 func _create_cells():

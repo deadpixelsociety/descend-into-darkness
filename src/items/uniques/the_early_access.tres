@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=10 format=3 uid="uid://v5kl24j0pf6c"]
+
+[ext_resource type="Resource" uid="uid://bkuadqtijjpjh" path="res://src/items/bases/jewelry/ring/ring_gold.tres" id="1_424aj"]
+[ext_resource type="Script" path="res://src/items/item_definition.gd" id="1_gduce"]
+[ext_resource type="Script" path="res://src/modifiers/modifier_tier.gd" id="1_k2i06"]
+[ext_resource type="Resource" uid="uid://c7texdlo51asi" path="res://src/items/rarity/unique.tres" id="2_gyh51"]
+[ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="4_d2ldk"]
+
+[sub_resource type="Resource" id="Resource_k4tl7"]
+script = ExtResource("4_d2ldk")
+stat_type = 3
+value_type = 1
+modifier_type = 1
+stat_category = 1
+min_value = -50.0
+max_value = -50.0
+rounded = false
+level_scaled = false
+modifier_name = "Increased Attack Speed"
+description_template = "Attack Speed {op}{value}"
+modifier_property = "attack_speed"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+
+[sub_resource type="Resource" id="Resource_k2ymj"]
+script = ExtResource("1_k2i06")
+tier_name = "ReducedMovementSpeed"
+tier_group = "ReducedMovementSpeed"
+affix_type = 0
+display_priority = 0
+item_type = 0
+item_level_min = 0
+modifier = SubResource("Resource_k4tl7")
+
+[sub_resource type="Resource" id="Resource_kge7h"]
+script = ExtResource("4_d2ldk")
+stat_type = 13
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 500.0
+max_value = 500.0
+rounded = true
+level_scaled = false
+modifier_name = "Area of Effect"
+description_template = "AoE {op}{value}%"
+modifier_property = "area_of_effect"
+submodifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])
+
+[sub_resource type="Resource" id="Resource_hhift"]
+script = ExtResource("1_k2i06")
+tier_name = "ReducedMovementSpeed"
+tier_group = "ReducedMovementSpeed"
+affix_type = 0
+display_priority = 0
+item_type = 0
+item_level_min = 0
+modifier = SubResource("Resource_kge7h")
+
+[resource]
+script = ExtResource("1_gduce")
+item_name = "The Early Access"
+description_lines = Array[Resource("res://src/items/item_description_line.gd")]([])
+item_level = 1
+item_type = 2048
+item_base = ExtResource("1_424aj")
+rarity = ExtResource("2_gyh51")
+tiers = Array[ExtResource("1_k2i06")]([SubResource("Resource_k2ymj"), SubResource("Resource_hhift")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

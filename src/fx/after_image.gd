@@ -20,18 +20,31 @@ func _process(delta: float):
 	if _timer > 0.0:
 		var factor = clampf(_timer / duration, 0.0, 1.0)
 		if gradient:
-			modulate = gradient.sample(factor)
+			modulate = gradient.sample(1.0 - factor)
 		if scale_curve:
 			scale = Vector2.ONE * scale_curve.sample_baked(factor)
 		_timer -= delta
 
 
-func spawn(other: Sprite2D):
+func spawn_sprite(other: Sprite2D):
 	texture = other.texture
 	hframes = other.hframes
 	vframes = other.vframes
 	frame = other.frame
+	offset = other.offset
 	flip_h = other.flip_h
+	flip_v = other.flip_v
+	global_scale = other.global_scale
+	global_rotation = other.global_rotation
+	global_position = other.global_position
+	top_level = other.top_level
+
+
+func spawn_animated_sprite(other: AnimatedSprite2D):
+	texture = other.sprite_frames.get_frame_texture(other.animation, other.frame)
+	offset = other.offset
+	flip_h = other.flip_h
+	flip_v = other.flip_v
 	global_scale = other.global_scale
 	global_rotation = other.global_rotation
 	global_position = other.global_position

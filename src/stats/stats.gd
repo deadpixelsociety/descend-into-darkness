@@ -29,15 +29,6 @@ class_name Stats
 @export var chill: float = 0.0
 
 
-func calculate_dps() -> float:
-	var avg_hit = (damage_min + damage_max) / 2.0
-	var crit_chance = min(max(0.0, critical_chance / 100.0), 1.0)
-	var crit_bonus = max(0.0, critical_bonus / 100.0)
-	var non_crit_damage = (1.0 - crit_chance) * avg_hit
-	var crit_damage = (crit_chance * avg_hit) * crit_bonus
-	return (non_crit_damage + crit_damage) * attack_speed
-
-
 static func get_dps_description(value: float) -> String:
 	return Formatter.format_float(value, 2) + "/s"
 

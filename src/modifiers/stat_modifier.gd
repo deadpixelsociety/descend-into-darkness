@@ -52,8 +52,8 @@ func get_description(override_value: float = 0.0) -> String:
 	return description_template.format(_get_template_data(template_value))
 
 
-func _get_value_str(template_value: float) -> String:
-	var prefix = "%.f" if rounded else "%0.2f"
+func _get_value_str(template_value: float) -> String:	
+	var prefix = Formatter.get_format(template_value, 0 if rounded else 2, true)
 	match value_type:
 		StatConstants.ValueType.PERCENT:
 			return (prefix + "%%") % abs(template_value)

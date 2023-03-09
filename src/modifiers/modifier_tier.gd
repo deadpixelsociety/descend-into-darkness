@@ -15,3 +15,4 @@ enum AffixType {
 var item_type: int
 @export var item_level_min: int
 @export var modifier: Modifier
+@export var autoload_tier: bool = true

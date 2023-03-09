@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnjwel0epf213"]
+
+[ext_resource type="Script" path="res://src/fx/sparkle_explosion.gd" id="1_2uo3a"]
+[ext_resource type="Texture2D" uid="uid://bg6hi6jow5kqt" path="res://assets/textures/fx/sparkle_explosion.png" id="1_6yyg2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f66hp"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj61w"]
+atlas = ExtResource("1_6yyg2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ok5a"]
+atlas = ExtResource("1_6yyg2")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4luy7"]
+atlas = ExtResource("1_6yyg2")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_exthq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj61w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ok5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4luy7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="SparkleExplosion" type="Node2D"]
+modulate = Color(1, 1, 1, 0.75)
+top_level = true
+material = SubResource("CanvasItemMaterial_f66hp")
+script = ExtResource("1_2uo3a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_exthq")
+frame = 2
+frame_progress = 1.0

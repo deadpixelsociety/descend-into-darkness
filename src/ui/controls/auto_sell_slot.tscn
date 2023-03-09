@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://df376a4g7vvn6"]
+
+[ext_resource type="StyleBox" uid="uid://j6035k3mn2ku" path="res://assets/styles/inventory_slot.tres" id="1_mhhu6"]
+[ext_resource type="Texture2D" uid="uid://bsoibf7rpndih" path="res://assets/textures/ui/gold_pile.png" id="2_1bus1"]
+[ext_resource type="Script" path="res://src/ui/controls/auto_sell_slot.gd" id="2_6obr3"]
+
+[node name="AutoSellSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(26, 26)
+theme_override_styles/panel = ExtResource("1_mhhu6")
+script = ExtResource("2_6obr3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+tooltip_text = "Items dropped here will be 
+automatically sold for gold."
+texture = ExtResource("2_1bus1")
+expand_mode = 1
+stretch_mode = 5

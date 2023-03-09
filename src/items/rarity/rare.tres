@@ -6,6 +6,7 @@
 script = ExtResource("1_cvmwu")
 rarity_name = "Rare"
 color = Color(1, 0.941176, 0.317647, 1)
+gold_base = 20
 rate = 20.0
 total_affixes = 3
 prefixes_min = 2

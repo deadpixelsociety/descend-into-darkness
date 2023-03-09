@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="HeroClass" load_steps=11 format=3 uid="uid://ba3u14s18hlnt"]
+[gd_resource type="Resource" script_class="HeroClass" load_steps=12 format=3 uid="uid://ba3u14s18hlnt"]
 
 [ext_resource type="Script" path="res://src/modifiers/stat_modifier.gd" id="1_67a7s"]
 [ext_resource type="Script" path="res://src/heroes/classes/hero_class.gd" id="1_cc610"]
@@ -53,6 +53,21 @@ description_template = "Mana {op}{value}"
 modifier_property = "mana_max"
 submodifiers = null
 
+[sub_resource type="Resource" id="Resource_mf164"]
+script = ExtResource("1_67a7s")
+stat_type = 8
+value_type = 0
+modifier_type = 0
+stat_category = 1
+min_value = 150.0
+max_value = 150.0
+rounded = true
+level_scaled = false
+modifier_name = "Critical Bonus"
+description_template = "Crit Bonus {op}{value}%"
+modifier_property = "critical_bonus"
+submodifiers = null
+
 [resource]
 script = ExtResource("1_cc610")
 hero_name = "Thief"
@@ -63,4 +78,4 @@ can_dual_wield = true
 sprite_frames = ExtResource("2_6ruhx")
 weapon_type = 4
 equipment = Array[Resource("res://src/items/item_base.gd")]([ExtResource("1_jpofq"), ExtResource("2_8kagp"), ExtResource("3_kuyv5"), ExtResource("4_2ddhs")])
-modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_d07uo"), SubResource("Resource_2spos"), SubResource("Resource_usojy")])
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([SubResource("Resource_d07uo"), SubResource("Resource_2spos"), SubResource("Resource_usojy"), SubResource("Resource_mf164")])

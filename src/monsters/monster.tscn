@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://kvub8mmo2o40"]
 
 [ext_resource type="Script" path="res://src/monsters/monster.gd" id="1_eldqe"]
-[ext_resource type="Script" path="res://addons/yet_another_behavior_tree/src/Nodes/BTRoot.gd" id="2_4tbjj"]
-[ext_resource type="Script" path="res://src/util/hurt_box.gd" id="2_qtgdr"]
-[ext_resource type="Script" path="res://addons/yet_another_behavior_tree/src/Blackboard/BTBlackboard.gd" id="3_7r0w7"]
+[ext_resource type="PackedScene" uid="uid://derwldv0tcg26" path="res://src/monsters/monster_hitbox.tscn" id="2_as8na"]
+[ext_resource type="Script" path="res://src/stats/stats.gd" id="2_usxct"]
+[ext_resource type="PackedScene" uid="uid://1gx86xyxogpv" path="res://src/monsters/monster_hurtbox.tscn" id="3_ctb5u"]
 
 [sub_resource type="Shader" id="Shader_bq7ct"]
 resource_local_to_scene = true
@@ -23,11 +23,16 @@ shader = SubResource("Shader_bq7ct")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/amount = 0.0
 
-[node name="Monster" type="CharacterBody2D" groups=["monster"]]
+[node name="Monster" type="CharacterBody2D" node_paths=PackedStringArray("effect_container", "stats") groups=["monster"]]
 z_index = 2
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_eldqe")
+effect_container = NodePath("EffectContainer")
+stats = NodePath("Stats")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("2_usxct")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -41,35 +46,16 @@ scale = Vector2(1e-05, 1e-05)
 target_position = Vector2(0, 32)
 collision_mask = 4
 
-[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("hurtbox_owner")]
-collision_layer = 16
-collision_mask = 32
-script = ExtResource("2_qtgdr")
-hurtbox_owner = NodePath("..")
+[node name="MonsterHitbox" parent="." instance=ExtResource("2_as8na")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterHitbox"]
+position = Vector2(-6.99382e-07, 4)
+
+[node name="MonsterHurtbox" parent="." instance=ExtResource("3_ctb5u")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterHurtbox"]
 debug_color = Color(0.951325, 0.126483, 0.369379, 0.42)
 
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 64
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-
-[node name="Effects" type="Node2D" parent="."]
+[node name="EffectContainer" type="Node2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="BehaviorTree" type="Node" parent="." node_paths=PackedStringArray("blackboard")]
-script = ExtResource("2_4tbjj")
- = null
-enabled = false
-root_process_mode = 0
-actor_path = NodePath("..")
-blackboard = NodePath("../Blackboard")
-
-[node name="Blackboard" type="Node" parent="."]
-script = ExtResource("3_7r0w7")
-
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

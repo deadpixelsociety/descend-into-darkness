@@ -14,12 +14,16 @@ func _ready() -> void:
 	EventBus.item_dropped.connect(_on_item_dropped)
 	var hero = load("res://src/heroes/hero.tscn").instantiate() as Hero
 	hero.hero_class = load("res://src/heroes/classes/barbarian.tres")
+	hero.can_attack = true
 	var hero2 = load("res://src/heroes/hero.tscn").instantiate() as Hero
 	hero2.hero_class = load("res://src/heroes/classes/cleric.tres")
+	hero2.can_attack = true
 	var hero3 = load("res://src/heroes/hero.tscn").instantiate() as Hero
 	hero3.hero_class = load("res://src/heroes/classes/wizard.tres")
+	hero3.can_attack = true
 	var hero4 = load("res://src/heroes/hero.tscn").instantiate() as Hero
 	hero4.hero_class = load("res://src/heroes/classes/thief.tres")
+	hero4.can_attack = true
 	Party.add_hero(hero)
 	Party.add_hero(hero2)
 	Party.add_hero(hero3)
@@ -59,7 +63,7 @@ func _spawn_items():
 		]
 		var weapon_types = Party.get_weapon_types()
 #		item_set.append_array(weapon_types)
-		var weapon = ItemGenerator.generate_unique(10, ItemConstants.ItemType.FOCUS)
+		var weapon = ItemGenerator.generate_unique(10, ItemConstants.ItemType.RING)
 		var item_pickup = pickup.instantiate() as ItemPickup
 		item_pickup.item_def = weapon
 		item_pickup.position = RandUtil.rand_vector2() * Vector2(300, 200)

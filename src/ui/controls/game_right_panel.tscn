@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://qldkd3vun555"]
+[gd_scene load_steps=31 format=3 uid="uid://qldkd3vun555"]
 
 [ext_resource type="Script" path="res://src/ui/controls/game_right_panel.gd" id="1_0wyh0"]
 [ext_resource type="PackedScene" uid="uid://bc0kdh47uxcii" path="res://src/ui/controls/hero_container.tscn" id="1_j2h45"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bsoibf7rpndih" path="res://assets/textures/ui/gold_pile.png" id="4_5csa7"]
 [ext_resource type="Texture2D" uid="uid://br1j086lr176" path="res://assets/textures/ui/action_bar32.png" id="5_u8wql"]
 [ext_resource type="Texture2D" uid="uid://cfw4rbqdqrj20" path="res://assets/textures/ui/button_x.png" id="6_kl6ue"]
+[ext_resource type="FontFile" uid="uid://dr7nd717dtgvt" path="res://assets/fonts/04B_03__.TTF" id="7_lnwbg"]
 [ext_resource type="Texture2D" uid="uid://rpjdqd5by1pa" path="res://assets/textures/ui/button_y.png" id="7_xjtj7"]
 [ext_resource type="Texture2D" uid="uid://blyjyq0phvamx" path="res://assets/textures/ui/button_a.png" id="8_f377y"]
 [ext_resource type="Texture2D" uid="uid://8m1ge6g107vt" path="res://assets/textures/ui/button_b.png" id="9_ivl1y"]
@@ -20,8 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://ytm6q0nwjm4q" path="res://assets/textures/ui/box_paper.png" id="16_sft10"]
 [ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="19_um3co"]
 [ext_resource type="Script" path="res://src/ui/controls/inventory_slots.gd" id="19_w00ck"]
-[ext_resource type="StyleBox" uid="uid://j6035k3mn2ku" path="res://assets/styles/inventory_slot.tres" id="20_a833p"]
 [ext_resource type="PackedScene" uid="uid://dqqvjm84h2uor" path="res://src/ui/controls/inventory_slot.tscn" id="20_o2ulq"]
+[ext_resource type="PackedScene" uid="uid://df376a4g7vvn6" path="res://src/ui/controls/auto_sell_slot.tscn" id="22_lj15y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_glbr6"]
 font = ExtResource("2_bmeyh")
@@ -32,7 +33,7 @@ shadow_size = 2
 shadow_color = Color(0.541176, 0.415686, 0, 0.25098)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7nbtc"]
-font = ExtResource("2_bmeyh")
+font = ExtResource("7_lnwbg")
 font_color = Color(0.883075, 0.860466, 0.793451, 1)
 outline_size = 2
 outline_color = Color(0.701961, 0.603922, 0.0156863, 1)
@@ -141,6 +142,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="XPVial" parent="PartyInfo" instance=ExtResource("3_3sbt3")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(58, 12)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -154,6 +156,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Gold" type="Label" parent="PartyInfo"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "999"
 label_settings = SubResource("LabelSettings_7nbtc")
@@ -540,19 +543,8 @@ layout_mode = 2
 [node name="InventorySlot14" parent="Inventory/InventorySlots" instance=ExtResource("20_o2ulq")]
 layout_mode = 2
 
-[node name="AutoSellSlot" type="PanelContainer" parent="Inventory/InventorySlots"]
-custom_minimum_size = Vector2(26, 26)
+[node name="AutoSellSlot" parent="Inventory/InventorySlots" instance=ExtResource("22_lj15y")]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("20_a833p")
-
-[node name="TextureRect" type="TextureRect" parent="Inventory/InventorySlots/AutoSellSlot"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-tooltip_text = "Items dropped here will be 
-automatically sold for gold."
-texture = ExtResource("4_5csa7")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="DungeonInfo" type="VBoxContainer" parent="."]
 layout_mode = 2

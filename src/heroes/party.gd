@@ -4,6 +4,7 @@ signal hero_data_changed(index, hero)
 signal hero_health_changed(hero, value_max, value_current)
 signal hero_mana_changed(hero, value_max, value_current)
 signal hero_equipment_changed(hero)
+signal gold_changed()
 
 const MAX_LEVEL = 20
 const MIN_LEVEL = 1
@@ -12,6 +13,7 @@ var _heroes: Array[Hero] = []
 var _level: int = MIN_LEVEL
 var _portraits: Dictionary = {}
 var _names: Dictionary = {}
+var _gold: int = 0
 
 
 func get_party_size() -> int:
@@ -20,14 +22,14 @@ func get_party_size() -> int:
 
 func add_hero(hero: Hero):
 	_heroes.append(hero)
-	hero_data_changed.emit(hero, _heroes.find(hero))
+	hero_data_changed.emit(_heroes.find(hero), hero)
 	apply_party_passives()
 
 
 func remove_hero(hero: Hero):
 	var idx = _heroes.find(hero)
 	_heroes.erase(hero)
-	hero_data_changed.emit(hero, idx)
+	hero_data_changed.emit(idx, hero)
 	unapply_party_passive(hero)
 
 
@@ -35,8 +37,8 @@ func swap_heros(a: int, b: int):
 	var t = _heroes[a]
 	_heroes[a] = _heroes[b]
 	_heroes[b] = t
-	hero_data_changed.emit(_heroes[a], a)
-	hero_data_changed.emit(_heroes[b], b)
+	hero_data_changed.emit(a, _heroes[a])
+	hero_data_changed.emit(b, _heroes[b])
 
 
 func get_heroes() -> Array[Hero]:
@@ -84,6 +86,20 @@ func level_up():
 	_level = clampi(_level + 1, MIN_LEVEL, MAX_LEVEL)
 
 
+func set_gold(value: int):
+	_gold = value
+	gold_changed.emit()
+
+
+func add_gold(value: int):
+	_gold = max(0, _gold + value)
+	gold_changed.emit()
+
+
+func get_gold() -> int:
+	return _gold
+
+
 func get_average_movement_speed() -> float:
 	if _heroes.size() == 0:
 		return 0.0
@@ -125,7 +141,7 @@ func get_hero_index(hero: Hero) -> int:
 
 func set_portrait(hero: Hero, portrait: Dictionary):
 	_portraits[get_hero_index(hero)] = portrait
-	hero_data_changed.emit(hero, _heroes.find(hero))
+	hero_data_changed.emit(_heroes.find(hero), hero)
 
 
 func get_portrait(hero: Hero) -> Dictionary:
@@ -137,7 +153,7 @@ func get_portrait(hero: Hero) -> Dictionary:
 
 func set_hero_name(hero: Hero, hero_name: String):
 	_names[get_hero_index(hero)] = hero_name
-	hero_data_changed.emit(hero, _heroes.find(hero))
+	hero_data_changed.emit(_heroes.find(hero), hero)
 
 
 func get_hero_name(hero: Hero) -> String:

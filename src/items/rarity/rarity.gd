@@ -4,6 +4,7 @@ class_name Rarity
 @export_category("Rarity")
 @export var rarity_name: String
 @export var color: Color
+@export var gold_base: int
 @export var rate: float
 @export var total_affixes: int
 @export var prefixes_min: int

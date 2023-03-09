@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://blpvj8q0yfc8i"]
+[gd_scene load_steps=14 format=3 uid="uid://blpvj8q0yfc8i"]
 
 [ext_resource type="Script" path="res://src/ui/controls/item_info_panel.gd" id="1_lb2gu"]
 [ext_resource type="Texture2D" uid="uid://cx1x4foslqv33" path="res://assets/textures/ui/frame_decorated.png" id="2_1wg6x"]
 [ext_resource type="FontFile" uid="uid://bverh4td2e7os" path="res://assets/fonts/alagard.ttf" id="3_6nxrq"]
 [ext_resource type="FontFile" uid="uid://ce5vqakvhiqw7" path="res://assets/fonts/ARCADEPI.TTF" id="4_fbnfj"]
 [ext_resource type="Texture2D" uid="uid://d1pnpvfcmhmsg" path="res://assets/textures/ui/hero_divider.png" id="5_ywmr0"]
+[ext_resource type="Texture2D" uid="uid://bsoibf7rpndih" path="res://assets/textures/ui/gold_pile.png" id="6_2xism"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ntll"]
 content_margin_left = 8.0
@@ -61,6 +62,15 @@ outline_size = 2
 outline_color = Color(0.44, 0.429, 0.396, 1)
 shadow_size = 2
 shadow_color = Color(0.439216, 0.427451, 0.396078, 0.25098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4b8c"]
+font = ExtResource("4_fbnfj")
+font_size = 8
+font_color = Color(0.883075, 0.860466, 0.793451, 1)
+outline_size = 2
+outline_color = Color(0.701961, 0.603922, 0.0156863, 1)
+shadow_size = 2
+shadow_color = Color(0.701961, 0.603922, 0.0156863, 0.25098)
 
 [node name="ItemInfoPanel" type="Container"]
 top_level = true
@@ -170,3 +180,21 @@ patch_margin_bottom = 4
 [node name="DescriptionLines" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="GoldContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/GoldContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("6_2xism")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Gold" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GoldContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "123"
+label_settings = SubResource("LabelSettings_x4b8c")
+vertical_alignment = 2

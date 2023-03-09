@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://bwkvwqoyem1pw"]
+
+[ext_resource type="Script" path="res://src/attacks/attack.gd" id="1_geesj"]
+[ext_resource type="PackedScene" uid="uid://fwo44uxu0csb" path="res://src/attacks/divine_aura/divine_aura.tscn" id="1_n3bar"]
+
+[resource]
+script = ExtResource("1_geesj")
+attack_name = "Divine Aura"
+description = "The cleric constantly projects a divine aura around himself dealing damage to any enemies that come near."
+applied_attack = ExtResource("1_n3bar")
+persistent = true
+knockback = true
+modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

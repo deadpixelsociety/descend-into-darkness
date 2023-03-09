@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_av7pm")
 attack_name = "Axe Toss"
-description = "Hurls the wielder's axe at the nearest target."
+description = "The barbarian hurls their axe at the nearest target."
 applied_attack = ExtResource("1_0l23d")
 modifiers = Array[Resource("res://src/modifiers/modifier.gd")]([])

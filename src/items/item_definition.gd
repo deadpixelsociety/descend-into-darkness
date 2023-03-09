@@ -12,3 +12,12 @@ class_name ItemDefinition
 @export var modifiers: Array[Modifier] = []
 
 var id: String = Guid.generate()
+
+
+func get_gold_value() -> int:
+	var gold = rarity.gold_base
+	gold += (tiers.size() * 2)
+	if ItemConstants.JEWELRY_TYPES.has(item_type):
+		gold += 10
+	gold *= item_level
+	return gold

@@ -6,6 +6,7 @@
 script = ExtResource("1_4gawd")
 rarity_name = "Unique"
 color = Color(0.780392, 0.380392, 0, 1)
+gold_base = 50
 rate = 0.1
 total_affixes = 0
 prefixes_min = 0

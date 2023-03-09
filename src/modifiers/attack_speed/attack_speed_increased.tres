@@ -11,6 +11,7 @@ stat_category = 1
 min_value = 0.0
 max_value = 0.0
 rounded = false
+level_scaled = false
 modifier_name = "Increased Attack Speed"
 description_template = "Attack Speed {op}{value}"
 modifier_property = "attack_speed"

@@ -1,16 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dt680lbhp4fnb"]
+[gd_scene load_steps=12 format=3 uid="uid://dt680lbhp4fnb"]
 
 [ext_resource type="PackedScene" uid="uid://kvub8mmo2o40" path="res://src/monsters/monster.tscn" id="1_0ph50"]
 [ext_resource type="SpriteFrames" uid="uid://ow7vc5eggd3s" path="res://assets/animations/bat.tres" id="2_0cijn"]
 [ext_resource type="Script" path="res://src/monsters/bat/bat.gd" id="2_jpd17"]
-[ext_resource type="Script" path="res://addons/yet_another_behavior_tree/src/Nodes/BTRoot.gd" id="4_75ynm"]
-[ext_resource type="Script" path="res://addons/yet_another_behavior_tree/src/Nodes/Composite/BTSelector.gd" id="5_sqx73"]
-[ext_resource type="Script" path="res://addons/yet_another_behavior_tree/src/Nodes/Composite/BTSequence.gd" id="6_0pmqd"]
-[ext_resource type="Script" path="res://src/behaviors/condition_party_nearby.gd" id="7_etdjp"]
-[ext_resource type="Script" path="res://src/behaviors/condition_can_attack_hero.gd" id="8_vclp3"]
-[ext_resource type="Script" path="res://src/behaviors/action_attack_hero.gd" id="9_1us0g"]
-[ext_resource type="Script" path="res://src/behaviors/action_chase_hero.gd" id="9_pclc0"]
-[ext_resource type="Script" path="res://src/behaviors/action_stop_moving.gd" id="9_wghvd"]
 
 [sub_resource type="Shader" id="Shader_x8bc6"]
 resource_local_to_scene = true
@@ -30,12 +22,9 @@ shader = SubResource("Shader_x8bc6")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/amount = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xc6ji"]
-radius = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4mae"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7gpnf"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ffcye"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_riiqm"]
 
 [sub_resource type="Animation" id="Animation_r8msf"]
 resource_name = "RESET"
@@ -124,68 +113,27 @@ movement_speed = 100.0
 attack_speed = 200.0
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="1"]
 modulate = Color(1, 1, 1, 1)
 material = SubResource("ShaderMaterial_ew7xy")
 scale = Vector2(1, 1)
 sprite_frames = ExtResource("2_0cijn")
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_xc6ji")
+[node name="MonsterHitbox" parent="." index="3" node_paths=PackedStringArray("hitbox_owner", "collision_shape")]
+hitbox_owner = NodePath("..")
+collision_shape = NodePath("CollisionShape2D")
 
-[node name="Hurtbox" parent="." index="3"]
-metadata/_edit_group_ = true
+[node name="CollisionShape2D" parent="MonsterHitbox" index="0"]
+shape = SubResource("CircleShape2D_s4mae")
 
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
-shape = SubResource("CircleShape2D_7gpnf")
+[node name="MonsterHurtbox" parent="." index="4" node_paths=PackedStringArray("hurtbox_owner")]
+hurtbox_owner = NodePath("..")
 
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("CircleShape2D_ffcye")
-debug_color = Color(0, 0.647059, 0.172549, 0.419608)
+[node name="CollisionShape2D" parent="MonsterHurtbox" index="0"]
+shape = SubResource("CircleShape2D_riiqm")
 
 [node name="AnimationPlayer" parent="." index="6"]
 playback_process_mode = 0
 libraries = {
 "": SubResource("AnimationLibrary_j825l")
 }
-
-[node name="BehaviorTree" parent="." index="7"]
-script = ExtResource("4_75ynm")
- = null
-enabled = true
-root_process_mode = 1
-
-[node name="One Of" type="Node" parent="BehaviorTree" index="0"]
-script = ExtResource("5_sqx73")
- = null
-
-[node name="Attack" type="Node" parent="BehaviorTree/One Of" index="0"]
-script = ExtResource("6_0pmqd")
- = null
-
-[node name="Can Attack Hero" type="Node" parent="BehaviorTree/One Of/Attack" index="0"]
-script = ExtResource("8_vclp3")
-
-[node name="Stop Moving" type="Node" parent="BehaviorTree/One Of/Attack" index="1"]
-script = ExtResource("9_wghvd")
-
-[node name="Attack Hero" type="Node" parent="BehaviorTree/One Of/Attack" index="2"]
-script = ExtResource("9_1us0g")
-
-[node name="Is Party Nearby" type="Node" parent="BehaviorTree/One Of/Attack" index="3"]
-script = ExtResource("7_etdjp")
-search_range_min = 0.0
-search_range_max = 128.0
-
-[node name="Chase" type="Node" parent="BehaviorTree/One Of" index="1"]
-script = ExtResource("6_0pmqd")
- = null
-
-[node name="Is Party Nearby" type="Node" parent="BehaviorTree/One Of/Chase" index="0"]
-script = ExtResource("7_etdjp")
-search_range_min = 0.0
-search_range_max = 1000.0
-
-[node name="Chase Hero" type="Node" parent="BehaviorTree/One Of/Chase" index="1"]
-script = ExtResource("9_pclc0")
-min_distance = 16.0

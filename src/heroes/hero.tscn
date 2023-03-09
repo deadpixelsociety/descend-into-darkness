@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu7vd1nqncije"]
+[gd_scene load_steps=10 format=3 uid="uid://bu7vd1nqncije"]
 
 [ext_resource type="Script" path="res://src/heroes/hero.gd" id="1_yygb3"]
 [ext_resource type="Script" path="res://src/stats/stats.gd" id="2_sl370"]
 [ext_resource type="PackedScene" uid="uid://bem7wkdspps8q" path="res://src/fx/blood_splatter.tscn" id="3_edm3y"]
+[ext_resource type="PackedScene" uid="uid://bjxcov7wvkaw7" path="res://src/heroes/hero_hurtbox.tscn" id="3_nko1d"]
 [ext_resource type="PackedScene" uid="uid://lu2f8b4xwbr5" path="res://src/fx/light_source.tscn" id="4_pqlm3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62rw2"]
 radius = 6.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqec8"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rf1w3"]
 radius = 8.0
 height = 32.0
 
@@ -30,10 +31,13 @@ shader = SubResource("Shader_ff0dd")
 shader_parameter/color = Color(1, 0.101961, 0.137255, 1)
 shader_parameter/amount = 0.0
 
-[node name="Hero" type="CharacterBody2D" groups=["hero"]]
+[node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("effect_container", "stats") groups=["hero"]]
+z_index = 1
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_yygb3")
+effect_container = NodePath("EffectContainer")
+stats = NodePath("Stats")
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("2_sl370")
@@ -43,17 +47,16 @@ position = Vector2(0, 10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_62rw2")
 
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 320
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CapsuleShape2D_hqec8")
-debug_color = Color(0.952941, 0.12549, 0.368627, 0.419608)
-
 [node name="AttackContainer" type="Node2D" parent="."]
 
 [node name="PassiveContainer" type="Node2D" parent="."]
+
+[node name="HeroHurtbox" parent="." node_paths=PackedStringArray("hurtbox_owner") instance=ExtResource("3_nko1d")]
+hurtbox_owner = NodePath("..")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HeroHurtbox"]
+shape = SubResource("CapsuleShape2D_rf1w3")
+debug_color = Color(0.952941, 0.12549, 0.368627, 0.419608)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true

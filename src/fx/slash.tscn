@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://lndm6r7hpp6v"]
+
+[ext_resource type="Script" path="res://src/fx/slash.gd" id="1_wn5u7"]
+[ext_resource type="Texture2D" uid="uid://dtnmclfy8kbdy" path="res://assets/textures/fx/slash.png" id="2_gd2k2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f66hp"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh7un"]
+atlas = ExtResource("2_gd2k2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1kuf"]
+atlas = ExtResource("2_gd2k2")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5lfh"]
+atlas = ExtResource("2_gd2k2")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x84bh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh7un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1kuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5lfh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Slash" type="Node2D"]
+modulate = Color(1, 1, 1, 0.75)
+z_index = 50
+material = SubResource("CanvasItemMaterial_f66hp")
+script = ExtResource("1_wn5u7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x84bh")

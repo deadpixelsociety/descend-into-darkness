@@ -372,14 +372,15 @@ func _process_tiers(path: String):
 	while file_name != "":
 		if not dir.current_is_dir():
 			if file_name.ends_with("tres"):
-				var tier: ModifierTier = load(path + "/" + file_name)
-				_tiers.append(tier)
-				for type in ItemConstants.ItemType:
-					var idx: int = ItemConstants.ItemType[type]
-					if idx & tier.item_type == idx:
-						var type_map = Collections.get_dict_dict(_tier_map, idx)
-						var affix_map = Collections.get_dict_dict(type_map, tier.affix_type)
-						var tier_list = Collections.get_dict_array(affix_map, tier.tier_group)
-						tier_list.append(tier)
+				var tier := load(path + "/" + file_name) as ModifierTier
+				if tier.autoload_tier:
+					_tiers.append(tier)
+					for type in ItemConstants.ItemType:
+						var idx: int = ItemConstants.ItemType[type]
+						if idx & tier.item_type == idx:
+							var type_map = Collections.get_dict_dict(_tier_map, idx)
+							var affix_map = Collections.get_dict_dict(type_map, tier.affix_type)
+							var tier_list = Collections.get_dict_array(affix_map, tier.tier_group)
+							tier_list.append(tier)
 		file_name = dir.get_next()
 	dir.list_dir_end()
